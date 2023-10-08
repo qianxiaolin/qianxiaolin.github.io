@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://qianxiaolin.github.io/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qianxiaolin.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/Mysql/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T06:58:09.628Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/08/Mysql/">Mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
+<li>作用：存放数据</li>
+<li>版本：5.7和8.0</li>
+</ul>
+<h1 id="Mysql的三层结构"><a href="#Mysql的三层结构" class="headerlink" title="Mysql的三层结构"></a>Mysql的三层结构</h1><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230201210815498.png" alt="image-20230201210815498"></p>
+<p>SQL语句分类</p>
+<ol>
+<li>DDL：数据定义（创建create）</li>
+<li>DML：数据操作（增insert，删改）</li>
+<li>DQL：数据查询（select）</li>
+<li>DCL：数据控制（管理数据库：用户权限，grand，revoke）</li>
+</ol>
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><p><strong>打开Mysql</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p><strong>显示数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名字;</span><br></pre></td></tr></table></figure>
+
+<p>‘’可以规避关键字，若要以关键字命名数据库，可以使用’’</p>
+<p><strong>备份数据库</strong></p>
+<p>在shell中运行</p>
+<p>备份文件是用户输入的一系列sql语句</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//备份数据库</span><br><span class="line">mysqldump -u 用户名 -p -B 数据库1 数据库2 数据库n &gt; 文件.sql</span><br><span class="line">//备份表</span><br><span class="line">mysqldump -u 用户名 -p  数据库1 表1 表2 &gt; 文件.sql</span><br></pre></td></tr></table></figure>
+
+<p><strong>恢复数据库</strong></p>
+<p>语句不用分号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source 备份文件夹路径</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>char</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名（</span><br><span class="line">  字段 类型，</span><br><span class="line">  字段 类型</span><br><span class="line">）character set 字符集 collate 校对规则 engine 引擎</span><br></pre></td></tr></table></figure>
+
+<p>character set和collate：如不指定，将以所在数据库的字符集为准</p>
+<h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>查看数据库中的所有表格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES;</span><br></pre></td></tr></table></figure>
+
+<p>查看表格结构（列）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC 表名</span><br></pre></td></tr></table></figure>
+
+<p>查看表中的所有数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改alter"><a href="#修改alter" class="headerlink" title="修改alter"></a>修改alter</h2><p>修改表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename table 表名 to 新表名</span><br></pre></td></tr></table></figure>
+
+<p>修改表名字符集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 character set 字符集</span><br></pre></td></tr></table></figure>
+
+<p>添加列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 add（字段 类型，字段 类型）</span><br></pre></td></tr></table></figure>
+
+<p>修改列类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 modify （字段 类型，字段 类型）</span><br></pre></td></tr></table></figure>
+
+<p>修改列名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 change 列名 新列名 类型</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="筛选select"><a href="#筛选select" class="headerlink" title="筛选select"></a>筛选select</h2><p>查看某列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名 FROM 表名;</span><br></pre></td></tr></table></figure>
+
+<p>查看某列中满足条件的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名 FROM 表名 WHERE 列 运算符 值;</span><br></pre></td></tr></table></figure>
+
+<p>数据去重</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct 列名 FROM 表名;</span><br></pre></td></tr></table></figure>
+
+<p>给列取别名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列名 as 别名 from 表名</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and or</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>in</td>
+<td>在集合中</td>
+<td>in（100,200）在集合{1,2}中</td>
+</tr>
+<tr>
+<td>between    and</td>
+<td>介于范围</td>
+<td>between 80 and 90  介于80-90包含两头</td>
+</tr>
+<tr>
+<td>like</td>
+<td>模糊查询</td>
+<td>“韩%” 查询姓韩的同学  %表示任意字符  _表示任意一个字符</td>
+</tr>
+</tbody></table>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>表格按照某列的值排序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//升序（从上到下，依次递增），默认为升序</span><br><span class="line">SELECT * FROM 表名 OREDRS OREDR BY 列名</span><br><span class="line">//降序</span><br><span class="line">SELECT * FROM 表名 OREDRS OREDR BY 列名 desc</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加insert"><a href="#添加insert" class="headerlink" title="添加insert"></a>添加insert</h2><p>插入一行数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values(数据1,数据2,数据n)</span><br></pre></td></tr></table></figure>
+
+<p>对某些列插入数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 （列1，列2）values（列1数据，列2数据）</span><br></pre></td></tr></table></figure>
+
+<p>给列添加多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 （列名） values (数据),(数据),(数据)</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><p>修改整列的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 列名=value</span><br></pre></td></tr></table></figure>
+
+<p>修改某些列满足条件的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段1=value,字段2=value where 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>删除所有数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名</span><br></pre></td></tr></table></figure>
+
+<p>删除行数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<p>删除列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 drop 列名</span><br></pre></td></tr></table></figure>
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>统计函数count–返回行的总数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1。count(*) 返回满足条件的记录的行数</span><br><span class="line">select count （*） from 表名</span><br><span class="line">//2.count（列名）统计满足条件的某列的元素的个数，但会排除NULL的情况</span><br><span class="line">select count（列名） from 表名</span><br></pre></td></tr></table></figure>
+
+<p>合计函数sum–返回where条件的行的和，只对数值列起作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sum(数值列) from 表名 where 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<p>平均值avg–求列的平均值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg（列名） from 表名</span><br></pre></td></tr></table></figure>
+
+<p>最值max&#x2F;min–列最大值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select max（列名） from 表名</span><br></pre></td></tr></table></figure>
+
+<p>表复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230228225616321.png" alt="image-20230228225616321"></p>
+<p>删除重复记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#利用distinct筛选数据到临时表</span><br><span class="line">#清空要删除重复记录的表</span><br><span class="line">#将临时表的数据放入操作表</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230228230144118.png" alt="image-20230228230144118"></p>
+<h2 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h2><p>分组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列1，列2... from table group by 列</span><br></pre></td></tr></table></figure>
+
+<p>分组后过滤having(有)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列1，列2... from table group by 列 having 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230208221814706.png" alt="image-20230208221814706"></p>
+<h2 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230209214539688.png" alt="image-20230209214539688"></p>
+<h2 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212202147547.png" alt="image-20230212202147547"></p>
+<p>获取当前时间戳（年月日时分秒）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>获取当前日期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">current_date()</span><br></pre></td></tr></table></figure>
+
+<p>日期加减</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//加</span><br><span class="line">date_add(date,interval value year|month|day|hour|minute|second)</span><br><span class="line">//减</span><br><span class="line">date_sub(date,interval value year|month|day|hour|minute|second)</span><br></pre></td></tr></table></figure>
+
+<p>计算天数差</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dateiff(date1,date2)--date为日期</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212204724229.png" alt="image-20230212204724229"></p>
+<p>unix时间戳–1970-1-1至今</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_timestamp()</span><br></pre></td></tr></table></figure>
+
+<p>将unix时间戳转化为指定格式的时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">form_unixtime(unix_timestamp(),&#x27;%Y-%m-%d %H：%i：%s&#x27;)//年-月-日 时：分：秒</span><br></pre></td></tr></table></figure>
+
+<h2 id="加密和系统"><a href="#加密和系统" class="headerlink" title="加密和系统"></a>加密和系统</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212210233759.png" alt="image-20230212210233759"></p>
+<p>查询使用sql的用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user()--返回用户名和IP地址</span><br></pre></td></tr></table></figure>
+
+<p>查询当前使用的数据库名字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datebase()</span><br></pre></td></tr></table></figure>
+
+<p>为字符串进行MD5加密，经过MD5加密的字符串是32位的字符串，所以密码的类型常用char(32)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MD5(str)</span><br></pre></td></tr></table></figure>
+
+<p>加密函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password(str)</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212212010541.png" alt="image-20230212212010541"></p>
+<p>如果姓名为Jack则将jack替换为杰克显示</p>
+<p>判断是否为NULL不用&#x3D;&#x3D;而用is</p>
+<h1 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h1><h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#从start+1行开始，取出rows行</span><br><span class="line">select ... limit start,rows_value</span><br></pre></td></tr></table></figure>
+
+<h2 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp,det;#emp的每一行和det的每一行进行拼接，得到结果行数=emp行数*det行数</span><br></pre></td></tr></table></figure>
+
+<h2 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#把同一张表当做两张表使用，但要给两张表取别名</span><br><span class="line">select worker.name ,boss.ename from emp as worker,emp as boss</span><br></pre></td></tr></table></figure>
+
+<h2 id="多列子查询"><a href="#多列子查询" class="headerlink" title="多列子查询"></a>多列子查询</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（value1,value2）=（select ...)</span><br></pre></td></tr></table></figure>
+
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h1 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/10/08/Mysql/" data-id="clnh4ej2z0000z0usdrx3bibo" data-title="Mysql" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-signal" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/23/signal/" class="article-date">
+  <time class="dt-published" datetime="2023-09-23T07:06:51.000Z" itemprop="datePublished">2023-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/23/signal/">signal</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h1><p>信号的位置：<code>/usr/include/signal.h</code></p>
+<p>信号的分类</p>
+<ul>
+<li>标准信号&#x2F;不可靠信号：信号标识符1-32,不处于信号队列中，只能接收一次</li>
+<li>实时信号&#x2F;可靠信号：信号标识符32-64,同一信号可以发送多次，被多次接收，存储在sigqueue中</li>
+</ul>
+<p>信号的特点</p>
+<ul>
+<li><p>不可预测&#x2F;随机性</p>
+</li>
+<li><p>传送数据简单，信号描述符</p>
+</li>
+</ul>
+<p>信号的状态</p>
+<ul>
+<li><p>generation</p>
+</li>
+<li><p>delivery</p>
+</li>
+</ul>
+<p>信号的产生</p>
+<ul>
+<li>键盘快捷键</li>
+<li>系统调用函数</li>
+<li>内核产生：硬件异常，被除数为0<br>信号可以由线程产生，也可以由内核产生，但内核产生的终止信号通常是致命的</li>
+</ul>
+<p>信号的响应</p>
+<ul>
+<li><p>默认:SIG_DEF通常是终止</p>
+</li>
+<li><p>忽略:SIG_IGN</p>
+</li>
+<li><p>用户自定义</p>
+</li>
+</ul>
+<p>&#x3D;&#x3D;SIGKILL和SIGSTOP的默认行为不能修改，不能被忽略&#x3D;&#x3D;</p>
+<p>内核在信号中扮演的角色</p>
+<p>当操作系统从内核态切换为用户态时，会检测&#x3D;&#x3D;pending&amp;~blocked&#x3D;&#x3D;位图，如果位图置1则执行信号处理程序</p>
+<p>多线程程序中的信号处理函数</p>
+<p>对于多线程程序，kill函数会把信号传给每一个线程，当只有一个线程会执行信号处理函数</p>
+<p>信号描述符</p>
+<p>进程</p>
+<ol>
+<li>记录信号是否被接受pending</li>
+<li>记录屏蔽什么信号block</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*进程描述符*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Signal handlers: */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">signal_struct</span>		*<span class="title">signal</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sighand_struct</span> __<span class="title">rcu</span>		*<span class="title">sighand</span>;</span> <span class="comment">/*信号处理函数*/</span></span><br><span class="line">	<span class="type">sigset_t</span>			blocked;	<span class="comment">/*64位屏蔽信号字*/</span></span><br><span class="line">	<span class="type">sigset_t</span>			real_blocked;</span><br><span class="line">	<span class="comment">/* Restored if set_restore_sigmask() was used: */</span></span><br><span class="line">	<span class="type">sigset_t</span>			saved_sigmask;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span>		<span class="title">pending</span>;</span>	<span class="comment">/*未决信号集合*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span>			sas_ss_sp;  <span class="comment">/*信号处理函数的栈地址*/</span></span><br><span class="line">	<span class="type">size_t</span>				sas_ss_size;    <span class="comment">/*信号处理函数的栈空间大小*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span>			sas_ss_flags;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>sighand信号处理</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*信号处理函数*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> &#123;</span></span><br><span class="line">	<span class="type">__sighandler_t</span>	sa_handler;<span class="comment">/*处理函数*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span>	sa_flags; <span class="comment">/*决定函数如何执行*/</span></span><br><span class="line">	<span class="type">sigset_t</span>	sa_mask;	<span class="comment">/* mask last for extensibility */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">k_sigaction</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">sa</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*信号处理*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sighand_struct</span> &#123;</span></span><br><span class="line">	<span class="type">spinlock_t</span>		siglock;<span class="comment">//旋转锁，保护hander</span></span><br><span class="line">	<span class="type">refcount_t</span>		count;  <span class="comment">//共享此结构体的线程数</span></span><br><span class="line">	<span class="type">wait_queue_head_t</span>	signalfd_wqh;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">k_sigaction</span>	<span class="title">action</span>[64];</span><span class="comment">//每个信号对应的处理函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>进程<code>task_struct</code>包含成员<code>sighand_struct</code>,成员sighangd_struct包含一个64位的数组</p>
+<p>其中k_sigaction是仅内核可见的部分</p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230924133956541.png" alt="image-20230924133956541"></p>
+<p>未决信号集</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*sigset_t:64位的位图*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span> sig[<span class="number">2</span>];</span><br><span class="line">&#125; <span class="type">sigset_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//未决信号位图</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span></span><br><span class="line">	<span class="type">sigset_t</span> signal;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigqueue</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span></span><br><span class="line">	<span class="type">int</span> flags;</span><br><span class="line">	<span class="type">kernel_siginfo_t</span> info;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ucounts</span> *<span class="title">ucounts</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>信号屏蔽字blocked和未决信号集pending都是sig_set(64位的位图)，使用unsigned int[2]表示</p>
+<p>可靠信号多次发送后，会存储在未决信号链sigqueue中，双向链表节点存放着64位的信号位图</p>
+<p>共享未决信号集和私有未决信号集</p>
+<p>信号结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">signal_struct</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="type">refcount_t</span>		sigcnt;</span><br><span class="line">	<span class="type">atomic_t</span>		live;</span><br><span class="line">	<span class="type">int</span>			nr_threads;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span>	<span class="title">thread_head</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="type">wait_queue_head_t</span>	wait_chldexit;	<span class="comment">/* for wait4() */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* current thread group signal load-balancing target: */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span>	*<span class="title">curr_target</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* shared signal handling: */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span>	<span class="title">shared_pending</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* For collecting multiprocess signals during fork */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hlist_head</span>	<span class="title">multiprocess</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>signal_struct被同一线程组所共享</p>
+<h1 id="信号相关调用"><a href="#信号相关调用" class="headerlink" title="信号相关调用"></a>信号相关调用</h1><p>用户级别的系统调用</p>
+<h2 id="Kill"><a href="#Kill" class="headerlink" title="Kill"></a>Kill</h2><p><code>kill</code>:向进程发送信号</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">kill</span><span class="params">(<span class="type">pid_t</span> pid, <span class="type">int</span> sig)</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>pid</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pid&gt;0</td>
+<td>sent to the process with the ID specified by pid.</td>
+<td>给指定pid的线程发送信号</td>
+</tr>
+<tr>
+<td>pid&#x3D;0</td>
+<td>sent to every process in the process group of the calling process</td>
+<td>给当前进程所在进程组的其他进程发送信号</td>
+</tr>
+<tr>
+<td>pid&#x3D;-1</td>
+<td>sent to every process for which the calling process has permission to send signals, except for process 1</td>
+<td>给允许接受当前进程发送的信号的进程发送信号，init进程除外</td>
+</tr>
+<tr>
+<td>pid&lt;-1</td>
+<td>sent to every process in the process group whose ID is -pid.</td>
+<td>给进程号为-pid的进程发送信号</td>
+</tr>
+</tbody></table>
+<p>返回值：成功返回0，失败返回-1</p>
+<p>error</p>
+<table>
+<thead>
+<tr>
+<th>error</th>
+<th>explain</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EINVAL</td>
+<td>无效信号值(invalid)</td>
+</tr>
+<tr>
+<td>EPERM</td>
+<td>无权限发送(permission)</td>
+</tr>
+<tr>
+<td>ESRCH</td>
+<td>目标进程不存在（search)</td>
+</tr>
+</tbody></table>
+<h2 id="signal"><a href="#signal" class="headerlink" title="signal"></a>signal</h2><p><code>signal</code>：设置信号的处理程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span> <span class="params">(*<span class="type">sighandler_t</span>)</span><span class="params">(<span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">sighandler_t</span> <span class="title function_">signal</span><span class="params">(<span class="type">int</span> signum, <span class="type">sighandler_t</span> handler)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> ( *signal(<span class="type">int</span> signum, <span class="type">void</span> (*handler)(<span class="type">int</span>)) ) (<span class="type">int</span>);</span><br></pre></td></tr></table></figure>
+
+<p>signal在不同unix版本中实现并不相同，signal更适合将信号的处理程序设置为忽略或则默认行为，建议使用<code>sigaction</code>替代<code>signal</code></p>
+<p>返回值：返回之前信号执行程序的返回值或者SIG_ERR</p>
+<h2 id="sigaction"><a href="#sigaction" class="headerlink" title="sigaction"></a>sigaction</h2><p><code>sigaction</code>:检测或修改信号处理程序</p>
+<p>sigaction可携带siginfo，拥有更多的信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">sigaction</span><span class="params">(<span class="type">int</span> signum, <span class="type">const</span> <span class="keyword">struct</span> sigaction *act,<span class="keyword">struct</span> sigaction *oldact)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> &#123;</span></span><br><span class="line">              <span class="type">void</span>     (*sa_handler)(<span class="type">int</span>);</span><br><span class="line">              <span class="type">void</span>     (*sa_sigaction)(<span class="type">int</span>, <span class="type">siginfo_t</span> *, <span class="type">void</span> *);</span><br><span class="line">              <span class="type">sigset_t</span>   sa_mask; <span class="comment">/*屏蔽信号作用*/</span></span><br><span class="line">              <span class="type">int</span>        sa_flags; </span><br><span class="line">              <span class="type">void</span>     (*sa_restorer)(<span class="type">void</span>);</span><br><span class="line">          &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在一些体系中，sa_handler和sa_sigaction可能是共用体</p>
+<p>通常，信号程序函数不使用第三个参数。</p>
+<p>sa_flag的取值</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SA_NOCLDSTOP</td>
+<td>If signum is SIGCHLD,do not receive notification when child processes stop</td>
+<td>子进程结束后父进程不收到信号</td>
+</tr>
+<tr>
+<td>SA_NOCLDWAIT</td>
+<td>If signum is SIGCHLD, do not transform children into zombies when they terminate.</td>
+<td>父进程结束，子进程不变成僵尸态</td>
+</tr>
+<tr>
+<td>SA_NODEFER</td>
+<td>Do not add the signal to the thread’s signal mask while the handler is executing, unless the signal is specified in act.sa_mask.</td>
+<td></td>
+</tr>
+<tr>
+<td>SA_ONSTACK</td>
+<td>Call  the  signal  handler on an alternate signal stack provided by sigaltstack(2).</td>
+<td>为函数指定栈空间</td>
+</tr>
+<tr>
+<td>SA_RESETHAND</td>
+<td>Restore the signal action to the default upon entry to the signal handler.</td>
+<td>恢复默认信号处理函数</td>
+</tr>
+<tr>
+<td>SA_SIGINFO</td>
+<td>The signal handler takes three arguments</td>
+<td>让hander强制接受三个参数，即使用sa_action</td>
+</tr>
+</tbody></table>
+<p>siginfo_t</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">siginfo_t</span> &#123;</span><br><span class="line">              <span class="type">int</span>      si_signo;     <span class="comment">/* Signal number */</span></span><br><span class="line">              <span class="type">int</span>      si_errno;     <span class="comment">/* An errno value */</span></span><br><span class="line">              <span class="type">int</span>      si_code;      <span class="comment">/* Signal code */</span></span><br><span class="line">              <span class="type">int</span>      si_trapno;    <span class="comment">/* Trap number that caused</span></span><br><span class="line"><span class="comment">                                        hardware-generated signal</span></span><br><span class="line"><span class="comment">                                        (unused on most architectures) */</span></span><br><span class="line">              <span class="type">pid_t</span>    si_pid;       <span class="comment">/* Sending process ID 目标进程的ID*/</span></span><br><span class="line">              <span class="type">uid_t</span>    si_uid;       <span class="comment">/* Real user ID of sending process */</span></span><br><span class="line">              <span class="type">int</span>      si_status;    <span class="comment">/* Exit value or signal */</span></span><br><span class="line">              <span class="type">clock_t</span>  si_utime;     <span class="comment">/* User time consumed */</span></span><br><span class="line">              <span class="type">clock_t</span>  si_stime;     <span class="comment">/* System time consumed */</span></span><br><span class="line">              <span class="class"><span class="keyword">union</span> <span class="title">sigval</span> <span class="title">si_value</span>;</span> <span class="comment">/* Signal value */</span></span><br><span class="line">              <span class="type">int</span>      si_int;       <span class="comment">/* POSIX.1b signal */</span></span><br><span class="line">              <span class="type">void</span>    *si_ptr;       <span class="comment">/* POSIX.1b signal */</span></span><br><span class="line">              <span class="type">int</span>      si_overrun;   <span class="comment">/* Timer overrun count;</span></span><br><span class="line"><span class="comment">                                        POSIX.1b timers */</span></span><br><span class="line">              <span class="type">int</span>      si_timerid;   <span class="comment">/* Timer ID; POSIX.1b timers */</span></span><br><span class="line">              <span class="type">void</span>    *si_addr;      <span class="comment">/* Memory location which caused fault 默认执行程序的地址*/</span></span><br><span class="line">              <span class="type">long</span>     si_band;      <span class="comment">/* Band event (was int in</span></span><br><span class="line"><span class="comment">                                        glibc 2.3.2 and earlier) */</span></span><br><span class="line">              <span class="type">int</span>      si_fd;        <span class="comment">/* File descriptor */</span></span><br><span class="line">              <span class="type">short</span>    si_addr_lsb;  <span class="comment">/* Least significant bit of address</span></span><br><span class="line"><span class="comment">                                        (since Linux 2.6.32) */</span></span><br><span class="line">              <span class="type">void</span>    *si_lower;     <span class="comment">/* Lower bound when address violation</span></span><br><span class="line"><span class="comment">                                        occurred (since Linux 3.19) */</span></span><br><span class="line">              <span class="type">void</span>    *si_upper;     <span class="comment">/* Upper bound when address violation</span></span><br><span class="line"><span class="comment">                                        occurred (since Linux 3.19) */</span></span><br><span class="line">              <span class="type">int</span>      si_pkey;      <span class="comment">/* Protection key on PTE that caused</span></span><br><span class="line"><span class="comment">                                        fault (since Linux 4.6) */</span></span><br><span class="line">              <span class="type">void</span>    *si_call_addr; <span class="comment">/* Address of system call instruction</span></span><br><span class="line"><span class="comment">                                        (since Linux 3.5) */</span></span><br><span class="line">              <span class="type">int</span>      si_syscall;   <span class="comment">/* Number of attempted system call</span></span><br><span class="line"><span class="comment">                                        (since Linux 3.5) */</span></span><br><span class="line">              <span class="type">unsigned</span> <span class="type">int</span> si_arch;  <span class="comment">/* Architecture of attempted system call</span></span><br><span class="line"><span class="comment">                                        (since Linux 3.5) */</span></span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>返回值：成功返回0，失败返回-1</p>
+<p><code>pause</code></p>
+<p>等待一个信号的到来</p>
+<p><code>abort</code></p>
+<p><code>alarm</code></p>
+<p>定时发送，被打断剩余时间会存起来</p>
+<p><code>sleep</code></p>
+<p><code>nanosleep</code></p>
+<p><code>sigprocmask</code></p>
+<p><code>sigsupen</code></p>
+<h1 id="信号集处理函数"><a href="#信号集处理函数" class="headerlink" title="信号集处理函数"></a>信号集处理函数</h1><p><code>sigaddset</code></p>
+<p><code>sigfillset</code></p>
+<p><code>sigaddsetmask</code></p>
+<p><code>sigdelsetmask</code></p>
+<p><code>sigemptyset</code></p>
+<p><code>sigismember</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/23/signal/" data-id="clnh4ej390004z0us7fhd4p15" data-title="signal" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-文件系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time class="dt-published" datetime="2023-09-21T15:18:30.000Z" itemprop="datePublished">2023-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h1><h1 id="元数据inode"><a href="#元数据inode" class="headerlink" title="元数据inode"></a>元数据inode</h1><p>inode保存文件的属性，执行块区域</p>
+<p>inode并不保存文件名</p>
+<p>inode表</p>
+<p>inode位图</p>
+<p>block块</p>
+<h1 id="数据块block"><a href="#数据块block" class="headerlink" title="数据块block"></a>数据块block</h1><p>一个文件保存在一个或多个块中</p>
+<p>保存了文件的内容数据，文件读取的最小单位</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" data-id="clnh4ej3c000az0useypicb9c" data-title="文件系统" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-限流算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2023-09-21T12:35:01.000Z" itemprop="datePublished">2023-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/">限流算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="令牌桶限流"><a href="#令牌桶限流" class="headerlink" title="令牌桶限流"></a>令牌桶限流</h1><p>恒定速率生成令牌，有请求到来时根据是否具有令牌来决定是否接受请求</p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>限流</p>
+<p>流媒体传输</p>
+<p>api请求</p>
+<p>资源管理</p>
+<h1 id="滑动窗口算法"><a href="#滑动窗口算法" class="headerlink" title="滑动窗口算法"></a>滑动窗口算法</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" data-id="clnh4ej3g000ez0us9f00d30h" data-title="限流算法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-函数指针" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/" class="article-date">
+  <time class="dt-published" datetime="2023-09-19T08:47:07.000Z" itemprop="datePublished">2023-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/">函数指针</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="指针函数"><a href="#指针函数" class="headerlink" title="指针函数"></a>指针函数</h1><p>指针函数是指返回类型为<strong>函数指针类型</strong></p>
+<p>function函数返回一个返回值为空，参数值为int类型的函数指针。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> (*fun)(<span class="type">int</span>) funtion();</span><br></pre></td></tr></table></figure>
+
+<h1 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h1><p>函数指针：指向<strong>函数入口</strong>的指针</p>
+<h2 id="函数指针的定义"><a href="#函数指针的定义" class="headerlink" title="函数指针的定义"></a>函数指针的定义</h2><p>函数返回值   （*point)(参数类型);</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> (*FUNC_POINT)(<span class="type">float</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面代码声明了一个返回值为int，参数类型为float的函数指针</p>
+<p>typedef与函数指针</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span><span class="params">(*func)</span><span class="params">(<span class="type">int</span>)</span> FUNC;</span><br><span class="line">FUNC f1;<span class="comment">//得到函数指针 int(*f1)(int)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="函数指针的初始化"><a href="#函数指针的初始化" class="headerlink" title="函数指针的初始化"></a>函数指针的初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d+%d=%d\n&quot;</span>,x,y,x+y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> (*func)(<span class="type">int</span>,<span class="type">int</span>);</span><br><span class="line">	func=add;</span><br><span class="line">	func(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d+%d=%d\n&quot;</span>,x,y,x+y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> (*func)(<span class="type">int</span>,<span class="type">int</span>);</span><br><span class="line">	func=add;</span><br><span class="line">	func(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数指针数组"><a href="#函数指针数组" class="headerlink" title="函数指针数组"></a>函数指针数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d+%d=%d\n&quot;</span>,x,y,x+y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sub</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d-%d=%d\n&quot;</span>,x,y,x-y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> (*func[<span class="number">2</span>])(<span class="type">int</span>,<span class="type">int</span>)=&#123;add,sub&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		func[i](<span class="number">5</span>,<span class="number">4</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数组func中存放着函数指针变量add和sub</p>
+<h3 id="函数指针作为函数参数"><a href="#函数指针作为函数参数" class="headerlink" title="函数指针作为函数参数"></a>函数指针作为函数参数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">success</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;sucess\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">error</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;error\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">function</span><span class="params">(<span class="type">void</span> (*func)(<span class="type">void</span>))</span>&#123;</span><br><span class="line">	func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	function(success);</span><br><span class="line">	function(error);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>函数指针可以作为回调函数使用,让函数调用不同的函数</p>
+<h2 id="结构体中使用函数指针"><a href="#结构体中使用函数指针" class="headerlink" title="结构体中使用函数指针"></a>结构体中使用函数指针</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> num 5</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Grade</span>&#123;</span></span><br><span class="line">    <span class="type">float</span> (*get_avg_score)(<span class="type">int</span> []);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">float</span> <span class="title function_">get_avg_score</span><span class="params">(<span class="type">int</span> arr[])</span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">float</span> avg=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">        sum+=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    avg=sum*<span class="number">1.0</span>/num;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>,avg);</span><br><span class="line">    <span class="keyword">return</span> avg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Grade</span> <span class="title">MyGrade</span>;</span></span><br><span class="line">    <span class="type">float</span> avg;</span><br><span class="line">    <span class="type">int</span> source[num];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">        source[i]=i*<span class="number">10</span>;   </span><br><span class="line">    &#125;</span><br><span class="line">    MyGrade.get_avg_score=get_avg_score;</span><br><span class="line">    avg=MyGrade.get_avg_score(source);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结构体中并不能直接定义函数，但可以定义函数指针，在结构体初始化时可以把功能函数的地址赋给函数指针，达到结构体成员为函数的功能。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/" data-id="clnh4ej3f000cz0us42t6a8i3" data-title="函数指针" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux系统调用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/18/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-09-18T01:54:27.000Z" itemprop="datePublished">2023-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/18/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">linux系统调用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="linux系统调用分类"><a href="#linux系统调用分类" class="headerlink" title="linux系统调用分类"></a>linux系统调用分类</h1><p>linux操作系统常用的系统调用</p>
+<ul>
+<li>文件操作</li>
+<li>进程控制</li>
+<li>用户</li>
+</ul>
+<h2 id="文件IO操作"><a href="#文件IO操作" class="headerlink" title="文件IO操作"></a>文件IO操作</h2><p><code>open</code>:打开流</p>
+<p><code>write</code>：写入数据</p>
+<p><code>read</code>:读取数据</p>
+<p><code>lseek</code>:定位流</p>
+<p><code>close</code>：关闭流</p>
+<h2 id="文件权限操作"><a href="#文件权限操作" class="headerlink" title="文件权限操作"></a>文件权限操作</h2><p><code>umask</code>:文件掩码</p>
+<p><code>chmod：修改文件权限</code></p>
+<h2 id="进程控制操作"><a href="#进程控制操作" class="headerlink" title="进程控制操作"></a>进程控制操作</h2><p><code>fork</code>:复制进程</p>
+<p><code>execl</code>：取代当前进程</p>
+<h2 id="系统信息操作"><a href="#系统信息操作" class="headerlink" title="系统信息操作"></a>系统信息操作</h2><h3 id="用户组操作"><a href="#用户组操作" class="headerlink" title="用户组操作"></a>用户组操作</h3><p><code>getuid</code>:用户id</p>
+<h3 id="系统日志操作"><a href="#系统日志操作" class="headerlink" title="系统日志操作"></a>系统日志操作</h3><p><code>openlog</code></p>
+<p><code>syslog</code>:将消息写入系统日志</p>
+<p><code>closelog</code></p>
+<h1 id="系统调用的执行过程"><a href="#系统调用的执行过程" class="headerlink" title="系统调用的执行过程"></a>系统调用的执行过程</h1><p>系统调用的大致执行过程为:参数保存-&gt;中断陷入-&gt;内核态转化-&gt;上下文保存-&gt;中断向量表-&gt;执行程序-&gt;上下文恢复-&gt;用户态转化</p>
+<p>当进程发出系统调用指令时,操作系统<strong>软中断(int)或硬中断触发</strong>，参数保存在寄存器中，其中系统调用号存放在ax寄存器中，操作系统由&#x3D;&#x3D;用户态转变为内核态&#x3D;&#x3D;，通过ax寄存器中的系统调用号在&#x3D;&#x3D;中断向量表&#x3D;&#x3D;中查询，查询成功后将参数存入寄存器或栈堆，执行中断程序，执行完毕参数出栈，通过&#x3D;&#x3D;调整模式位&#x3D;&#x3D;恢复为用户态</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/18/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" data-id="clnh4ej370002z0useoqg00er" data-title="linux系统调用" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-c标准" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/17/c%E6%A0%87%E5%87%86/" class="article-date">
+  <time class="dt-published" datetime="2023-09-17T10:59:37.000Z" itemprop="datePublished">2023-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/17/c%E6%A0%87%E5%87%86/">c标准</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="C的标准"><a href="#C的标准" class="headerlink" title="C的标准"></a>C的标准</h1><table>
+<thead>
+<tr>
+<th>c标准</th>
+<th>年份</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classic C</td>
+<td>1978</td>
+</tr>
+<tr>
+<td>ANSI C</td>
+<td>1989</td>
+</tr>
+<tr>
+<td>ISO C90</td>
+<td>1990</td>
+</tr>
+<tr>
+<td>ISO C99</td>
+<td>1999</td>
+</tr>
+<tr>
+<td>ISO C11</td>
+<td>2011</td>
+</tr>
+<tr>
+<td>ISO C17</td>
+<td>2017</td>
+</tr>
+</tbody></table>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230917190919236.png" alt="image-20230917190919236"></p>
+<h1 id="C99"><a href="#C99" class="headerlink" title="C99"></a>C99</h1><h2 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h2><p>内联函数</p>
+<h2 id="restrict"><a href="#restrict" class="headerlink" title="restrict"></a>restrict</h2><p><code>restrict</code>是类型限定符,它主要用于指示指针之间的别名关系，从而允许编译器进行更有效的优化。</p>
+<p>restrict的声明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int* restrict p; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typedef int * POINT;</span><br><span class="line">POINT restrict p2;</span><br><span class="line">Point p2 restrict;</span><br></pre></td></tr></table></figure>
+
+<p>restrict修饰指针，表示该指针是访问该指针所指向对象的唯一方法，不存在指针别名(多个指针执行同一块内存区域)的情况</p>
+<p>restrict 语义仅应用于左值(可赋值的内存位置)表达式</p>
+<h2 id="Bool"><a href="#Bool" class="headerlink" title="_Bool"></a>_Bool</h2><p>布尔宏</p>
+<h2 id="Complex"><a href="#Complex" class="headerlink" title="_Complex"></a>_Complex</h2><p>复数宏</p>
+<h2 id="Imaginary"><a href="#Imaginary" class="headerlink" title="_Imaginary"></a>_Imaginary</h2><h1 id="C17"><a href="#C17" class="headerlink" title="C17"></a>C17</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/17/c%E6%A0%87%E5%87%86/" data-id="clnh4ej350001z0us98fse4wt" data-title="c标准" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2023-07-20T01:49:28.000Z" itemprop="datePublished">2023-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="冯诺依曼体系"><a href="#冯诺依曼体系" class="headerlink" title="冯诺依曼体系"></a>冯诺依曼体系</h1><h2 id="计算机五大组成"><a href="#计算机五大组成" class="headerlink" title="计算机五大组成"></a>计算机五大组成</h2><ul>
+<li>控制器：控制硬件设备的运行</li>
+<li>运算器：数学运算，逻辑运算，位运算</li>
+<li>存储器<ul>
+<li>内存：临时存储</li>
+<li>外存：硬盘：长期存储</li>
+</ul>
+</li>
+<li>输入设备：键盘，鼠标</li>
+<li>输出设备</li>
+</ul>
+<p>存储器</p>
+<table>
+<thead>
+<tr>
+<th>访问时间</th>
+<th>存储器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1ms</td>
+<td>寄存器</td>
+</tr>
+<tr>
+<td>2ms</td>
+<td>高速缓存</td>
+</tr>
+<tr>
+<td>10ms</td>
+<td>内存</td>
+</tr>
+<tr>
+<td>10ms</td>
+<td>硬盘</td>
+</tr>
+<tr>
+<td>100s</td>
+<td>磁条</td>
+</tr>
+</tbody></table>
+<p>存储器可分为两大类</p>
+<ul>
+<li>ROM：软件数据，代码等</li>
+<li>RAM:只读存储器（存放BIOS程序)</li>
+</ul>
+<p>硬盘的大小决定了能都安装程序的大小，内存决定了能运行的程序数目</p>
+<p>软件可以分为两大类</p>
+<ul>
+<li><p>操作系统：控制计算机硬件，管理应用软件的控制程序</p>
+</li>
+<li><p>应用软件</p>
+<p>32位CPU表示一次性能够读取32个二进制数</p>
+<p>2核4线程表示有2个CPU，四线程表示每一个1个CPU内部有4条流水线</p>
+<h1 id="计算机启动流程"><a href="#计算机启动流程" class="headerlink" title="计算机启动流程"></a>计算机启动流程</h1><ol>
+<li>计算机通电</li>
+<li>BIOS运行，检测CPU，内存，硬盘等硬件设备</li>
+<li>BIOS读取CMOS存储器中的参数，选择启动设备</li>
+<li>读取启动设备的第一块扇区（主引导记录MBR）<ul>
+<li>共512字节，前446为引导信息（bootloader启动装载程序，用于启动操作系统）</li>
+<li>后64位分区信息</li>
+<li>最后两个字节为结束标志</li>
+</ul>
+</li>
+<li>操作系统询问BIOS，获取配置信息，检测驱动程序</li>
+</ol>
+<p>程序最先存放在硬盘中，程序的运行需要将程序的代码或数据读入内存，CPU再从内存中读取指令来运行。</p>
+<p>电脑通电后，启动操作系统的过程通常分为以下几个步骤：</p>
+<ol>
+<li><strong>加电自检（Power-On Self-Test, POST）</strong>：<ul>
+<li>当你打开电脑电源，计算机硬件会进行自检，以确保各个硬件组件正常运作。这包括检查CPU、RAM、硬盘、显卡等。</li>
+</ul>
+</li>
+<li><strong>BIOS&#x2F;UEFI启动</strong>：<ul>
+<li>自检完成后，计算机会寻找并加载存储在计算机主板上的基本输入&#x2F;输出系统（BIOS）或统一可扩展固件接口（UEFI）。这些是计算机的固件，负责启动系统。</li>
+</ul>
+</li>
+<li><strong>引导设备选择</strong>：<ul>
+<li>BIOS&#x2F;UEFI会根据预设的启动顺序（通常是硬盘、光盘&#x2F;USB、网络等）选择一个启动设备。如果你想从其他设备（如USB驱动器）启动，你可以在BIOS&#x2F;UEFI设置中进行配置。</li>
+</ul>
+</li>
+<li><strong>引导加载程序（Bootloader）</strong>：<ul>
+<li>选择了启动设备后，计算机会查找该设备上的引导加载程序，例如GRUB（在Linux系统中常见）或Windows引导管理器。</li>
+<li>引导加载程序的任务是加载操作系统的内核。</li>
+</ul>
+</li>
+<li><strong>操作系统内核加载</strong>：<ul>
+<li>引导加载程序会加载操作系统的内核文件，这是操作系统的核心部分。在Linux系统中，内核通常位于 <code>/boot</code> 目录中。</li>
+<li>内核加载后，它会初始化系统硬件并将控制权转交给操作系统。</li>
+</ul>
+</li>
+<li><strong>初始化过程</strong>：<ul>
+<li>操作系统内核接管计算机后，开始初始化系统的各个部分，包括内存管理、文件系统、设备驱动程序等。</li>
+<li>在Linux中，初始化进程是第一个用户空间进程，通常是 <code>init</code> 或 <code>systemd</code>。</li>
+</ul>
+</li>
+<li><strong>登录管理器（如果适用）</strong>：<ul>
+<li>在图形用户界面（GUI）环境中，通常会启动登录管理器（如GDM、LightDM、或SDDM），用户可以在其中登录。</li>
+<li>在文本模式环境中，系统可能直接要求用户输入用户名和密码。</li>
+</ul>
+</li>
+<li><strong>用户登录</strong>：<ul>
+<li>用户登录后，操作系统会创建用户的会话，并加载用户的配置文件和应用程序。</li>
+</ul>
+</li>
+<li><strong>操作系统启动完成</strong>：<ul>
+<li>一旦用户成功登录，操作系统启动过程就完成了，用户可以开始使用计算机了。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h1><h2 id="加法器"><a href="#加法器" class="headerlink" title="加法器"></a>加法器</h2><h3 id="半加器"><a href="#半加器" class="headerlink" title="半加器"></a>半加器</h3><p>处理两个二进制数相加</p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720203815114.png" alt="image-20230720203815114"></p>
+<h3 id="全加器"><a href="#全加器" class="headerlink" title="全加器"></a>全加器</h3><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720210024668.png" alt="image-20230720210024668"></p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720211011747.png" alt="image-20230720211011747"></p>
+<h3 id="4位数的加法器"><a href="#4位数的加法器" class="headerlink" title="4位数的加法器"></a>4位数的加法器</h3><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720212042923.png" alt="image-20230720212042923"></p>
+<h2 id="减法器"><a href="#减法器" class="headerlink" title="减法器"></a>减法器</h2><p>(A-B)<del>补</del>&#x3D;A<del>补</del>+（-B）<del>补</del>，得到A-B的补码，需要将补码转化为原码</p>
+<p>B符号位不变，其余位按位取反后最低位加一得到补码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" data-id="clnh4ej3a0005z0us55be5bak" data-title="计算机基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机网络" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
+  <time class="dt-published" datetime="2023-07-13T10:02:53.000Z" itemprop="datePublished">2023-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="三种交换方式"><a href="#三种交换方式" class="headerlink" title="三种交换方式"></a>三种交换方式</h1><ol>
+<li>电路交换</li>
+<li>分组交换</li>
+<li>报文交换</li>
+</ol>
+<h1 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h1><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>速率</td>
+<td>bit&#x2F;s</td>
+<td>比特率</td>
+</tr>
+<tr>
+<td>带宽</td>
+<td>HZ</td>
+<td>发送速率</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>时延</td>
+<td></td>
+<td>发送时延，传播时延，处理时延</td>
+</tr>
+<tr>
+<td>时延带宽积</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>时延带宽积&#x3D;传播时延*带宽</p>
+<p>往返时间</p>
+<p>利用率</p>
+<ul>
+<li>信道利用率</li>
+<li>网络利用率</li>
+</ul>
+<p>丢包率</p>
+<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><h2 id="OSI体系结构"><a href="#OSI体系结构" class="headerlink" title="OSI体系结构"></a>OSI体系结构</h2><ul>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>运输层</li>
+<li>会话层</li>
+<li>表示层</li>
+<li>应用层</li>
+</ul>
+<h2 id="TCP-IP体系"><a href="#TCP-IP体系" class="headerlink" title="TCP&#x2F;IP体系"></a>TCP&#x2F;IP体系</h2><ul>
+<li>网络接口层</li>
+<li>网际层：IP</li>
+<li>运输层：TCP，UDP</li>
+<li>应用层：HTTP SMTP DNS RTP</li>
+</ul>
+<h2 id="原理体系结构"><a href="#原理体系结构" class="headerlink" title="原理体系结构"></a>原理体系结构</h2><ul>
+<li><p>物理层：解决信号如何表示</p>
+</li>
+<li><p>数据链路层：分组在一个网络中传输问题</p>
+</li>
+<li><p>网络层：解决分组在多个网络上传输的问题</p>
+</li>
+<li><p>运输层：进程间的通信问题</p>
+</li>
+<li><p>应用层：进程的交互</p>
+</li>
+</ul>
+<ol>
+<li><p>应用端构建HTTP请求报文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /HTTP/1.1</span><br><span class="line">Accept-Language:en-us</span><br><span class="line">Accept:*/*</span><br><span class="line">Connections:close</span><br><span class="line">Host:192.168.0.02</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运输层给HTTP添加TCP报文或UDP，成为TCP报文段或UDP用户数据报</p>
+</li>
+<li><p>网络层给TCP添加IP首部，成为IP数据报</p>
+</li>
+<li><p>数据链路层在报文头部和尾部添加ETH，使之成为帧</p>
+</li>
+<li><p>物理层面，帧以比特流的比特流形式存在，物理层面上会将帧添加前导码</p>
+</li>
+</ol>
+<p>协议的三要素：<strong>语法、语义、同步</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" data-id="clnh4ej3b0006z0usc34k31ef" data-title="计算机网络" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/12/%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-07-12T14:18:16.000Z" itemprop="datePublished">2023-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/12/%E9%93%BE%E8%A1%A8/">单向链表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h1><p>单向链表是一种顺序存储结构，物理层面是一段地址不一定连续的存储空间</p>
+<p>链表的头指针标志着链表的起始位置</p>
+<p>结点是链表的最小单位，每个结点都有有唯一指向</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>结点用结构体表示，由存储的数据data和指向下一个结构体的指针域组成</p>
+<p>在头结点中，data用于表示链表的结点个数</p>
+<p>在非头结点中,data存放数据元素</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* next;</span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+<h2 id="链表初始化"><a href="#链表初始化" class="headerlink" title="链表初始化"></a>链表初始化</h2><p>链表节点数为0,头结点指针域指向空，头结点的data域为零</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>* <span class="built_in">InitList</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* L=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	L-&gt;data=<span class="number">0</span>;<span class="comment">//记录结点个数，初始节点数为0</span></span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="头插法和尾插法"><a href="#头插法和尾插法" class="headerlink" title="头插法和尾插法"></a>头插法和尾插法</h2><p>头插法:在链表头结点之后进行插入</p>
+<p>给定一个序列1,2,3,4,5使用头插法进行插入，得到的链表序列为5,4,3,2,1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头插法，顺序存放</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">HeadInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* p=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	p-&gt;data=data;</span><br><span class="line">	p-&gt;next=L-&gt;next;<span class="comment">//新结点指向首结点</span></span><br><span class="line">	L-&gt;next=p;<span class="comment">//头结点指向新结点，新结点成为首结点</span></span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h2><p>通过逐个访问链表结点，将指针定位到链表的尾部，在尾部进行插入操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//尾插法，逆序存放</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">TailInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* p=L;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span>(p-&gt;next!=<span class="literal">NULL</span>)<span class="comment">//定位到尾结点</span></span><br><span class="line">	&#123;</span><br><span class="line">		p=p-&gt;next;	</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;next=node;<span class="comment">//尾部插入</span></span><br><span class="line">	L-&gt;data++;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表的删除操作"><a href="#链表的删除操作" class="headerlink" title="链表的删除操作"></a>链表的删除操作</h2><p>按索引删除时</p>
+<p>index变量用于记录当前指针指向结点的索引，当前索引值等于要删除结点的索引值时进行删除操作</p>
+<p>通过将当前结点的前驱结点指针域指向当前结点的后继结点完成删除操作，</p>
+<p>使用双指针pre和cur分别记录当前结点的前驱结点和当前结点，以便进行删除</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按位删除，删除第K个结点</span></span><br><span class="line"><span class="function">Status <span class="title">DeleteKth</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> index=<span class="number">0</span>;<span class="comment">//索引从0开始</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* pre=L;<span class="comment">//前驱结点，便于删除</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="comment">//超出结点数量</span></span><br><span class="line">	<span class="keyword">if</span>(k&gt;(L-&gt;data))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;k out of range\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(index==k)&#123;</span><br><span class="line">			pre-&gt;next=cur-&gt;next;<span class="comment">//改变前驱结点的指针指向</span></span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="built_in">free</span>(cur);</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			index++;</span><br><span class="line">			pre=cur;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;		</span><br></pre></td></tr></table></figure>
+<h2 id="按值删除"><a href="#按值删除" class="headerlink" title="按值删除"></a>按值删除</h2><p>在遍历结点过程中，如果当前结点的值等于要删除结点值时，改变当前结点的前驱结点指针域</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按值删除</span></span><br><span class="line"><span class="function">Status <span class="title">DeleteValue</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* pre=L;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			pre-&gt;next=cur-&gt;next;</span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="built_in">free</span>(cur);</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pre=cur;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;not find the node value equal %d\n&quot;</span>,value);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表的插入操作"><a href="#链表的插入操作" class="headerlink" title="链表的插入操作"></a>链表的插入操作</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在值为value的结点之前插入</span></span><br><span class="line"><span class="function">Status <span class="title">InsertValBefore</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* pre=L;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			node-&gt;next=cur;</span><br><span class="line">			pre-&gt;next=node;</span><br><span class="line">			L-&gt;data++;</span><br><span class="line">			<span class="keyword">return</span> OK;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pre=cur;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;not the node value equ %d\n&quot;</span>,value);</span><br><span class="line">	<span class="built_in">free</span>(node);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在值为value的结点之后插入</span></span><br><span class="line"><span class="function">Status <span class="title">InsertValAfter</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* p=L-&gt;next;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;data==value)&#123;</span><br><span class="line">			node-&gt;next=p-&gt;next;</span><br><span class="line">			p-&gt;next=node;</span><br><span class="line">			L-&gt;data++;</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			p=p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;can not find the node value equal %d\n&quot;</span>,value);</span><br><span class="line">	<span class="built_in">free</span>(node);</span><br><span class="line">	<span class="keyword">return</span> ERROR;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表的遍历"><a href="#链表的遍历" class="headerlink" title="链表的遍历"></a>链表的遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过循环打印链表</span></span><br><span class="line"><span class="function">Status <span class="title">PrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=L-&gt;next;</span><br><span class="line">	<span class="comment">//链表为空不进入循环</span></span><br><span class="line">	<span class="keyword">if</span>(node==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;list is empty\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;node number is %d  &quot;</span>,L-&gt;data);</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归打印链表</span></span><br><span class="line"><span class="function">Status <span class="title">RecurPrint</span><span class="params">(<span class="keyword">struct</span> Node* node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(node==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">	<span class="built_in">RecurPrint</span>(node-&gt;next);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归打印翻转链表</span></span><br><span class="line"><span class="function">Status <span class="title">RecurReversePrint</span><span class="params">(<span class="keyword">struct</span> Node* node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(node==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">RecurReversePrint</span>(node-&gt;next);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="清空链表"><a href="#清空链表" class="headerlink" title="清空链表"></a>清空链表</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">FreeList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">struct</span> <span class="title class_">Node</span>* temp=cur;</span><br><span class="line">		cur=cur-&gt;next;</span><br><span class="line">		<span class="built_in">free</span>(temp);</span><br><span class="line">	&#125;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="单向循环链表"><a href="#单向循环链表" class="headerlink" title="单向循环链表"></a>单向循环链表</h1><h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">InitList</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">L</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	L-&gt;next=L;</span><br><span class="line">	L-&gt;data=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="头插法和尾插法-1"><a href="#头插法和尾插法-1" class="headerlink" title="头插法和尾插法"></a>头插法和尾插法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeadInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	node-&gt;next=L-&gt;next;</span><br><span class="line">	L-&gt;next=node;</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">TailInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">tail</span>=</span>L;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	<span class="keyword">while</span>(tail-&gt;next!=L)</span><br><span class="line">	&#123;</span><br><span class="line">		tail=tail-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	node-&gt;next=L;</span><br><span class="line">	tail-&gt;next=node;</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Status <span class="title function_">DeleteVal</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value)</span></span><br><span class="line">&#123;</span><br><span class="line">	Node* pre=L;</span><br><span class="line">	Node* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(cur!=L)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			pre-&gt;next=cur-&gt;next;</span><br><span class="line">			<span class="built_in">free</span>(cur);</span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=cur;</span><br><span class="line">		cur=cur-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cant not find the value equal %d in the linklist\n&quot;</span>,value);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历链表"><a href="#遍历链表" class="headerlink" title="遍历链表"></a>遍历链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L-&gt;&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>(node!=L)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Status <span class="title function_">InsertNodeAfterVal</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value,<span class="type">int</span> node_data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">cur</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=node_data;</span><br><span class="line">	<span class="keyword">while</span>(cur!=L)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			node-&gt;next=cur-&gt;next;</span><br><span class="line">			cur-&gt;next=node;</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cant not find the value equal %d in the linklist\n&quot;</span>,value);</span><br><span class="line">	<span class="built_in">free</span>(node);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h1><h2 id="链表结构-1"><a href="#链表结构-1" class="headerlink" title="链表结构"></a>链表结构</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">pre</span>;</span></span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+<h2 id="链表初始化-1"><a href="#链表初始化-1" class="headerlink" title="链表初始化"></a>链表初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">InitList</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">L</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	L-&gt;pre=<span class="literal">NULL</span>;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	L-&gt;data=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="头插法和尾插法-2"><a href="#头插法和尾插法-2" class="headerlink" title="头插法和尾插法"></a>头插法和尾插法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeadInsert</span><span class="params">(<span class="keyword">struct</span> Node*L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	<span class="keyword">if</span>(L-&gt;next==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		node-&gt;pre=L;</span><br><span class="line">		node-&gt;next=L-&gt;next;</span><br><span class="line">		L-&gt;next=node;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		node-&gt;next=L-&gt;next;</span><br><span class="line">		node-&gt;pre=L;</span><br><span class="line">		L-&gt;next-&gt;pre=node;</span><br><span class="line">		L-&gt;next=node;</span><br><span class="line">	&#125;	</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">TailInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next; </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">new_node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	new_node-&gt;data=data;</span><br><span class="line">	new_node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span>(node-&gt;next)&#123;</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	node-&gt;next=new_node;</span><br><span class="line">	new_node-&gt;pre=node;</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="遍历链表-1"><a href="#遍历链表-1" class="headerlink" title="遍历链表"></a>遍历链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L&lt;=&gt;&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&lt;=&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">ReversePrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(node-&gt;next)&#123;</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(node!=L)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;pre;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Delete</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		<span class="keyword">if</span>(node-&gt;data==data)&#123;</span><br><span class="line">			(node-&gt;next)-&gt;pre=node-&gt;pre;</span><br><span class="line">			(node-&gt;pre)-&gt;next=node-&gt;next;</span><br><span class="line">			<span class="built_in">free</span>(node);</span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/12/%E9%93%BE%E8%A1%A8/" data-id="clnh4ej3c0009z0us2lj01wrv" data-title="单向链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/Mysql/">Mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/23/signal/">signal</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/">限流算法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/">函数指针</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

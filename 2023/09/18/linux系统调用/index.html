@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>linux系统调用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="linux系统调用分类linux操作系统常用的系统调用  文件操作 进程控制 用户  文件IO操作open:打开流 write：写入数据 read:读取数据 lseek:定位流 close：关闭流 文件权限操作umask:文件掩码 chmod：修改文件权限 进程控制操作fork:复制进程 execl：取代当前进程 系统信息操作用户组操作getuid:用户id 系统日志操作openlog syslo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux系统调用">
+<meta property="og:url" content="https://qianxiaolin.github.io/2023/09/18/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="linux系统调用分类linux操作系统常用的系统调用  文件操作 进程控制 用户  文件IO操作open:打开流 write：写入数据 read:读取数据 lseek:定位流 close：关闭流 文件权限操作umask:文件掩码 chmod：修改文件权限 进程控制操作fork:复制进程 execl：取代当前进程 系统信息操作用户组操作getuid:用户id 系统日志操作openlog syslo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-18T01:54:27.000Z">
+<meta property="article:modified_time" content="2023-09-28T16:20:29.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qianxiaolin.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-linux系统调用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/18/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-09-18T01:54:27.000Z" itemprop="datePublished">2023-09-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      linux系统调用
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="linux系统调用分类"><a href="#linux系统调用分类" class="headerlink" title="linux系统调用分类"></a>linux系统调用分类</h1><p>linux操作系统常用的系统调用</p>
+<ul>
+<li>文件操作</li>
+<li>进程控制</li>
+<li>用户</li>
+</ul>
+<h2 id="文件IO操作"><a href="#文件IO操作" class="headerlink" title="文件IO操作"></a>文件IO操作</h2><p><code>open</code>:打开流</p>
+<p><code>write</code>：写入数据</p>
+<p><code>read</code>:读取数据</p>
+<p><code>lseek</code>:定位流</p>
+<p><code>close</code>：关闭流</p>
+<h2 id="文件权限操作"><a href="#文件权限操作" class="headerlink" title="文件权限操作"></a>文件权限操作</h2><p><code>umask</code>:文件掩码</p>
+<p><code>chmod：修改文件权限</code></p>
+<h2 id="进程控制操作"><a href="#进程控制操作" class="headerlink" title="进程控制操作"></a>进程控制操作</h2><p><code>fork</code>:复制进程</p>
+<p><code>execl</code>：取代当前进程</p>
+<h2 id="系统信息操作"><a href="#系统信息操作" class="headerlink" title="系统信息操作"></a>系统信息操作</h2><h3 id="用户组操作"><a href="#用户组操作" class="headerlink" title="用户组操作"></a>用户组操作</h3><p><code>getuid</code>:用户id</p>
+<h3 id="系统日志操作"><a href="#系统日志操作" class="headerlink" title="系统日志操作"></a>系统日志操作</h3><p><code>openlog</code></p>
+<p><code>syslog</code>:将消息写入系统日志</p>
+<p><code>closelog</code></p>
+<h1 id="系统调用的执行过程"><a href="#系统调用的执行过程" class="headerlink" title="系统调用的执行过程"></a>系统调用的执行过程</h1><p>系统调用的大致执行过程为:参数保存-&gt;中断陷入-&gt;内核态转化-&gt;上下文保存-&gt;中断向量表-&gt;执行程序-&gt;上下文恢复-&gt;用户态转化</p>
+<p>当进程发出系统调用指令时,操作系统<strong>软中断(int)或硬中断触发</strong>，参数保存在寄存器中，其中系统调用号存放在ax寄存器中，操作系统由&#x3D;&#x3D;用户态转变为内核态&#x3D;&#x3D;，通过ax寄存器中的系统调用号在&#x3D;&#x3D;中断向量表&#x3D;&#x3D;中查询，查询成功后将参数存入寄存器或栈堆，执行中断程序，执行完毕参数出栈，通过&#x3D;&#x3D;调整模式位&#x3D;&#x3D;恢复为用户态</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/18/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" data-id="clnh4ej370002z0useoqg00er" data-title="linux系统调用" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          函数指针
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/17/c%E6%A0%87%E5%87%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">c标准</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/Mysql/">Mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/23/signal/">signal</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/">限流算法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/">函数指针</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

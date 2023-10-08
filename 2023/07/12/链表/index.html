@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>单向链表 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="单向链表单向链表是一种顺序存储结构，物理层面是一段地址不一定连续的存储空间 链表的头指针标志着链表的起始位置 结点是链表的最小单位，每个结点都有有唯一指向 存储结构结点用结构体表示，由存储的数据data和指向下一个结构体的指针域组成 在头结点中，data用于表示链表的结点个数 在非头结点中,data存放数据元素 12345typedef struct Node&amp;#123;	int data;	st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单向链表">
+<meta property="og:url" content="https://qianxiaolin.github.io/2023/07/12/%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="单向链表单向链表是一种顺序存储结构，物理层面是一段地址不一定连续的存储空间 链表的头指针标志着链表的起始位置 结点是链表的最小单位，每个结点都有有唯一指向 存储结构结点用结构体表示，由存储的数据data和指向下一个结构体的指针域组成 在头结点中，data用于表示链表的结点个数 在非头结点中,data存放数据元素 12345typedef struct Node&amp;#123;	int data;	st">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-12T14:18:16.000Z">
+<meta property="article:modified_time" content="2023-09-28T16:20:29.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qianxiaolin.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/12/%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-07-12T14:18:16.000Z" itemprop="datePublished">2023-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      单向链表
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h1><p>单向链表是一种顺序存储结构，物理层面是一段地址不一定连续的存储空间</p>
+<p>链表的头指针标志着链表的起始位置</p>
+<p>结点是链表的最小单位，每个结点都有有唯一指向</p>
+<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><p>结点用结构体表示，由存储的数据data和指向下一个结构体的指针域组成</p>
+<p>在头结点中，data用于表示链表的结点个数</p>
+<p>在非头结点中,data存放数据元素</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="title class_">Node</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* next;</span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+<h2 id="链表初始化"><a href="#链表初始化" class="headerlink" title="链表初始化"></a>链表初始化</h2><p>链表节点数为0,头结点指针域指向空，头结点的data域为零</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>* <span class="built_in">InitList</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* L=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	L-&gt;data=<span class="number">0</span>;<span class="comment">//记录结点个数，初始节点数为0</span></span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="头插法和尾插法"><a href="#头插法和尾插法" class="headerlink" title="头插法和尾插法"></a>头插法和尾插法</h2><p>头插法:在链表头结点之后进行插入</p>
+<p>给定一个序列1,2,3,4,5使用头插法进行插入，得到的链表序列为5,4,3,2,1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//头插法，顺序存放</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">HeadInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* p=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	p-&gt;data=data;</span><br><span class="line">	p-&gt;next=L-&gt;next;<span class="comment">//新结点指向首结点</span></span><br><span class="line">	L-&gt;next=p;<span class="comment">//头结点指向新结点，新结点成为首结点</span></span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="尾插法"><a href="#尾插法" class="headerlink" title="尾插法"></a>尾插法</h2><p>通过逐个访问链表结点，将指针定位到链表的尾部，在尾部进行插入操作</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//尾插法，逆序存放</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">TailInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;	</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* p=L;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span>(p-&gt;next!=<span class="literal">NULL</span>)<span class="comment">//定位到尾结点</span></span><br><span class="line">	&#123;</span><br><span class="line">		p=p-&gt;next;	</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;next=node;<span class="comment">//尾部插入</span></span><br><span class="line">	L-&gt;data++;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表的删除操作"><a href="#链表的删除操作" class="headerlink" title="链表的删除操作"></a>链表的删除操作</h2><p>按索引删除时</p>
+<p>index变量用于记录当前指针指向结点的索引，当前索引值等于要删除结点的索引值时进行删除操作</p>
+<p>通过将当前结点的前驱结点指针域指向当前结点的后继结点完成删除操作，</p>
+<p>使用双指针pre和cur分别记录当前结点的前驱结点和当前结点，以便进行删除</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按位删除，删除第K个结点</span></span><br><span class="line"><span class="function">Status <span class="title">DeleteKth</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> index=<span class="number">0</span>;<span class="comment">//索引从0开始</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* pre=L;<span class="comment">//前驱结点，便于删除</span></span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="comment">//超出结点数量</span></span><br><span class="line">	<span class="keyword">if</span>(k&gt;(L-&gt;data))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;k out of range\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(index==k)&#123;</span><br><span class="line">			pre-&gt;next=cur-&gt;next;<span class="comment">//改变前驱结点的指针指向</span></span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="built_in">free</span>(cur);</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			index++;</span><br><span class="line">			pre=cur;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;		</span><br></pre></td></tr></table></figure>
+<h2 id="按值删除"><a href="#按值删除" class="headerlink" title="按值删除"></a>按值删除</h2><p>在遍历结点过程中，如果当前结点的值等于要删除结点值时，改变当前结点的前驱结点指针域</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按值删除</span></span><br><span class="line"><span class="function">Status <span class="title">DeleteValue</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* pre=L;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			pre-&gt;next=cur-&gt;next;</span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="built_in">free</span>(cur);</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pre=cur;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;not find the node value equal %d\n&quot;</span>,value);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表的插入操作"><a href="#链表的插入操作" class="headerlink" title="链表的插入操作"></a>链表的插入操作</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在值为value的结点之前插入</span></span><br><span class="line"><span class="function">Status <span class="title">InsertValBefore</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* pre=L;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			node-&gt;next=cur;</span><br><span class="line">			pre-&gt;next=node;</span><br><span class="line">			L-&gt;data++;</span><br><span class="line">			<span class="keyword">return</span> OK;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			pre=cur;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;not the node value equ %d\n&quot;</span>,value);</span><br><span class="line">	<span class="built_in">free</span>(node);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在值为value的结点之后插入</span></span><br><span class="line"><span class="function">Status <span class="title">InsertValAfter</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value,<span class="type">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* p=L-&gt;next;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	<span class="keyword">while</span>(p!=<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(p-&gt;data==value)&#123;</span><br><span class="line">			node-&gt;next=p-&gt;next;</span><br><span class="line">			p-&gt;next=node;</span><br><span class="line">			L-&gt;data++;</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			p=p-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;can not find the node value equal %d\n&quot;</span>,value);</span><br><span class="line">	<span class="built_in">free</span>(node);</span><br><span class="line">	<span class="keyword">return</span> ERROR;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="链表的遍历"><a href="#链表的遍历" class="headerlink" title="链表的遍历"></a>链表的遍历</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过循环打印链表</span></span><br><span class="line"><span class="function">Status <span class="title">PrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* node=L-&gt;next;</span><br><span class="line">	<span class="comment">//链表为空不进入循环</span></span><br><span class="line">	<span class="keyword">if</span>(node==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;list is empty\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;node number is %d  &quot;</span>,L-&gt;data);</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归打印链表</span></span><br><span class="line"><span class="function">Status <span class="title">RecurPrint</span><span class="params">(<span class="keyword">struct</span> Node* node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(node==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">	<span class="built_in">RecurPrint</span>(node-&gt;next);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归打印翻转链表</span></span><br><span class="line"><span class="function">Status <span class="title">RecurReversePrint</span><span class="params">(<span class="keyword">struct</span> Node* node)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(node==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> OK;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">RecurReversePrint</span>(node-&gt;next);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="清空链表"><a href="#清空链表" class="headerlink" title="清空链表"></a>清空链表</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Status <span class="title">FreeList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">struct</span> <span class="title class_">Node</span>* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(cur!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">struct</span> <span class="title class_">Node</span>* temp=cur;</span><br><span class="line">		cur=cur-&gt;next;</span><br><span class="line">		<span class="built_in">free</span>(temp);</span><br><span class="line">	&#125;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="单向循环链表"><a href="#单向循环链表" class="headerlink" title="单向循环链表"></a>单向循环链表</h1><h2 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">InitList</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">L</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	L-&gt;next=L;</span><br><span class="line">	L-&gt;data=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="头插法和尾插法-1"><a href="#头插法和尾插法-1" class="headerlink" title="头插法和尾插法"></a>头插法和尾插法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeadInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	node-&gt;next=L-&gt;next;</span><br><span class="line">	L-&gt;next=node;</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">TailInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">tail</span>=</span>L;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	<span class="keyword">while</span>(tail-&gt;next!=L)</span><br><span class="line">	&#123;</span><br><span class="line">		tail=tail-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	node-&gt;next=L;</span><br><span class="line">	tail-&gt;next=node;</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Status <span class="title function_">DeleteVal</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value)</span></span><br><span class="line">&#123;</span><br><span class="line">	Node* pre=L;</span><br><span class="line">	Node* cur=L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(cur!=L)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			pre-&gt;next=cur-&gt;next;</span><br><span class="line">			<span class="built_in">free</span>(cur);</span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=cur;</span><br><span class="line">		cur=cur-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cant not find the value equal %d in the linklist\n&quot;</span>,value);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="遍历链表"><a href="#遍历链表" class="headerlink" title="遍历链表"></a>遍历链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L-&gt;&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>(node!=L)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Status <span class="title function_">InsertNodeAfterVal</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> value,<span class="type">int</span> node_data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">cur</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=node_data;</span><br><span class="line">	<span class="keyword">while</span>(cur!=L)&#123;</span><br><span class="line">		<span class="keyword">if</span>(cur-&gt;data==value)&#123;</span><br><span class="line">			node-&gt;next=cur-&gt;next;</span><br><span class="line">			cur-&gt;next=node;</span><br><span class="line">			<span class="keyword">return</span> OK;</span><br><span class="line">		&#125;</span><br><span class="line">			cur=cur-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;cant not find the value equal %d in the linklist\n&quot;</span>,value);</span><br><span class="line">	<span class="built_in">free</span>(node);</span><br><span class="line">	<span class="keyword">return</span> ERROR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h1><h2 id="链表结构-1"><a href="#链表结构-1" class="headerlink" title="链表结构"></a>链表结构</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">pre</span>;</span></span><br><span class="line">	<span class="type">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br></pre></td></tr></table></figure>
+<h2 id="链表初始化-1"><a href="#链表初始化-1" class="headerlink" title="链表初始化"></a>链表初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Node* <span class="title function_">InitList</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">L</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	L-&gt;pre=<span class="literal">NULL</span>;</span><br><span class="line">	L-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	L-&gt;data=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="头插法和尾插法-2"><a href="#头插法和尾插法-2" class="headerlink" title="头插法和尾插法"></a>头插法和尾插法</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">HeadInsert</span><span class="params">(<span class="keyword">struct</span> Node*L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	node-&gt;data=data;</span><br><span class="line">	<span class="keyword">if</span>(L-&gt;next==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		node-&gt;pre=L;</span><br><span class="line">		node-&gt;next=L-&gt;next;</span><br><span class="line">		L-&gt;next=node;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		node-&gt;next=L-&gt;next;</span><br><span class="line">		node-&gt;pre=L;</span><br><span class="line">		L-&gt;next-&gt;pre=node;</span><br><span class="line">		L-&gt;next=node;</span><br><span class="line">	&#125;	</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">TailInsert</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next; </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">new_node</span>=</span>(<span class="keyword">struct</span> Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> Node));</span><br><span class="line">	new_node-&gt;data=data;</span><br><span class="line">	new_node-&gt;next=<span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span>(node-&gt;next)&#123;</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	node-&gt;next=new_node;</span><br><span class="line">	new_node-&gt;pre=node;</span><br><span class="line">	L-&gt;data++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="遍历链表-1"><a href="#遍历链表-1" class="headerlink" title="遍历链表"></a>遍历链表</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">PrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L&lt;=&gt;&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&lt;=&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;NULL\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">ReversePrintList</span><span class="params">(<span class="keyword">struct</span> Node* L)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(node-&gt;next)&#123;</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(node!=L)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d-&gt;&quot;</span>,node-&gt;data);</span><br><span class="line">		node=node-&gt;pre;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;L\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">Delete</span><span class="params">(<span class="keyword">struct</span> Node* L,<span class="type">int</span> data)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">node</span>=</span>L-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(node)&#123;</span><br><span class="line">		<span class="keyword">if</span>(node-&gt;data==data)&#123;</span><br><span class="line">			(node-&gt;next)-&gt;pre=node-&gt;pre;</span><br><span class="line">			(node-&gt;pre)-&gt;next=node-&gt;next;</span><br><span class="line">			<span class="built_in">free</span>(node);</span><br><span class="line">			L-&gt;data--;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		node=node-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/12/%E9%93%BE%E8%A1%A8/" data-id="clnh4ej3c0009z0us2lj01wrv" data-title="单向链表" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          计算机网络
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/Mysql/">Mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/23/signal/">signal</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/">限流算法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/">函数指针</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

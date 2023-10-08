@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>计算机基础 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="冯诺依曼体系计算机五大组成 控制器：控制硬件设备的运行 运算器：数学运算，逻辑运算，位运算 存储器 内存：临时存储 外存：硬盘：长期存储   输入设备：键盘，鼠标 输出设备  存储器    访问时间 存储器    1ms 寄存器   2ms 高速缓存   10ms 内存   10ms 硬盘   100s 磁条   存储器可分为两大类  ROM：软件数据，代码等 RAM:只读存储器（存放BIOS程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础">
+<meta property="og:url" content="https://qianxiaolin.github.io/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="冯诺依曼体系计算机五大组成 控制器：控制硬件设备的运行 运算器：数学运算，逻辑运算，位运算 存储器 内存：临时存储 外存：硬盘：长期存储   输入设备：键盘，鼠标 输出设备  存储器    访问时间 存储器    1ms 寄存器   2ms 高速缓存   10ms 内存   10ms 硬盘   100s 磁条   存储器可分为两大类  ROM：软件数据，代码等 RAM:只读存储器（存放BIOS程序">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720203815114.png">
+<meta property="og:image" content="c:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720210024668.png">
+<meta property="og:image" content="c:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720211011747.png">
+<meta property="og:image" content="c:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720212042923.png">
+<meta property="article:published_time" content="2023-07-20T01:49:28.000Z">
+<meta property="article:modified_time" content="2023-09-28T16:20:29.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720203815114.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://qianxiaolin.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-计算机基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2023-07-20T01:49:28.000Z" itemprop="datePublished">2023-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      计算机基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="冯诺依曼体系"><a href="#冯诺依曼体系" class="headerlink" title="冯诺依曼体系"></a>冯诺依曼体系</h1><h2 id="计算机五大组成"><a href="#计算机五大组成" class="headerlink" title="计算机五大组成"></a>计算机五大组成</h2><ul>
+<li>控制器：控制硬件设备的运行</li>
+<li>运算器：数学运算，逻辑运算，位运算</li>
+<li>存储器<ul>
+<li>内存：临时存储</li>
+<li>外存：硬盘：长期存储</li>
+</ul>
+</li>
+<li>输入设备：键盘，鼠标</li>
+<li>输出设备</li>
+</ul>
+<p>存储器</p>
+<table>
+<thead>
+<tr>
+<th>访问时间</th>
+<th>存储器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1ms</td>
+<td>寄存器</td>
+</tr>
+<tr>
+<td>2ms</td>
+<td>高速缓存</td>
+</tr>
+<tr>
+<td>10ms</td>
+<td>内存</td>
+</tr>
+<tr>
+<td>10ms</td>
+<td>硬盘</td>
+</tr>
+<tr>
+<td>100s</td>
+<td>磁条</td>
+</tr>
+</tbody></table>
+<p>存储器可分为两大类</p>
+<ul>
+<li>ROM：软件数据，代码等</li>
+<li>RAM:只读存储器（存放BIOS程序)</li>
+</ul>
+<p>硬盘的大小决定了能都安装程序的大小，内存决定了能运行的程序数目</p>
+<p>软件可以分为两大类</p>
+<ul>
+<li><p>操作系统：控制计算机硬件，管理应用软件的控制程序</p>
+</li>
+<li><p>应用软件</p>
+<p>32位CPU表示一次性能够读取32个二进制数</p>
+<p>2核4线程表示有2个CPU，四线程表示每一个1个CPU内部有4条流水线</p>
+<h1 id="计算机启动流程"><a href="#计算机启动流程" class="headerlink" title="计算机启动流程"></a>计算机启动流程</h1><ol>
+<li>计算机通电</li>
+<li>BIOS运行，检测CPU，内存，硬盘等硬件设备</li>
+<li>BIOS读取CMOS存储器中的参数，选择启动设备</li>
+<li>读取启动设备的第一块扇区（主引导记录MBR）<ul>
+<li>共512字节，前446为引导信息（bootloader启动装载程序，用于启动操作系统）</li>
+<li>后64位分区信息</li>
+<li>最后两个字节为结束标志</li>
+</ul>
+</li>
+<li>操作系统询问BIOS，获取配置信息，检测驱动程序</li>
+</ol>
+<p>程序最先存放在硬盘中，程序的运行需要将程序的代码或数据读入内存，CPU再从内存中读取指令来运行。</p>
+<p>电脑通电后，启动操作系统的过程通常分为以下几个步骤：</p>
+<ol>
+<li><strong>加电自检（Power-On Self-Test, POST）</strong>：<ul>
+<li>当你打开电脑电源，计算机硬件会进行自检，以确保各个硬件组件正常运作。这包括检查CPU、RAM、硬盘、显卡等。</li>
+</ul>
+</li>
+<li><strong>BIOS&#x2F;UEFI启动</strong>：<ul>
+<li>自检完成后，计算机会寻找并加载存储在计算机主板上的基本输入&#x2F;输出系统（BIOS）或统一可扩展固件接口（UEFI）。这些是计算机的固件，负责启动系统。</li>
+</ul>
+</li>
+<li><strong>引导设备选择</strong>：<ul>
+<li>BIOS&#x2F;UEFI会根据预设的启动顺序（通常是硬盘、光盘&#x2F;USB、网络等）选择一个启动设备。如果你想从其他设备（如USB驱动器）启动，你可以在BIOS&#x2F;UEFI设置中进行配置。</li>
+</ul>
+</li>
+<li><strong>引导加载程序（Bootloader）</strong>：<ul>
+<li>选择了启动设备后，计算机会查找该设备上的引导加载程序，例如GRUB（在Linux系统中常见）或Windows引导管理器。</li>
+<li>引导加载程序的任务是加载操作系统的内核。</li>
+</ul>
+</li>
+<li><strong>操作系统内核加载</strong>：<ul>
+<li>引导加载程序会加载操作系统的内核文件，这是操作系统的核心部分。在Linux系统中，内核通常位于 <code>/boot</code> 目录中。</li>
+<li>内核加载后，它会初始化系统硬件并将控制权转交给操作系统。</li>
+</ul>
+</li>
+<li><strong>初始化过程</strong>：<ul>
+<li>操作系统内核接管计算机后，开始初始化系统的各个部分，包括内存管理、文件系统、设备驱动程序等。</li>
+<li>在Linux中，初始化进程是第一个用户空间进程，通常是 <code>init</code> 或 <code>systemd</code>。</li>
+</ul>
+</li>
+<li><strong>登录管理器（如果适用）</strong>：<ul>
+<li>在图形用户界面（GUI）环境中，通常会启动登录管理器（如GDM、LightDM、或SDDM），用户可以在其中登录。</li>
+<li>在文本模式环境中，系统可能直接要求用户输入用户名和密码。</li>
+</ul>
+</li>
+<li><strong>用户登录</strong>：<ul>
+<li>用户登录后，操作系统会创建用户的会话，并加载用户的配置文件和应用程序。</li>
+</ul>
+</li>
+<li><strong>操作系统启动完成</strong>：<ul>
+<li>一旦用户成功登录，操作系统启动过程就完成了，用户可以开始使用计算机了。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h1><h2 id="加法器"><a href="#加法器" class="headerlink" title="加法器"></a>加法器</h2><h3 id="半加器"><a href="#半加器" class="headerlink" title="半加器"></a>半加器</h3><p>处理两个二进制数相加</p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720203815114.png" alt="image-20230720203815114"></p>
+<h3 id="全加器"><a href="#全加器" class="headerlink" title="全加器"></a>全加器</h3><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720210024668.png" alt="image-20230720210024668"></p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720211011747.png" alt="image-20230720211011747"></p>
+<h3 id="4位数的加法器"><a href="#4位数的加法器" class="headerlink" title="4位数的加法器"></a>4位数的加法器</h3><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720212042923.png" alt="image-20230720212042923"></p>
+<h2 id="减法器"><a href="#减法器" class="headerlink" title="减法器"></a>减法器</h2><p>(A-B)<del>补</del>&#x3D;A<del>补</del>+（-B）<del>补</del>，得到A-B的补码，需要将补码转化为原码</p>
+<p>B符号位不变，其余位按位取反后最低位加一得到补码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" data-id="clnh4ej3a0005z0us55be5bak" data-title="计算机基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/09/17/c%E6%A0%87%E5%87%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          c标准
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">计算机网络</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/Mysql/">Mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/23/signal/">signal</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">文件系统</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/">限流算法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/19/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/">函数指针</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
