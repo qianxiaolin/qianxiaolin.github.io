@@ -4,17 +4,15 @@
   <meta charset="utf-8">
   
   
-  <title>计算机网络 | Hexo</title>
+  <title>多线程并发 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="三种交换方式 电路交换 分组交换 报文交换  性能指标         速率 bit&#x2F;s 比特率   带宽 HZ 发送速率   吞吐量     时延  发送时延，传播时延，处理时延   时延带宽积                    时延带宽积&#x3D;传播时延*带宽 往返时间 利用率  信道利用率 网络利用率  丢包率 体系结构OSI体系结构 物理层 数据链路层 网络层 运输层 会">
-<meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络">
-<meta property="og:url" content="https://qianxiaolin.github.io/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="多线程并发">
+<meta property="og:url" content="https://qianxiaolin.github.io/2023/10/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="三种交换方式 电路交换 分组交换 报文交换  性能指标         速率 bit&#x2F;s 比特率   带宽 HZ 发送速率   吞吐量     时延  发送时延，传播时延，处理时延   时延带宽积                    时延带宽积&#x3D;传播时延*带宽 往返时间 利用率  信道利用率 网络利用率  丢包率 体系结构OSI体系结构 物理层 数据链路层 网络层 运输层 会">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-13T10:02:53.000Z">
-<meta property="article:modified_time" content="2023-09-28T16:20:29.000Z">
+<meta property="article:published_time" content="2023-10-21T08:20:41.000Z">
+<meta property="article:modified_time" content="2023-10-21T08:20:41.927Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -75,10 +73,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-计算机网络" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-多线程并发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
-  <time class="dt-published" datetime="2023-07-13T10:02:53.000Z" itemprop="datePublished">2023-07-13</time>
+    <a href="/2023/10/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2023-10-21T08:20:41.000Z" itemprop="datePublished">2023-10-21</time>
 </a>
     
   </div>
@@ -89,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      计算机网络
+      多线程并发
     </h1>
   
 
@@ -97,114 +95,11 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="三种交换方式"><a href="#三种交换方式" class="headerlink" title="三种交换方式"></a>三种交换方式</h1><ol>
-<li>电路交换</li>
-<li>分组交换</li>
-<li>报文交换</li>
-</ol>
-<h1 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h1><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>速率</td>
-<td>bit&#x2F;s</td>
-<td>比特率</td>
-</tr>
-<tr>
-<td>带宽</td>
-<td>HZ</td>
-<td>发送速率</td>
-</tr>
-<tr>
-<td>吞吐量</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>时延</td>
-<td></td>
-<td>发送时延，传播时延，处理时延</td>
-</tr>
-<tr>
-<td>时延带宽积</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>时延带宽积&#x3D;传播时延*带宽</p>
-<p>往返时间</p>
-<p>利用率</p>
-<ul>
-<li>信道利用率</li>
-<li>网络利用率</li>
-</ul>
-<p>丢包率</p>
-<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><h2 id="OSI体系结构"><a href="#OSI体系结构" class="headerlink" title="OSI体系结构"></a>OSI体系结构</h2><ul>
-<li>物理层</li>
-<li>数据链路层</li>
-<li>网络层</li>
-<li>运输层</li>
-<li>会话层</li>
-<li>表示层</li>
-<li>应用层</li>
-</ul>
-<h2 id="TCP-IP体系"><a href="#TCP-IP体系" class="headerlink" title="TCP&#x2F;IP体系"></a>TCP&#x2F;IP体系</h2><ul>
-<li>网络接口层</li>
-<li>网际层：IP</li>
-<li>运输层：TCP，UDP</li>
-<li>应用层：HTTP SMTP DNS RTP</li>
-</ul>
-<h2 id="原理体系结构"><a href="#原理体系结构" class="headerlink" title="原理体系结构"></a>原理体系结构</h2><ul>
-<li><p>物理层：解决信号如何表示</p>
-</li>
-<li><p>数据链路层：分组在一个网络中传输问题</p>
-</li>
-<li><p>网络层：解决分组在多个网络上传输的问题</p>
-</li>
-<li><p>运输层：进程间的通信问题</p>
-</li>
-<li><p>应用层：进程的交互</p>
-</li>
-</ul>
-<ol>
-<li><p>应用端构建HTTP请求报文</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /HTTP/1.1</span><br><span class="line">Accept-Language:en-us</span><br><span class="line">Accept:*/*</span><br><span class="line">Connections:close</span><br><span class="line">Host:192.168.0.02</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运输层给HTTP添加TCP报文或UDP，成为TCP报文段或UDP用户数据报</p>
-</li>
-<li><p>网络层给TCP添加IP首部，成为IP数据报</p>
-</li>
-<li><p>数据链路层在报文头部和尾部添加ETH，使之成为帧</p>
-</li>
-<li><p>物理层面，帧以比特流的比特流形式存在，物理层面上会将帧添加前导码</p>
-</li>
-</ol>
-<p>协议的三要素：<strong>语法、语义、同步</strong></p>
-
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" data-id="clnh4ej3b0006z0usc34k31ef" data-title="计算机网络" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2023/10/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" data-id="clocx1jd0000058us20steigk" data-title="多线程并发" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -214,19 +109,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/10/24/%E6%AD%BB%E9%94%81/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          计算机基础
+          死锁
         
       </div>
     </a>
   
   
-    <a href="/2023/07/12/%E9%93%BE%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/10/16/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">链表</div>
+      <div class="article-nav-title">作业调度算法</div>
     </a>
   
 </nav>

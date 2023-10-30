@@ -4,17 +4,13 @@
   <meta charset="utf-8">
   
   
-  <title>链表 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="单向链表单向链表是一种顺序存储结构，物理层面是一段地址不一定连续的存储空间 链表的头指针标志着链表的起始位置 结点是链表的最小单位，每个结点都有有唯一指向 存储结构结点用结构体表示，由存储的数据data和指向下一个结构体的指针域组成 在头结点中，data用于表示链表的结点个数 在非头结点中,data存放数据元素 12345typedef struct Node&amp;#123;	int data;	st">
-<meta property="og:type" content="article">
-<meta property="og:title" content="链表">
-<meta property="og:url" content="https://qianxiaolin.github.io/2023/07/12/%E9%93%BE%E8%A1%A8/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://qianxiaolin.github.io/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="单向链表单向链表是一种顺序存储结构，物理层面是一段地址不一定连续的存储空间 链表的头指针标志着链表的起始位置 结点是链表的最小单位，每个结点都有有唯一指向 存储结构结点用结构体表示，由存储的数据data和指向下一个结构体的指针域组成 在头结点中，data用于表示链表的结点个数 在非头结点中,data存放数据元素 12345typedef struct Node&amp;#123;	int data;	st">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-12T14:18:16.000Z">
-<meta property="article:modified_time" content="2023-10-30T13:07:07.894Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -75,7 +71,390 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main">
+  
+    <article id="post-c标准" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/17/c%E6%A0%87%E5%87%86/" class="article-date">
+  <time class="dt-published" datetime="2023-09-17T10:59:37.000Z" itemprop="datePublished">2023-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/17/c%E6%A0%87%E5%87%86/">c标准</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="C的标准"><a href="#C的标准" class="headerlink" title="C的标准"></a>C的标准</h1><table>
+<thead>
+<tr>
+<th>c标准</th>
+<th>年份</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classic C</td>
+<td>1978</td>
+</tr>
+<tr>
+<td>ANSI C</td>
+<td>1989</td>
+</tr>
+<tr>
+<td>ISO C90</td>
+<td>1990</td>
+</tr>
+<tr>
+<td>ISO C99</td>
+<td>1999</td>
+</tr>
+<tr>
+<td>ISO C11</td>
+<td>2011</td>
+</tr>
+<tr>
+<td>ISO C17</td>
+<td>2017</td>
+</tr>
+</tbody></table>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230917190919236.png" alt="image-20230917190919236"></p>
+<h1 id="C99"><a href="#C99" class="headerlink" title="C99"></a>C99</h1><h2 id="inline"><a href="#inline" class="headerlink" title="inline"></a>inline</h2><p>内联函数</p>
+<h2 id="restrict"><a href="#restrict" class="headerlink" title="restrict"></a>restrict</h2><p><code>restrict</code>是类型限定符,它主要用于指示指针之间的别名关系，从而允许编译器进行更有效的优化。</p>
+<p>restrict的声明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int* restrict p; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typedef int * POINT;</span><br><span class="line">POINT restrict p2;</span><br><span class="line">Point p2 restrict;</span><br></pre></td></tr></table></figure>
+
+<p>restrict修饰指针，表示该指针是访问该指针所指向对象的唯一方法，不存在指针别名(多个指针执行同一块内存区域)的情况</p>
+<p>restrict 语义仅应用于左值(可赋值的内存位置)表达式</p>
+<h2 id="Bool"><a href="#Bool" class="headerlink" title="_Bool"></a>_Bool</h2><p>布尔宏</p>
+<h2 id="Complex"><a href="#Complex" class="headerlink" title="_Complex"></a>_Complex</h2><p>复数宏</p>
+<h2 id="Imaginary"><a href="#Imaginary" class="headerlink" title="_Imaginary"></a>_Imaginary</h2><h1 id="C17"><a href="#C17" class="headerlink" title="C17"></a>C17</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/17/c%E6%A0%87%E5%87%86/" data-id="clnh4ej350001z0us98fse4wt" data-title="c标准" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2023-07-20T01:49:28.000Z" itemprop="datePublished">2023-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="冯诺依曼体系"><a href="#冯诺依曼体系" class="headerlink" title="冯诺依曼体系"></a>冯诺依曼体系</h1><h2 id="计算机五大组成"><a href="#计算机五大组成" class="headerlink" title="计算机五大组成"></a>计算机五大组成</h2><ul>
+<li>控制器：控制硬件设备的运行</li>
+<li>运算器：数学运算，逻辑运算，位运算</li>
+<li>存储器<ul>
+<li>内存：临时存储</li>
+<li>外存：硬盘：长期存储</li>
+</ul>
+</li>
+<li>输入设备：键盘，鼠标</li>
+<li>输出设备</li>
+</ul>
+<p>存储器</p>
+<table>
+<thead>
+<tr>
+<th>访问时间</th>
+<th>存储器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1ms</td>
+<td>寄存器</td>
+</tr>
+<tr>
+<td>2ms</td>
+<td>高速缓存</td>
+</tr>
+<tr>
+<td>10ms</td>
+<td>内存</td>
+</tr>
+<tr>
+<td>10ms</td>
+<td>硬盘</td>
+</tr>
+<tr>
+<td>100s</td>
+<td>磁条</td>
+</tr>
+</tbody></table>
+<p>存储器可分为两大类</p>
+<ul>
+<li>ROM：软件数据，代码等</li>
+<li>RAM:只读存储器（存放BIOS程序)</li>
+</ul>
+<p>硬盘的大小决定了能都安装程序的大小，内存决定了能运行的程序数目</p>
+<p>软件可以分为两大类</p>
+<ul>
+<li><p>操作系统：控制计算机硬件，管理应用软件的控制程序</p>
+</li>
+<li><p>应用软件</p>
+<p>32位CPU表示一次性能够读取32个二进制数</p>
+<p>2核4线程表示有2个CPU，四线程表示每一个1个CPU内部有4条流水线</p>
+<h1 id="计算机启动流程"><a href="#计算机启动流程" class="headerlink" title="计算机启动流程"></a>计算机启动流程</h1><ol>
+<li>计算机通电</li>
+<li>BIOS运行，检测CPU，内存，硬盘等硬件设备</li>
+<li>BIOS读取CMOS存储器中的参数，选择启动设备</li>
+<li>读取启动设备的第一块扇区（主引导记录MBR）<ul>
+<li>共512字节，前446为引导信息（bootloader启动装载程序，用于启动操作系统）</li>
+<li>后64位分区信息</li>
+<li>最后两个字节为结束标志</li>
+</ul>
+</li>
+<li>操作系统询问BIOS，获取配置信息，检测驱动程序</li>
+</ol>
+<p>程序最先存放在硬盘中，程序的运行需要将程序的代码或数据读入内存，CPU再从内存中读取指令来运行。</p>
+<p>电脑通电后，启动操作系统的过程通常分为以下几个步骤：</p>
+<ol>
+<li><strong>加电自检（Power-On Self-Test, POST）</strong>：<ul>
+<li>当你打开电脑电源，计算机硬件会进行自检，以确保各个硬件组件正常运作。这包括检查CPU、RAM、硬盘、显卡等。</li>
+</ul>
+</li>
+<li><strong>BIOS&#x2F;UEFI启动</strong>：<ul>
+<li>自检完成后，计算机会寻找并加载存储在计算机主板上的基本输入&#x2F;输出系统（BIOS）或统一可扩展固件接口（UEFI）。这些是计算机的固件，负责启动系统。</li>
+</ul>
+</li>
+<li><strong>引导设备选择</strong>：<ul>
+<li>BIOS&#x2F;UEFI会根据预设的启动顺序（通常是硬盘、光盘&#x2F;USB、网络等）选择一个启动设备。如果你想从其他设备（如USB驱动器）启动，你可以在BIOS&#x2F;UEFI设置中进行配置。</li>
+</ul>
+</li>
+<li><strong>引导加载程序（Bootloader）</strong>：<ul>
+<li>选择了启动设备后，计算机会查找该设备上的引导加载程序，例如GRUB（在Linux系统中常见）或Windows引导管理器。</li>
+<li>引导加载程序的任务是加载操作系统的内核。</li>
+</ul>
+</li>
+<li><strong>操作系统内核加载</strong>：<ul>
+<li>引导加载程序会加载操作系统的内核文件，这是操作系统的核心部分。在Linux系统中，内核通常位于 <code>/boot</code> 目录中。</li>
+<li>内核加载后，它会初始化系统硬件并将控制权转交给操作系统。</li>
+</ul>
+</li>
+<li><strong>初始化过程</strong>：<ul>
+<li>操作系统内核接管计算机后，开始初始化系统的各个部分，包括内存管理、文件系统、设备驱动程序等。</li>
+<li>在Linux中，初始化进程是第一个用户空间进程，通常是 <code>init</code> 或 <code>systemd</code>。</li>
+</ul>
+</li>
+<li><strong>登录管理器（如果适用）</strong>：<ul>
+<li>在图形用户界面（GUI）环境中，通常会启动登录管理器（如GDM、LightDM、或SDDM），用户可以在其中登录。</li>
+<li>在文本模式环境中，系统可能直接要求用户输入用户名和密码。</li>
+</ul>
+</li>
+<li><strong>用户登录</strong>：<ul>
+<li>用户登录后，操作系统会创建用户的会话，并加载用户的配置文件和应用程序。</li>
+</ul>
+</li>
+<li><strong>操作系统启动完成</strong>：<ul>
+<li>一旦用户成功登录，操作系统启动过程就完成了，用户可以开始使用计算机了。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="ALU"><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h1><h2 id="加法器"><a href="#加法器" class="headerlink" title="加法器"></a>加法器</h2><h3 id="半加器"><a href="#半加器" class="headerlink" title="半加器"></a>半加器</h3><p>处理两个二进制数相加</p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720203815114.png" alt="image-20230720203815114"></p>
+<h3 id="全加器"><a href="#全加器" class="headerlink" title="全加器"></a>全加器</h3><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720210024668.png" alt="image-20230720210024668"></p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720211011747.png" alt="image-20230720211011747"></p>
+<h3 id="4位数的加法器"><a href="#4位数的加法器" class="headerlink" title="4位数的加法器"></a>4位数的加法器</h3><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230720212042923.png" alt="image-20230720212042923"></p>
+<h2 id="减法器"><a href="#减法器" class="headerlink" title="减法器"></a>减法器</h2><p>(A-B)<del>补</del>&#x3D;A<del>补</del>+（-B）<del>补</del>，得到A-B的补码，需要将补码转化为原码</p>
+<p>B符号位不变，其余位按位取反后最低位加一得到补码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" data-id="clnh4ej3a0005z0us55be5bak" data-title="计算机基础" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机网络" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
+  <time class="dt-published" datetime="2023-07-13T10:02:53.000Z" itemprop="datePublished">2023-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="三种交换方式"><a href="#三种交换方式" class="headerlink" title="三种交换方式"></a>三种交换方式</h1><ol>
+<li>电路交换</li>
+<li>分组交换</li>
+<li>报文交换</li>
+</ol>
+<h1 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h1><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>速率</td>
+<td>bit&#x2F;s</td>
+<td>比特率</td>
+</tr>
+<tr>
+<td>带宽</td>
+<td>HZ</td>
+<td>发送速率</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>时延</td>
+<td></td>
+<td>发送时延，传播时延，处理时延</td>
+</tr>
+<tr>
+<td>时延带宽积</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>时延带宽积&#x3D;传播时延*带宽</p>
+<p>往返时间</p>
+<p>利用率</p>
+<ul>
+<li>信道利用率</li>
+<li>网络利用率</li>
+</ul>
+<p>丢包率</p>
+<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><h2 id="OSI体系结构"><a href="#OSI体系结构" class="headerlink" title="OSI体系结构"></a>OSI体系结构</h2><ul>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>运输层</li>
+<li>会话层</li>
+<li>表示层</li>
+<li>应用层</li>
+</ul>
+<h2 id="TCP-IP体系"><a href="#TCP-IP体系" class="headerlink" title="TCP&#x2F;IP体系"></a>TCP&#x2F;IP体系</h2><ul>
+<li>网络接口层</li>
+<li>网际层：IP</li>
+<li>运输层：TCP，UDP</li>
+<li>应用层：HTTP SMTP DNS RTP</li>
+</ul>
+<h2 id="原理体系结构"><a href="#原理体系结构" class="headerlink" title="原理体系结构"></a>原理体系结构</h2><ul>
+<li><p>物理层：解决信号如何表示</p>
+</li>
+<li><p>数据链路层：分组在一个网络中传输问题</p>
+</li>
+<li><p>网络层：解决分组在多个网络上传输的问题</p>
+</li>
+<li><p>运输层：进程间的通信问题</p>
+</li>
+<li><p>应用层：进程的交互</p>
+</li>
+</ul>
+<ol>
+<li><p>应用端构建HTTP请求报文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /HTTP/1.1</span><br><span class="line">Accept-Language:en-us</span><br><span class="line">Accept:*/*</span><br><span class="line">Connections:close</span><br><span class="line">Host:192.168.0.02</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运输层给HTTP添加TCP报文或UDP，成为TCP报文段或UDP用户数据报</p>
+</li>
+<li><p>网络层给TCP添加IP首部，成为IP数据报</p>
+</li>
+<li><p>数据链路层在报文头部和尾部添加ETH，使之成为帧</p>
+</li>
+<li><p>物理层面，帧以比特流的比特流形式存在，物理层面上会将帧添加前导码</p>
+</li>
+</ol>
+<p>协议的三要素：<strong>语法、语义、同步</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" data-id="clnh4ej3b0006z0usc34k31ef" data-title="计算机网络" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/07/12/%E9%93%BE%E8%A1%A8/" class="article-date">
   <time class="dt-published" datetime="2023-07-12T14:18:16.000Z" itemprop="datePublished">2023-07-12</time>
@@ -88,8 +467,8 @@
       <header class="article-header">
         
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      链表
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/12/%E9%93%BE%E8%A1%A8/">链表</a>
     </h1>
   
 
@@ -202,24 +581,17 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2023/07/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          计算机网络
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
 
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
