@@ -9,12 +9,12 @@
   <meta name="description" content="PCB进程控制块PCB(process control block)称为进程控制块。 一个程序并不是从头到尾一次执行的。进程控制块可以保存进程的上下文。 12345678910111213141516171819202122232425262728293031323334&#x2F;&#x2F;进程控制块struct task_struct &amp;#123;&#x2F;* these are hardcoded - don&amp;#x2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="作业调度算法">
-<meta property="og:url" content="https://qianxiaolin.github.io/2023/10/16/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:url" content="https://qianxiaolin.github.io/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="PCB进程控制块PCB(process control block)称为进程控制块。 一个程序并不是从头到尾一次执行的。进程控制块可以保存进程的上下文。 12345678910111213141516171819202122232425262728293031323334&#x2F;&#x2F;进程控制块struct task_struct &amp;#123;&#x2F;* these are hardcoded - don&amp;#x2">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-16T10:54:37.000Z">
-<meta property="article:modified_time" content="2023-10-16T15:08:04.730Z">
+<meta property="article:modified_time" content="2023-10-30T13:12:01.414Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -76,9 +76,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-作业调度算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-linux/作业调度算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/10/16/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="article-date">
+    <a href="/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="article-date">
   <time class="dt-published" datetime="2023-10-16T10:54:37.000Z" itemprop="datePublished">2023-10-16</time>
 </a>
     
@@ -152,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/10/16/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" data-id="clocx1jd4000158us1y8u53mn" data-title="作业调度算法" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" data-id="clocxg9yg0007t8us2ybc64uu" data-title="作业调度算法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -164,7 +164,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/10/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/10/21/linux/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -196,7 +196,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
     </div>
   </div>
 
@@ -206,7 +206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a>
+      <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a>
     </div>
   </div>
 
@@ -232,19 +232,19 @@
           </li>
         
           <li>
-            <a href="/2023/10/24/%E7%AE%A1%E9%81%93/">管道</a>
+            <a href="/2023/10/24/linux/%E7%AE%A1%E9%81%93/">管道</a>
           </li>
         
           <li>
-            <a href="/2023/10/24/%E6%AD%BB%E9%94%81/">死锁</a>
+            <a href="/2023/10/24/linux/%E6%AD%BB%E9%94%81/">死锁</a>
           </li>
         
           <li>
-            <a href="/2023/10/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">多线程并发</a>
+            <a href="/2023/10/21/linux/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">多线程并发</a>
           </li>
         
           <li>
-            <a href="/2023/10/16/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">作业调度算法</a>
+            <a href="/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">作业调度算法</a>
           </li>
         
       </ul>
