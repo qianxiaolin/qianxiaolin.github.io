@@ -6,15 +6,15 @@
   
   <title>linux系统调用 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="linux系统调用分类linux操作系统常用的系统调用  文件操作 进程控制 用户  文件IO操作open:打开流 write：写入数据 read:读取数据 lseek:定位流 close：关闭流 文件权限操作umask:文件掩码 chmod：修改文件权限 进程控制操作fork:复制进程 execl：取代当前进程 系统信息操作用户组操作getuid:用户id 系统日志操作openlog syslo">
+  <meta name="description" content="linux系统调用分类The linux kernel provide some api to opearte the system,some usually used api loke like read,write which aoubt IO  IO user manage file param mutial pthread  linux操作系统常用的系统调用  文件操作 进程控制 用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux系统调用">
 <meta property="og:url" content="https://qianxiaolin.github.io/2023/09/18/linux/linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="linux系统调用分类linux操作系统常用的系统调用  文件操作 进程控制 用户  文件IO操作open:打开流 write：写入数据 read:读取数据 lseek:定位流 close：关闭流 文件权限操作umask:文件掩码 chmod：修改文件权限 进程控制操作fork:复制进程 execl：取代当前进程 系统信息操作用户组操作getuid:用户id 系统日志操作openlog syslo">
+<meta property="og:description" content="linux系统调用分类The linux kernel provide some api to opearte the system,some usually used api loke like read,write which aoubt IO  IO user manage file param mutial pthread  linux操作系统常用的系统调用  文件操作 进程控制 用户">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-18T01:54:27.000Z">
-<meta property="article:modified_time" content="2023-09-28T16:20:29.000Z">
+<meta property="article:modified_time" content="2023-11-02T09:28:23.645Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -98,13 +98,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="linux系统调用分类"><a href="#linux系统调用分类" class="headerlink" title="linux系统调用分类"></a>linux系统调用分类</h1><p>linux操作系统常用的系统调用</p>
+        <h1 id="linux系统调用分类"><a href="#linux系统调用分类" class="headerlink" title="linux系统调用分类"></a>linux系统调用分类</h1><p>The linux kernel provide some api to opearte the system,some usually used api loke like read,write which aoubt IO</p>
+<ul>
+<li>IO</li>
+<li>user manage</li>
+<li>file param</li>
+<li>mutial pthread</li>
+</ul>
+<p>linux操作系统常用的系统调用</p>
 <ul>
 <li>文件操作</li>
 <li>进程控制</li>
 <li>用户</li>
 </ul>
-<h2 id="文件IO操作"><a href="#文件IO操作" class="headerlink" title="文件IO操作"></a>文件IO操作</h2><p><code>open</code>:打开流</p>
+<h2 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h2><p>in the linux,every thing can abstract to file.the operation of the hardware device or input output stream can be sum up to read,write,open,close,seek.</p>
+<p>in the file systeam,every file have unique identity called file descriptor ,the type of file descriptor is int.when a new file stream create,the kernel will arragge the unused ,the smallest value descriptor  to stream.   </p>
+<p><code>open</code>:open a file stearm</p>
 <p><code>write</code>：写入数据</p>
 <p><code>read</code>:读取数据</p>
 <p><code>lseek</code>:定位流</p>
@@ -199,6 +208,10 @@
       <ul>
         
           <li>
+            <a href="/2023/10/30/internet/http/">http</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/30/algorithm/%E9%98%9F%E5%88%97/">队列</a>
           </li>
         
@@ -212,10 +225,6 @@
         
           <li>
             <a href="/2023/10/21/linux/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">多线程并发</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">作业调度算法</a>
           </li>
         
       </ul>
