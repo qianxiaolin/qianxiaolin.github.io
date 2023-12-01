@@ -73,6 +73,147 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-internet/计算机网络" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/13/internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="article-date">
+  <time class="dt-published" datetime="2023-07-13T10:02:53.000Z" itemprop="datePublished">2023-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/13/internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="三种交换方式"><a href="#三种交换方式" class="headerlink" title="三种交换方式"></a>三种交换方式</h1><ol>
+<li>电路交换</li>
+<li>分组交换</li>
+<li>报文交换</li>
+</ol>
+<h1 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h1><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>速率</td>
+<td>bit&#x2F;s</td>
+<td>比特率</td>
+</tr>
+<tr>
+<td>带宽</td>
+<td>HZ</td>
+<td>发送速率</td>
+</tr>
+<tr>
+<td>吞吐量</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>时延</td>
+<td></td>
+<td>发送时延，传播时延，处理时延</td>
+</tr>
+<tr>
+<td>时延带宽积</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>时延带宽积&#x3D;传播时延*带宽</p>
+<p>往返时间</p>
+<p>利用率</p>
+<ul>
+<li>信道利用率</li>
+<li>网络利用率</li>
+</ul>
+<p>丢包率</p>
+<h1 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h1><h2 id="OSI体系结构"><a href="#OSI体系结构" class="headerlink" title="OSI体系结构"></a>OSI体系结构</h2><ul>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>运输层</li>
+<li>会话层</li>
+<li>表示层</li>
+<li>应用层</li>
+</ul>
+<h2 id="TCP-IP体系"><a href="#TCP-IP体系" class="headerlink" title="TCP&#x2F;IP体系"></a>TCP&#x2F;IP体系</h2><ul>
+<li>网络接口层</li>
+<li>网际层：IP</li>
+<li>运输层：TCP，UDP</li>
+<li>应用层：HTTP SMTP DNS RTP</li>
+</ul>
+<h2 id="原理体系结构"><a href="#原理体系结构" class="headerlink" title="原理体系结构"></a>原理体系结构</h2><ul>
+<li><p>物理层：解决信号如何表示</p>
+</li>
+<li><p>数据链路层：分组在一个网络中传输问题</p>
+</li>
+<li><p>网络层：解决分组在多个网络上传输的问题</p>
+</li>
+<li><p>运输层：进程间的通信问题</p>
+</li>
+<li><p>应用层：进程的交互</p>
+</li>
+</ul>
+<ol>
+<li><p>应用端构建HTTP请求报文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET /HTTP/1.1</span><br><span class="line">Accept-Language:en-us</span><br><span class="line">Accept:*/*</span><br><span class="line">Connections:close</span><br><span class="line">Host:192.168.0.02</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运输层给HTTP添加TCP报文或UDP，成为TCP报文段或UDP用户数据报</p>
+</li>
+<li><p>网络层给TCP添加IP首部，成为IP数据报</p>
+</li>
+<li><p>数据链路层在报文头部和尾部添加ETH，使之成为帧</p>
+</li>
+<li><p>物理层面，帧以比特流的比特流形式存在，物理层面上会将帧添加前导码</p>
+</li>
+</ol>
+<p>协议的三要素：<strong>语法、语义、同步</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/07/13/internet/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" data-id="clocxg9yj000ft8usdgi59fwa" data-title="计算机网络" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-algorithm/链表" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/07/12/algorithm/%E9%93%BE%E8%A1%A8/" class="article-date">
@@ -225,7 +366,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
     </div>
   </div>
 
@@ -235,7 +376,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/algorithm/" style="font-size: 15px;">algorithm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a>
+      <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/algorithm/" style="font-size: 15px;">algorithm</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a>
     </div>
   </div>
 
@@ -244,7 +385,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -255,6 +396,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/12/01/gdb/">gdb</a>
+          </li>
         
           <li>
             <a href="/2023/11/23/%E4%B8%AD%E6%96%AD/">中断</a>
@@ -270,10 +415,6 @@
         
           <li>
             <a href="/2023/11/20/clang/ANSI%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97/">ANSI转义序列</a>
-          </li>
-        
-          <li>
-            <a href="/2023/11/20/git/">git</a>
           </li>
         
       </ul>
