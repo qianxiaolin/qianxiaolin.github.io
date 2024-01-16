@@ -6,18 +6,25 @@
   
   <title>二叉树 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="二叉树的概念每个节点至多有两个孩子的树叫做二叉树 二叉树的存储结构二叉树的创建二叉树的遍历前序遍历 中序遍历 后序遍历 层次遍历 二叉树的查找线索二叉树">
+  <meta name="description" content="二叉树的概念每个节点至多有两个孩子的树叫做二叉树 二叉树的存储结构12345typedef struct bTree&amp;#123;	char ele;	struct bTree* lchild;	struct bTree* rchild;&amp;#125;bTree;  二叉树节点使用结构体存储，包含数据域和指针域。指针域为分别指向左右孩子的指针 二叉树的创建二叉树的创建方式有很多种，在这里我们根据树的先">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树">
 <meta property="og:url" content="https://qianxiaolin.github.io/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="二叉树的概念每个节点至多有两个孩子的树叫做二叉树 二叉树的存储结构二叉树的创建二叉树的遍历前序遍历 中序遍历 后序遍历 层次遍历 二叉树的查找线索二叉树">
+<meta property="og:description" content="二叉树的概念每个节点至多有两个孩子的树叫做二叉树 二叉树的存储结构12345typedef struct bTree&amp;#123;	char ele;	struct bTree* lchild;	struct bTree* rchild;&amp;#125;bTree;  二叉树节点使用结构体存储，包含数据域和指针域。指针域为分别指向左右孩子的指针 二叉树的创建二叉树的创建方式有很多种，在这里我们根据树的先">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161522202.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161528733.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161533010.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161538337.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161539122.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161547391.png">
 <meta property="article:published_time" content="2024-01-11T05:56:48.000Z">
-<meta property="article:modified_time" content="2024-01-15T09:59:28.470Z">
+<meta property="article:modified_time" content="2024-01-16T07:48:59.560Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161522202.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -99,11 +106,50 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="二叉树的概念"><a href="#二叉树的概念" class="headerlink" title="二叉树的概念"></a>二叉树的概念</h1><p>每个节点至多有两个孩子的树叫做二叉树</p>
-<h1 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h1><h1 id="二叉树的创建"><a href="#二叉树的创建" class="headerlink" title="二叉树的创建"></a>二叉树的创建</h1><h1 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h1><p>前序遍历</p>
-<p>中序遍历</p>
-<p>后序遍历</p>
-<p>层次遍历</p>
-<h1 id="二叉树的查找"><a href="#二叉树的查找" class="headerlink" title="二叉树的查找"></a>二叉树的查找</h1><h1 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h1>
+<h1 id="二叉树的存储结构"><a href="#二叉树的存储结构" class="headerlink" title="二叉树的存储结构"></a>二叉树的存储结构</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>&#123;</span></span><br><span class="line">	<span class="type">char</span> ele;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">lchild</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">rchild</span>;</span></span><br><span class="line">&#125;bTree;</span><br></pre></td></tr></table></figure>
+
+<p>二叉树节点使用结构体存储，包含数据域和指针域。指针域为分别指向左右孩子的指针</p>
+<h1 id="二叉树的创建"><a href="#二叉树的创建" class="headerlink" title="二叉树的创建"></a>二叉树的创建</h1><p>二叉树的创建方式有很多种，在这里我们根据树的先序遍历序列来创建一个二叉树</p>
+<p>创建根节点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">root</span>=</span>(<span class="keyword">struct</span> bTree*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> bTree));</span><br></pre></td></tr></table></figure>
+
+<p>树的先序序列如下，其中##代表空节点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *data=<span class="string">&quot;ABD##E##CF##G##&quot;</span>;</span><br><span class="line"><span class="type">int</span> index=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>树的结构为</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161522202.png" alt="image-20240116152254240"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">create_tree</span><span class="params">(bTree **root,<span class="type">char</span> *data,<span class="type">int</span> *index)</span>&#123;</span><br><span class="line">	<span class="type">char</span> ch;</span><br><span class="line">	ch=data[*index];</span><br><span class="line">	(*index)++;	</span><br><span class="line">	<span class="comment">/*空节点返回*/</span></span><br><span class="line">	<span class="keyword">if</span>(ch==<span class="string">&#x27;#&#x27;</span>)&#123;</span><br><span class="line">		(*root)=<span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/*结点有数据*/</span></span><br><span class="line">	(*root)=(<span class="keyword">struct</span> bTree *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(bTree));</span><br><span class="line">	(*root)-&gt;ele=ch;</span><br><span class="line">	create_tree(&amp;(*root)-&gt;lchild,data,index);</span><br><span class="line">	create_tree(&amp;(*root)-&gt;rchild,data,index);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h1><p>二叉树的遍历主要包括：前序遍历，中序遍历，后序遍历和层次遍历。</p>
+<h2 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h2><p>前序遍历的顺序为:<code>root-&gt;lchild-&gt;rchild	</code>。对于每一个节点，先访问它的根节点，再访问它的左部分，在访问它的右部分数据</p>
+<p>下面是树的先序遍历过程：</p>
+<p>对于根节点A，我们的访问顺序为：先访问A，后访问A的左部分，最后访问A的右部分。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161528733.png" alt="image-20240116152854286"></p>
+<p>首先我们访问A节点，遍历序列:A-&gt;</p>
+<p>之后我们访问A的左部分，即部分2。对于部分2，仍是采用先根节点，后左节点，最后右节点的顺序进行。于是遍历顺序:A-&gt;B-&gt;D-&gt;E</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161533010.png" alt="image-20240116153334178"></p>
+<p>最后我们访问A的右部分，先根后左，最后为右节点.得到遍历顺序：A-&gt;B-&gt;D-&gt;E-&gt;C-&gt;F-&gt;G</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161538337.png" alt="image-20240116153829290"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161539122.png" alt="image-20240116153915848"></p>
+<p>代码部分如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">preoder_traversal</span><span class="params">(<span class="keyword">struct</span> bTree* root)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;&quot;</span>,root-&gt;ele);</span><br><span class="line">		preoder_traversal(root-&gt;lchild);</span><br><span class="line">		preoder_traversal(root-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码中，我们首先判断要访问的节点是否为空，为空则函数返回，不进行节点访问。若不为空，则先打印节点数据，然后递归访问左子树，在递归访问右字数</p>
+<h2 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h2><p>中序遍历和先序遍历原理相似，其遍历顺序为：先访问左子树，后访问根节点，最后访问右子树</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161547391.png" alt="image-20240116154703168"></p>
+<p>中序遍历代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">inoder_traversal</span><span class="params">(<span class="keyword">struct</span> bTree* root)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		</span><br><span class="line">		inoder_traversal(root-&gt;lchild);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;&quot;</span>,root-&gt;ele);</span><br><span class="line">		inoder_traversal(root-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">postoder_traversal</span><span class="params">(<span class="keyword">struct</span> bTree* root)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		</span><br><span class="line">		postoder_traversal(root-&gt;lchild);</span><br><span class="line">		postoder_traversal(root-&gt;rchild);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;&quot;</span>,root-&gt;ele);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h2><p>使用环型队列进行</p>
+<h1 id="二叉树的查找"><a href="#二叉树的查找" class="headerlink" title="二叉树的查找"></a>二叉树的查找</h1>
       
     </div>
     <footer class="article-footer">
@@ -183,6 +229,10 @@
       <ul>
         
           <li>
+            <a href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
+          </li>
+        
+          <li>
             <a href="/2024/01/15/rtmp/">rtmp</a>
           </li>
         
@@ -196,10 +246,6 @@
         
           <li>
             <a href="/2023/12/13/algorithm/kmp/">kmp</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
           </li>
         
       </ul>
