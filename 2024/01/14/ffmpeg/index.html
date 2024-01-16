@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2023/11 | Hexo</title>
+  <title>ffmpeg | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://qianxiaolin.github.io/archives/2023/11/index.html">
+  <meta name="description" content="采集–推流–SRS服务器转发–拉流 音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流 拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV解码+音视频同步–&gt;输出 ffmpeg目录结构 libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffmpeg">
+<meta property="og:url" content="https://qianxiaolin.github.io/2024/01/14/ffmpeg/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="采集–推流–SRS服务器转发–拉流 音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流 拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV解码+音视频同步–&gt;输出 ffmpeg目录结构 libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-14T08:10:46.000Z">
+<meta property="article:modified_time" content="2024-01-14T10:52:50.984Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -71,115 +75,67 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/23/%E4%B8%AD%E6%96%AD/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-11-23T08:35:16.000Z" itemprop="datePublished">Nov 23</time>
+        <section id="main"><article id="post-ffmpeg" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/ffmpeg/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T08:10:46.000Z" itemprop="datePublished">2024-01-14</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/11/23/%E4%B8%AD%E6%96%AD/">中断</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      ffmpeg
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/23/linux/%E9%80%9A%E7%94%B5%E5%8A%A0%E8%BD%BD%E5%88%B0%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-11-23T07:31:47.000Z" itemprop="datePublished">Nov 23</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/11/23/linux/%E9%80%9A%E7%94%B5%E5%8A%A0%E8%BD%BD%E5%88%B0%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8/">通电加载到程序启动</a>
-    </h1>
-  
+        <p>采集–推流–SRS服务器转发–拉流</p>
+<p>音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流<br>视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流</p>
+<p>拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV<br>解码+音视频同步–&gt;输出</p>
+<p>ffmpeg目录结构</p>
+<p>libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和读取音视频帧等功能，包含demuxers和muxer库。<br>libavcodec：用于各种类型声音&#x2F;图像编解码。<br>libavutil：包含一些公共的工具函数。<br>libswscale：用于视频场景比例缩放、色彩映射转换。<br>libpostproc：用于后期效果处理。</p>
+<p>ffmpeg：是一个命令行工具，用来对视频文件转换格式，也支持对电视卡实时编码。<br>ffsever：是一个HTTP多媒体实时广播流服务器，支持时光平移。<br>ffplay：是一个简单的播放器，使用ffmpeg 库解析和解码，通过SDL显示。<br>ffprobe：收集多媒体文件或流的信息，并以人和机器可读的方式输出。</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/20/linux/%E7%BB%88%E7%AB%AF%E6%8E%A7%E5%88%B6/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-11-20T15:27:14.000Z" itemprop="datePublished">Nov 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/11/20/linux/%E7%BB%88%E7%AB%AF%E6%8E%A7%E5%88%B6/">终端控制</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/20/clang/ANSI%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-11-20T15:21:04.000Z" itemprop="datePublished">Nov 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2024/01/14/ffmpeg/" data-id="clrfrundb0001y4us5ngl87v8" data-title="ffmpeg" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/11/20/clang/ANSI%E8%BD%AC%E4%B9%89%E5%BA%8F%E5%88%97/">ANSI转义序列</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/20/git/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-11-20T08:22:50.000Z" itemprop="datePublished">Nov 20</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/11/20/git/">git</a>
-    </h1>
-  
-
-    </header>
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/01/15/rtmp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rtmp
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">二叉树</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

@@ -73,6 +73,109 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/20/git/" class="article-date">
+  <time class="dt-published" datetime="2023-11-20T08:22:50.000Z" itemprop="datePublished">2023-11-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/20/git/">git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="提交三部曲"><a href="#提交三部曲" class="headerlink" title="提交三部曲"></a>提交三部曲</h1><ol>
+<li>创建本地仓库</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>追踪本地文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ```</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">4. 添加远程仓库</span><br><span class="line"></span><br><span class="line">5. 解决分支冲突</span><br><span class="line"></span><br><span class="line">6. 推送代码到远程仓库</span><br><span class="line"></span><br><span class="line"><span class="comment"># 分支操作</span></span><br><span class="line"></span><br><span class="line">如果子分支会继承父分支中的内容，兄弟分支中的内容是独立的</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建分支</span></span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">git branch module_a</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>module_a中的内容和main中的内容是独立的</p>
+<h2 id="创建子分支"><a href="#创建子分支" class="headerlink" title="创建子分支"></a>创建子分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;子分支&gt; &lt;父分支&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout module_a</span><br></pre></td></tr></table></figure>
+
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>现在我们需要将fun1分支合并到父分支上</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面这个命令将某个分支合并到当前分支</p>
+<h1 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h1><p>fun1和fun2两个分支都对merge.txt进行了修改，且内容都不一样</p>
+<p>这个时候执行合并操作，<code>git</code>会对文件进行箭头标记，表示冲突的部分，这个时候需要我们手动修改内容,在将冲突文件添加到跟踪</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add merge.txt</span><br><span class="line">git commit -m <span class="string">&quot;finish merge merge.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/11/20/git/" data-id="clp6n3c2c00008kus0foua8jg" data-title="git" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-internet/http" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/30/internet/http/" class="article-date">
+  <time class="dt-published" datetime="2023-10-30T13:23:39.000Z" itemprop="datePublished">2023-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/30/internet/http/">http</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/10/30/internet/http/" data-id="cloh73qri0000ysus7vbd4qm4" data-title="http" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-algorithm/队列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/10/30/algorithm/%E9%98%9F%E5%88%97/" class="article-date">
@@ -886,120 +989,6 @@
 
 
   
-    <article id="post-linux/限流算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/09/21/linux/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2023-09-21T12:35:01.000Z" itemprop="datePublished">2023-09-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/09/21/linux/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/">限流算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="令牌桶限流"><a href="#令牌桶限流" class="headerlink" title="令牌桶限流"></a>令牌桶限流</h1><p>恒定速率生成令牌，有请求到来时根据是否具有令牌来决定是否接受请求</p>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>限流</p>
-<p>流媒体传输</p>
-<p>api请求</p>
-<p>资源管理</p>
-<h1 id="滑动窗口算法"><a href="#滑动窗口算法" class="headerlink" title="滑动窗口算法"></a>滑动窗口算法</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/09/21/linux/%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95/" data-id="clocxg9yj000ht8usa7k2gmy9" data-title="限流算法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-clang/函数指针" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/09/19/clang/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/" class="article-date">
-  <time class="dt-published" datetime="2023-09-19T08:47:07.000Z" itemprop="datePublished">2023-09-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/09/19/clang/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/">指针</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="指针函数"><a href="#指针函数" class="headerlink" title="指针函数"></a>指针函数</h1><p>指针函数是指返回类型为<strong>函数指针类型</strong></p>
-<p>function函数返回一个返回值为空，参数值为int类型的函数指针。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> (*fun)(<span class="type">int</span>) funtion();</span><br></pre></td></tr></table></figure>
-
-<h1 id="函数指针"><a href="#函数指针" class="headerlink" title="函数指针"></a>函数指针</h1><p>函数指针：指向<strong>函数入口</strong>的指针</p>
-<h2 id="函数指针的定义"><a href="#函数指针的定义" class="headerlink" title="函数指针的定义"></a>函数指针的定义</h2><p>函数返回值   （*point)(参数类型);</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> (*FUNC_POINT)(<span class="type">float</span>);</span><br></pre></td></tr></table></figure>
-
-<p>上面代码声明了一个返回值为int，参数类型为float的函数指针</p>
-<p>typedef与函数指针</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span><span class="params">(*func)</span><span class="params">(<span class="type">int</span>)</span> FUNC;</span><br><span class="line">FUNC f1;<span class="comment">//得到函数指针 int(*f1)(int)</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="函数指针的初始化"><a href="#函数指针的初始化" class="headerlink" title="函数指针的初始化"></a>函数指针的初始化</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d+%d=%d\n&quot;</span>,x,y,x+y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> (*func)(<span class="type">int</span>,<span class="type">int</span>);</span><br><span class="line">	func=add;</span><br><span class="line">	func(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d+%d=%d\n&quot;</span>,x,y,x+y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> (*func)(<span class="type">int</span>,<span class="type">int</span>);</span><br><span class="line">	func=add;</span><br><span class="line">	func(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="函数指针数组"><a href="#函数指针数组" class="headerlink" title="函数指针数组"></a>函数指针数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d+%d=%d\n&quot;</span>,x,y,x+y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">sub</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> y)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d-%d=%d\n&quot;</span>,x,y,x-y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> (*func[<span class="number">2</span>])(<span class="type">int</span>,<span class="type">int</span>)=&#123;add,sub&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;i++)&#123;</span><br><span class="line">		func[i](<span class="number">5</span>,<span class="number">4</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>数组func中存放着函数指针变量add和sub</p>
-<h3 id="函数指针作为函数参数"><a href="#函数指针作为函数参数" class="headerlink" title="函数指针作为函数参数"></a>函数指针作为函数参数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">success</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;sucess\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">error</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;error\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">function</span><span class="params">(<span class="type">void</span> (*func)(<span class="type">void</span>))</span>&#123;</span><br><span class="line">	func();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	function(success);</span><br><span class="line">	function(error);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>函数指针可以作为回调函数使用,让函数调用不同的函数</p>
-<h2 id="结构体中使用函数指针"><a href="#结构体中使用函数指针" class="headerlink" title="结构体中使用函数指针"></a>结构体中使用函数指针</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> num 5</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Grade</span>&#123;</span></span><br><span class="line">    <span class="type">float</span> (*get_avg_score)(<span class="type">int</span> []);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">float</span> <span class="title function_">get_avg_score</span><span class="params">(<span class="type">int</span> arr[])</span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">float</span> avg=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">        sum+=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    avg=sum*<span class="number">1.0</span>/num;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%f\n&quot;</span>,avg);</span><br><span class="line">    <span class="keyword">return</span> avg;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Grade</span> <span class="title">MyGrade</span>;</span></span><br><span class="line">    <span class="type">float</span> avg;</span><br><span class="line">    <span class="type">int</span> source[num];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num;i++)&#123;</span><br><span class="line">        source[i]=i*<span class="number">10</span>;   </span><br><span class="line">    &#125;</span><br><span class="line">    MyGrade.get_avg_score=get_avg_score;</span><br><span class="line">    avg=MyGrade.get_avg_score(source);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>结构体中并不能直接定义函数，但可以定义函数指针，在结构体初始化时可以把功能函数的地址赋给函数指针，达到结构体成员为函数的功能。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/09/19/clang/%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/" data-id="clocxg9yk000kt8us3j4jdcm9" data-title="指针" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1018,7 +1007,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" rel="tag">rtmp握手协议</a></li></ul>
     </div>
   </div>
 
@@ -1028,7 +1017,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/algorithm/" style="font-size: 16.67px;">algorithm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a>
+      <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/algorithm/" style="font-size: 16.67px;">algorithm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
@@ -1050,6 +1039,14 @@
       <ul>
         
           <li>
+            <a href="/2024/01/15/rtmp/">rtmp</a>
+          </li>
+        
+          <li>
+            <a href="/2024/01/14/ffmpeg/">ffmpeg</a>
+          </li>
+        
+          <li>
             <a href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
           </li>
         
@@ -1059,14 +1056,6 @@
         
           <li>
             <a href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/01/clang/gdb/">gdb</a>
-          </li>
-        
-          <li>
-            <a href="/2023/11/23/%E4%B8%AD%E6%96%AD/">中断</a>
           </li>
         
       </ul>
