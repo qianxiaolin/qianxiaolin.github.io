@@ -6,17 +6,32 @@
   
   <title>ffmpeg | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="采集–推流–SRS服务器转发–拉流 音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流 拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV解码+音视频同步–&gt;输出 ffmpeg目录结构 libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和">
+  <meta name="description" content="采集–推流–SRS服务器转发–拉流 音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流 拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV解码+音视频同步–&gt;输出 封装： MPEG-4标准是一套音视频信息的压缩编码标准， H264是视频压缩算法 MP4是音视频格式，不一定遵守MPEG-4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ffmpeg">
 <meta property="og:url" content="https://qianxiaolin.github.io/2024/01/14/ffmpeg/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="采集–推流–SRS服务器转发–拉流 音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流 拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV解码+音视频同步–&gt;输出 ffmpeg目录结构 libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和">
+<meta property="og:description" content="采集–推流–SRS服务器转发–拉流 音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流 拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV解码+音视频同步–&gt;输出 封装： MPEG-4标准是一套音视频信息的压缩编码标准， H264是视频压缩算法 MP4是音视频格式，不一定遵守MPEG-4">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401311027759.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401311524616.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402010933077.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402010938521.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011012491.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011012143.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011013696.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011014894.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011016716.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011019591.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011020144.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011134381.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011207489.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011207954.png">
 <meta property="article:published_time" content="2024-01-14T08:10:46.000Z">
-<meta property="article:modified_time" content="2024-01-14T10:52:50.984Z">
+<meta property="article:modified_time" content="2024-02-01T13:12:06.914Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401311027759.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -100,14 +115,250 @@
         <p>采集–推流–SRS服务器转发–拉流</p>
 <p>音频:麦克风采集–音效变音–编码(压缩数据)解码–RTMP推流<br>视频摄像头采集(RGB&#x2F;YUV)–图像处理–H264编码–RTMP推流</p>
 <p>拉流:WebRtc&#x2F;HL&#x2F; HTTP-FLV<br>解码+音视频同步–&gt;输出</p>
+<p>封装：</p>
+<p>MPEG-4标准是一套音视频信息的压缩编码标准，</p>
+<p>H264是视频压缩算法</p>
+<p>MP4是音视频格式，不一定遵守MPEG-4</p>
+<p>AVI格式：压缩标准可任意选择</p>
+<p>FLV：视频流格式，常用于直播</p>
+<p>ts：流媒体格式，电视直播</p>
+<p>编码</p>
+<p>视频编码</p>
+<table>
+<thead>
+<tr>
+<th>视频编码格式</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H264</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>wmv</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Xvid</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mjpeg</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>音频编码</p>
+<table>
+<thead>
+<tr>
+<th>音频格式</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ACC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>MP3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ape</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>flac</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>解码：</p>
+<p>视频解码为YUV–&gt;转为RGB显示(GPU)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401311027759.png" alt="image-20240131102749379"></p>
+<p>YUV:Y表示明亮度&#x2F;灰度值，U和V表示的是色度</p>
+<p>重采样：</p>
+<p>像素格式：</p>
+<p>PCM音频参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>采样率simple_rate(每秒采集频率)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>通道channels（左右通道)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>样本大小sample_size</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>样本类型</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>H.264&#x2F;AVC视频编码标准</p>
 <p>ffmpeg目录结构</p>
 <p>libavformat：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构和读取音视频帧等功能，包含demuxers和muxer库。<br>libavcodec：用于各种类型声音&#x2F;图像编解码。<br>libavutil：包含一些公共的工具函数。<br>libswscale：用于视频场景比例缩放、色彩映射转换。<br>libpostproc：用于后期效果处理。</p>
 <p>ffmpeg：是一个命令行工具，用来对视频文件转换格式，也支持对电视卡实时编码。<br>ffsever：是一个HTTP多媒体实时广播流服务器，支持时光平移。<br>ffplay：是一个简单的播放器，使用ffmpeg 库解析和解码，通过SDL显示。<br>ffprobe：收集多媒体文件或流的信息，并以人和机器可读的方式输出。</p>
+<h1 id="解封装"><a href="#解封装" class="headerlink" title="解封装"></a>解封装</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">av_register_all();<span class="comment">//注册解封装格式</span></span><br><span class="line">avformat_network_init();<span class="comment">//RTMP,HTTP</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">avformat_open_input</span><span class="params">(AVFormatContext **ps, <span class="type">const</span> <span class="type">char</span> *url, AVInputFormat *fmt, AVDictionary **options)</span>;<span class="comment">//打开文件/网络</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AVFormatContext **ps</td>
+<td>上下文</td>
+<td></td>
+</tr>
+<tr>
+<td>const char *url</td>
+<td>本地文件地址&#x2F;远程URL地址</td>
+<td></td>
+</tr>
+<tr>
+<td>AVInputFormat *fmt</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>AVDictionary **options</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>AVFormatContext</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avformat_alloc_context();<span class="comment">//分配封装器的上下文</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">AVFormatContext</span><br><span class="line">&#123;</span><br><span class="line">    AVIOContext *pb;</span><br><span class="line">    <span class="type">char</span> *url;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> nb_streams;</span><br><span class="line">    AVStream **streams;</span><br><span class="line">    <span class="type">int64_t</span> duration;<span class="comment">//AV_TIME_BASE</span></span><br><span class="line">    <span class="type">int64_t</span> bit_rate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">avformat_close_input</span><span class="params">(AVFormatContext **s)</span>;<span class="comment">//关闭上下文</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>打印视频信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Print detailed information about the input or output format, such as</span></span><br><span class="line"><span class="comment"> * duration, bitrate, streams, container, programs, metadata, side data,</span></span><br><span class="line"><span class="comment"> * codec and time base.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param ic        the context to analyze</span></span><br><span class="line"><span class="comment"> * @param index     index of the stream to dump information about</span></span><br><span class="line"><span class="comment"> * @param url       the URL to print, such as source or destination file</span></span><br><span class="line"><span class="comment"> * @param is_output Select whether the specified context is an input(0) or output(1)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">av_dump_format</span><span class="params">(AVFormatContext *ic,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> index,</span></span><br><span class="line"><span class="params">                    <span class="type">const</span> <span class="type">char</span> *url,</span></span><br><span class="line"><span class="params">                    <span class="type">int</span> is_output)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>AVSteram相关</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">avformat_find_stream_info();<span class="comment">//查找文件格式和索引</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">av_find_best_stream</span>();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">AVStream&#123;</span><br><span class="line">    AVCodecContext *codec;</span><br><span class="line">    AVRational time_base;</span><br><span class="line">    <span class="type">int64_t</span> duration;</span><br><span class="line">    <span class="type">int64_t</span> nb_frames;</span><br><span class="line">    AVRational avg_frame_rate;</span><br><span class="line">    AVCodecParametes *codecpar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">AVCodecParameters</span><br><span class="line">&#123;</span><br><span class="line">	 <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * General type of the encoded data.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">AVMediaType</span> <span class="title">codec_type</span>;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Specific type of the encoded data (the codec used).</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">AVCodecID</span>   <span class="title">codec_id</span>;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Additional information about the codec (corresponds to the AVI FOURCC).</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">uint32_t</span>         codec_tag;</span><br><span class="line">	 <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * - video: the pixel format, the value corresponds to enum AVPixelFormat.</span></span><br><span class="line"><span class="comment">     * - audio: the sample format, the value corresponds to enum AVSampleFormat.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int</span> format;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Video only. The dimensions of the video frame in pixels.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int</span> width;</span><br><span class="line">    <span class="type">int</span> height;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Audio only. The channel layout bitmask. May be 0 if the channel layout is</span></span><br><span class="line"><span class="comment">     * unknown or unspecified, otherwise the number of bits set must be equal to</span></span><br><span class="line"><span class="comment">     * the channels field.</span></span><br><span class="line"><span class="comment">     * @deprecated use ch_layout</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    attribute_deprecated</span><br><span class="line">    <span class="type">uint64_t</span> channel_layout;</span><br><span class="line">    <span class="type">int</span>      channels;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Audio only. The number of audio samples per second.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int</span>      sample_rate;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Audio only. Audio frame size, if known. Required by some formats to be static.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int</span>      frame_size;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">AVMediaType</span> &#123;</span></span><br><span class="line">    AVMEDIA_TYPE_UNKNOWN = <span class="number">-1</span>,  <span class="comment">///&lt; Usually treated as AVMEDIA_TYPE_DATA</span></span><br><span class="line">    AVMEDIA_TYPE_VIDEO,</span><br><span class="line">    AVMEDIA_TYPE_AUDIO,</span><br><span class="line">    AVMEDIA_TYPE_DATA,          <span class="comment">///&lt; Opaque data information usually continuous</span></span><br><span class="line">    AVMEDIA_TYPE_SUBTITLE,</span><br><span class="line">    AVMEDIA_TYPE_ATTACHMENT,    <span class="comment">///&lt; Opaque data information usually sparse</span></span><br><span class="line">    AVMEDIA_TYPE_NB</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//音频样本格式</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">AVSampleFormat</span> &#123;</span></span><br><span class="line">    AV_SAMPLE_FMT_NONE = <span class="number">-1</span>,</span><br><span class="line">    AV_SAMPLE_FMT_U8,          <span class="comment">///&lt; unsigned 8 bits</span></span><br><span class="line">    AV_SAMPLE_FMT_S16,         <span class="comment">///&lt; signed 16 bits</span></span><br><span class="line">    AV_SAMPLE_FMT_S32,         <span class="comment">///&lt; signed 32 bits</span></span><br><span class="line">    AV_SAMPLE_FMT_FLT,         <span class="comment">///&lt; float</span></span><br><span class="line">    AV_SAMPLE_FMT_DBL,         <span class="comment">///&lt; double</span></span><br><span class="line"></span><br><span class="line">    AV_SAMPLE_FMT_U8P,         <span class="comment">///&lt; unsigned 8 bits, planar</span></span><br><span class="line">    AV_SAMPLE_FMT_S16P,        <span class="comment">///&lt; signed 16 bits, planar</span></span><br><span class="line">    AV_SAMPLE_FMT_S32P,        <span class="comment">///&lt; signed 32 bits, planar</span></span><br><span class="line">    AV_SAMPLE_FMT_FLTP,        <span class="comment">///&lt; float, planar</span></span><br><span class="line">    AV_SAMPLE_FMT_DBLP,        <span class="comment">///&lt; double, planar</span></span><br><span class="line">    AV_SAMPLE_FMT_S64,         <span class="comment">///&lt; signed 64 bits</span></span><br><span class="line">    AV_SAMPLE_FMT_S64P,        <span class="comment">///&lt; signed 64 bits, planar</span></span><br><span class="line"></span><br><span class="line">    AV_SAMPLE_FMT_NB           <span class="comment">///&lt; Number of sample formats. DO NOT USE if linking dynamically</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">AVCodecID</span> &#123;</span></span><br><span class="line">    AV_CODEC_ID_NONE,</span><br><span class="line">    AV_CODEC_ID_MJPEG,</span><br><span class="line">    AV_CODEC_ID_H264,</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>读取数据</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">av_read_frame</span><span class="params">(AVFormatContext *s, AVPacket *pkt)</span>;<span class="comment">//读取packet</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AVPacket</span> &#123;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A reference to the reference-counted buffer where the packet data is stored.</span></span><br><span class="line"><span class="comment">     * May be NULL, then the packet data is not reference-counted.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    AVBufferRef *buf;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Presentation timestamp in AVStream-&gt;time_base units; the time at which</span></span><br><span class="line"><span class="comment">     * the decompressed packet will be presented to the user.</span></span><br><span class="line"><span class="comment">     * Can be AV_NOPTS_VALUE if it is not stored in the file.</span></span><br><span class="line"><span class="comment">     * pts MUST be larger or equal to dts as presentation cannot happen before</span></span><br><span class="line"><span class="comment">     * decompression, unless one wants to view hex dumps. Some formats misuse</span></span><br><span class="line"><span class="comment">     * the terms dts and pts/cts to mean something different. Such timestamps</span></span><br><span class="line"><span class="comment">     * must be converted to true pts/dts before they are stored in AVPacket.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int64_t</span> pts;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Decompression timestamp in AVStream-&gt;time_base units; the time at which</span></span><br><span class="line"><span class="comment">     * the packet is decompressed.</span></span><br><span class="line"><span class="comment">     * Can be AV_NOPTS_VALUE if it is not stored in the file.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int64_t</span> dts;</span><br><span class="line">    <span class="type">uint8_t</span> *data;</span><br><span class="line">    <span class="type">int</span>   size;</span><br><span class="line">    <span class="type">int</span>   stream_index;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A combination of AV_PKT_FLAG values</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int</span>   flags;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Additional packet data that can be provided by the container.</span></span><br><span class="line"><span class="comment">     * Packet can contain several types of side information.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    AVPacketSideData *side_data;</span><br><span class="line">    <span class="type">int</span> side_data_elems;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Duration of this packet in AVStream-&gt;time_base units, 0 if unknown.</span></span><br><span class="line"><span class="comment">     * Equals next_pts - this_pts in presentation order.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int64_t</span> duration;</span><br><span class="line"></span><br><span class="line">    <span class="type">int64_t</span> pos;                            <span class="comment">///&lt; byte position in stream, -1 if unknown</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * for some private data of the user</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">void</span> *opaque;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * AVBufferRef for free use by the API user. FFmpeg will never check the</span></span><br><span class="line"><span class="comment">     * contents of the buffer ref. FFmpeg calls av_buffer_unref() on it when</span></span><br><span class="line"><span class="comment">     * the packet is unreferenced. av_packet_copy_props() calls create a new</span></span><br><span class="line"><span class="comment">     * reference with av_buffer_ref() for the target packet&#x27;s opaque_ref field.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * This is unrelated to the opaque field, although it serves a similar</span></span><br><span class="line"><span class="comment">     * purpose.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    AVBufferRef *opaque_ref;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Time base of the packet&#x27;s timestamps.</span></span><br><span class="line"><span class="comment">     * In the future, this field may be set on packets output by encoders or</span></span><br><span class="line"><span class="comment">     * demuxers, but its value will be by default ignored on input to decoders</span></span><br><span class="line"><span class="comment">     * or muxers.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    AVRational time_base;</span><br><span class="line">&#125; AVPacket;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="AVPacket"><a href="#AVPacket" class="headerlink" title="AVPacket"></a>AVPacket</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line">av_packet_alloc(<span class="type">void</span>);<span class="comment">//自动分配</span></span><br><span class="line">av_init_packet(AVPacket *pkt);</span><br><span class="line">av_packet_form_data(AVPacket *pkt,uint_8 *data,<span class="type">int</span> size);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复制</span></span><br><span class="line">AVPacket *<span class="title function_">av_packet_clone</span><span class="params">(<span class="type">const</span> AVPacket *src)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Setup a new reference to the data described by a given packet</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * If src is reference-counted, setup dst as a new reference to the</span></span><br><span class="line"><span class="comment"> * buffer in src. Otherwise allocate a new buffer in dst and copy the</span></span><br><span class="line"><span class="comment"> * data from src into it.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * All the other fields are copied from src.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @see av_packet_unref</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param dst Destination packet. Will be completely overwritten.</span></span><br><span class="line"><span class="comment"> * @param src Source packet</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return 0 on success, a negative AVERROR on error. On error, dst</span></span><br><span class="line"><span class="comment"> *         will be blank (as if returned by av_packet_alloc()).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">av_packet_ref</span><span class="params">(AVPacket *dst, <span class="type">const</span> AVPacket *src)</span>;<span class="comment">//增加引用</span></span><br></pre></td></tr></table></figure>
+
+<p>减少引用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Wipe the packet.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unreference the buffer referenced by the packet and reset the</span></span><br><span class="line"><span class="comment"> * remaining packet fields to their default values.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param pkt The packet to be unreferenced.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">av_packet_unref</span><span class="params">(AVPacket *pkt)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>清空对象</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Free the packet, if the packet is reference counted, it will be</span></span><br><span class="line"><span class="comment"> * unreferenced first.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param pkt packet to be freed. The pointer will be set to NULL.</span></span><br><span class="line"><span class="comment"> * @note passing NULL is a no-op.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">av_packet_free</span><span class="params">(AVPacket **pkt)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>seek</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Seek to the keyframe at timestamp.</span></span><br><span class="line"><span class="comment"> * &#x27;timestamp&#x27; in &#x27;stream_index&#x27;.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param s            media file handle</span></span><br><span class="line"><span class="comment"> * @param stream_index If stream_index is (-1), a default stream is selected,</span></span><br><span class="line"><span class="comment"> *                     and timestamp is automatically converted from</span></span><br><span class="line"><span class="comment"> *                     AV_TIME_BASE units to the stream specific time_base.</span></span><br><span class="line"><span class="comment"> * @param timestamp    Timestamp in AVStream.time_base units or, if no stream</span></span><br><span class="line"><span class="comment"> *                     is specified, in AV_TIME_BASE units.</span></span><br><span class="line"><span class="comment"> * @param flags        flags which select direction and seeking mode</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @return &gt;= 0 on success</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">av_seek_frame</span><span class="params">(AVFormatContext *s, <span class="type">int</span> stream_index, <span class="type">int64_t</span> timestamp,<span class="type">int</span> flags)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401311524616.png" alt="image-20240131152428573"></p>
+<h1 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h1><p>查找解码器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402010933077.png" alt="image-20240201093344412"></p>
+<p>解码上下文</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402010938521.png" alt="image-20240201093831142"></p>
+<h2 id="AVFrame"><a href="#AVFrame" class="headerlink" title="AVFrame"></a>AVFrame</h2><p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011012491.png" alt="image-20240201101201075"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011012143.png" alt="image-20240201101213861"></p>
+<p>AVFrame的属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011013696.png" alt="image-20240201101358374"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011014894.png" alt="image-20240201101422500"></p>
+<p>linesize二维数组</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011016716.png" alt="image-20240201101621536"></p>
+<h1 id="收发包"><a href="#收发包" class="headerlink" title="收发包"></a>收发包</h1><p>avcodec_send_packet()</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011019591.png" alt="image-20240201101915154"></p>
+<p>放入队列</p>
+<p>avcodec_receive_packet()</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011020144.png" alt="image-20240201102039718"></p>
+<p>从frame队列中取数据</p>
+<p>像素转化</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Allocate and return an SwsContext. You need it to perform</span></span><br><span class="line"><span class="comment"> * scaling/conversion operations using sws_scale().</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param srcW the width of the source image</span></span><br><span class="line"><span class="comment"> * @param srcH the height of the source image</span></span><br><span class="line"><span class="comment"> * @param srcFormat the source image format</span></span><br><span class="line"><span class="comment"> * @param dstW the width of the destination image</span></span><br><span class="line"><span class="comment"> * @param dstH the height of the destination image</span></span><br><span class="line"><span class="comment"> * @param dstFormat the destination image format</span></span><br><span class="line"><span class="comment"> * @param flags specify which algorithm and options to use for rescaling</span></span><br><span class="line"><span class="comment"> * @param param extra parameters to tune the used scaler</span></span><br><span class="line"><span class="comment"> *              For SWS_BICUBIC param[0] and [1] tune the shape of the basis</span></span><br><span class="line"><span class="comment"> *              function, param[0] tunes f(1) and param[1] f´(1)</span></span><br><span class="line"><span class="comment"> *              For SWS_GAUSS param[0] tunes the exponent and thus cutoff</span></span><br><span class="line"><span class="comment"> *              frequency</span></span><br><span class="line"><span class="comment"> *              For SWS_LANCZOS param[0] tunes the width of the window function</span></span><br><span class="line"><span class="comment"> * @return a pointer to an allocated context, or NULL in case of error</span></span><br><span class="line"><span class="comment"> * @note this function is to be removed after a saner alternative is</span></span><br><span class="line"><span class="comment"> *       written</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">struct</span> SwsContext *<span class="title function_">sws_getContext</span><span class="params">(<span class="type">int</span> srcW, <span class="type">int</span> srcH, <span class="keyword">enum</span> AVPixelFormat srcFormat,</span></span><br><span class="line"><span class="params">                                  <span class="type">int</span> dstW, <span class="type">int</span> dstH, <span class="keyword">enum</span> AVPixelFormat dstFormat,</span></span><br><span class="line"><span class="params">                                  <span class="type">int</span> flags, SwsFilter *srcFilter,</span></span><br><span class="line"><span class="params">                                  SwsFilter *dstFilter, <span class="type">const</span> <span class="type">double</span> *param)</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>flag参数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011134381.png" alt="image-20240201113426008"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Check if context can be reused, otherwise reallocate a new one.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * If context is NULL, just calls sws_getContext() to get a new</span></span><br><span class="line"><span class="comment"> * context. Otherwise, checks if the parameters are the ones already</span></span><br><span class="line"><span class="comment"> * saved in context. If that is the case, returns the current</span></span><br><span class="line"><span class="comment"> * context. Otherwise, frees context and gets a new context with</span></span><br><span class="line"><span class="comment"> * the new parameters.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Be warned that srcFilter and dstFilter are not checked, they</span></span><br><span class="line"><span class="comment"> * are assumed to remain the same.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">struct</span> SwsContext *<span class="title function_">sws_getCachedContext</span><span class="params">(<span class="keyword">struct</span> SwsContext *context,</span></span><br><span class="line"><span class="params">                                        <span class="type">int</span> srcW, <span class="type">int</span> srcH, <span class="keyword">enum</span> AVPixelFormat srcFormat,</span></span><br><span class="line"><span class="params">                                        <span class="type">int</span> dstW, <span class="type">int</span> dstH, <span class="keyword">enum</span> AVPixelFormat dstFormat,</span></span><br><span class="line"><span class="params">                                        <span class="type">int</span> flags, SwsFilter *srcFilter,</span></span><br><span class="line"><span class="params">                                        SwsFilter *dstFilter, <span class="type">const</span> <span class="type">double</span> *param)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> * Scale the image slice in srcSlice and put the resulting scaled</span></span><br><span class="line"><span class="comment"> * slice in the image in dst. A slice is a sequence of consecutive</span></span><br><span class="line"><span class="comment"> * rows in an image.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment"> * Slices have to be provided in sequential order, either in</span></span><br><span class="line"><span class="comment"> * top-bottom or bottom-top order. If slices are provided in</span></span><br><span class="line"><span class="comment"> * non-sequential order the behavior of the function is undefined.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment"> * @param c         the scaling context previously created with</span></span><br><span class="line"><span class="comment"> * sws_getContext()</span></span><br><span class="line"><span class="comment"> * @param srcSlice  the array containing the pointers to the planes of</span></span><br><span class="line"><span class="comment"> * the source slice</span></span><br><span class="line"><span class="comment"> * @param srcStride the array containing the strides for each plane of</span></span><br><span class="line"><span class="comment"> * the source image</span></span><br><span class="line"><span class="comment"> * @param srcSliceY the position in the source image of the slice to</span></span><br><span class="line"><span class="comment"> * process, that is the number (counted starting from</span></span><br><span class="line"><span class="comment"> * zero) in the image of the first row of the slice</span></span><br><span class="line"><span class="comment"> * @param srcSliceH the height of the source slice, that is the number</span></span><br><span class="line"><span class="comment"> * of rows in the slice</span></span><br><span class="line"><span class="comment"> * @param dst       the array containing the pointers to the planes of</span></span><br><span class="line"><span class="comment"> * the destination image</span></span><br><span class="line"><span class="comment"> * @param dstStride the array containing the strides for each plane of</span></span><br><span class="line"><span class="comment"> * the destination image</span></span><br><span class="line"><span class="comment"> * @return          the height of the output slice</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="function"><span class="type">int</span> <span class="title">sws_scale</span><span class="params">(<span class="keyword">struct</span> SwsContext *c, <span class="type">const</span> <span class="type">uint8_t</span> *<span class="type">const</span> srcSlice[],</span></span></span><br><span class="line"><span class="params"><span class="function">             <span class="type">const</span> <span class="type">int</span> srcStride[], <span class="type">int</span> srcSliceY, <span class="type">int</span> srcSliceH,</span></span></span><br><span class="line"><span class="params"><span class="function">             <span class="type">uint8_t</span> *<span class="type">const</span> dst[], <span class="type">const</span> <span class="type">int</span> dstStride[])</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="音频重采样"><a href="#音频重采样" class="headerlink" title="音频重采样"></a>音频重采样</h1><p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011207489.png" alt="image-20240201120705012"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402011207954.png" alt="image-20240201120733629"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Allocate SwrContext if needed and set/reset common parameters.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * This function does not require s to be allocated with swr_alloc(). On the</span></span><br><span class="line"><span class="comment"> * other hand, swr_alloc() can use swr_alloc_set_opts() to set the parameters</span></span><br><span class="line"><span class="comment"> * on the allocated context.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @param s               existing Swr context if available, or NULL if not</span></span><br><span class="line"><span class="comment"> * @param out_ch_layout   output channel layout (AV_CH_LAYOUT_*)</span></span><br><span class="line"><span class="comment"> * @param out_sample_fmt  output sample format (AV_SAMPLE_FMT_*).</span></span><br><span class="line"><span class="comment"> * @param out_sample_rate output sample rate (frequency in Hz)</span></span><br><span class="line"><span class="comment"> * @param in_ch_layout    input channel layout (AV_CH_LAYOUT_*)</span></span><br><span class="line"><span class="comment"> * @param in_sample_fmt   input sample format (AV_SAMPLE_FMT_*).</span></span><br><span class="line"><span class="comment"> * @param in_sample_rate  input sample rate (frequency in Hz)</span></span><br><span class="line"><span class="comment"> * @param log_offset      logging level offset</span></span><br><span class="line"><span class="comment"> * @param log_ctx         parent logging context, can be NULL</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * @see swr_init(), swr_free()</span></span><br><span class="line"><span class="comment"> * @return NULL on error, allocated context otherwise</span></span><br><span class="line"><span class="comment"> * @deprecated use @ref swr_alloc_set_opts2()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">attribute_deprecated</span><br><span class="line"><span class="keyword">struct</span> SwrContext *<span class="title function_">swr_alloc_set_opts</span><span class="params">(<span class="keyword">struct</span> SwrContext *s,</span></span><br><span class="line"><span class="params">                                      <span class="type">int64_t</span> out_ch_layout, <span class="keyword">enum</span> AVSampleFormat out_sample_fmt, <span class="type">int</span> out_sample_rate,</span></span><br><span class="line"><span class="params">                                      <span class="type">int64_t</span>  in_ch_layout, <span class="keyword">enum</span> AVSampleFormat  in_sample_fmt, <span class="type">int</span>  in_sample_rate,</span></span><br><span class="line"><span class="params">                                      <span class="type">int</span> log_offset, <span class="type">void</span> *log_ctx)</span>;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2024/01/14/ffmpeg/" data-id="clrfry44m0000m8ushpcxee4r" data-title="ffmpeg" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2024/01/14/ffmpeg/" data-id="clsbs5ygj000244us3iip362a" data-title="ffmpeg" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
