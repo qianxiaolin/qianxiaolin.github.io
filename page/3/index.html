@@ -73,6 +73,243 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux/signal" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/09/23/linux/signal/" class="article-date">
+  <time class="dt-published" datetime="2023-09-23T07:06:51.000Z" itemprop="datePublished">2023-09-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/09/23/linux/signal/">signal</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h1><p>信号的位置：<code>/usr/include/signal.h</code></p>
+<p>信号的分类</p>
+<ul>
+<li>标准信号&#x2F;不可靠信号：信号标识符1-32,不处于信号队列中，只能接收一次</li>
+<li>实时信号&#x2F;可靠信号：信号标识符32-64,同一信号可以发送多次，被多次接收，存储在sigqueue中</li>
+</ul>
+<p>信号的特点</p>
+<ul>
+<li><p>不可预测&#x2F;随机性</p>
+</li>
+<li><p>传送数据简单，信号描述符</p>
+</li>
+</ul>
+<p>信号的状态</p>
+<ul>
+<li><p>generation</p>
+</li>
+<li><p>delivery</p>
+</li>
+</ul>
+<p>信号的产生</p>
+<ul>
+<li>键盘快捷键</li>
+<li>系统调用函数</li>
+<li>内核产生：硬件异常，被除数为0<br>信号可以由线程产生，也可以由内核产生，但内核产生的终止信号通常是致命的</li>
+</ul>
+<p>信号的响应</p>
+<ul>
+<li><p>默认:SIG_DEF通常是终止</p>
+</li>
+<li><p>忽略:SIG_IGN</p>
+</li>
+<li><p>用户自定义</p>
+</li>
+</ul>
+<p>&#x3D;&#x3D;SIGKILL和SIGSTOP的默认行为不能修改，不能被忽略&#x3D;&#x3D;</p>
+<p>内核在信号中扮演的角色</p>
+<p>当操作系统从内核态切换为用户态时，会检测&#x3D;&#x3D;pending&amp;~blocked&#x3D;&#x3D;位图，如果位图置1则执行信号处理程序</p>
+<p>多线程程序中的信号处理函数</p>
+<p>对于多线程程序，kill函数会把信号传给每一个线程，当只有一个线程会执行信号处理函数</p>
+<p>信号描述符</p>
+<p>进程</p>
+<ol>
+<li>记录信号是否被接受pending</li>
+<li>记录屏蔽什么信号block</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*进程描述符*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Signal handlers: */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">signal_struct</span>		*<span class="title">signal</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sighand_struct</span> __<span class="title">rcu</span>		*<span class="title">sighand</span>;</span> <span class="comment">/*信号处理函数*/</span></span><br><span class="line">	<span class="type">sigset_t</span>			blocked;	<span class="comment">/*64位屏蔽信号字*/</span></span><br><span class="line">	<span class="type">sigset_t</span>			real_blocked;</span><br><span class="line">	<span class="comment">/* Restored if set_restore_sigmask() was used: */</span></span><br><span class="line">	<span class="type">sigset_t</span>			saved_sigmask;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span>		<span class="title">pending</span>;</span>	<span class="comment">/*未决信号集合*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span>			sas_ss_sp;  <span class="comment">/*信号处理函数的栈地址*/</span></span><br><span class="line">	<span class="type">size_t</span>				sas_ss_size;    <span class="comment">/*信号处理函数的栈空间大小*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span>			sas_ss_flags;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>sighand信号处理</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*信号处理函数*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> &#123;</span></span><br><span class="line">	<span class="type">__sighandler_t</span>	sa_handler;<span class="comment">/*处理函数*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span>	sa_flags; <span class="comment">/*决定函数如何执行*/</span></span><br><span class="line">	<span class="type">sigset_t</span>	sa_mask;	<span class="comment">/* mask last for extensibility */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">k_sigaction</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">sa</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*信号处理*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sighand_struct</span> &#123;</span></span><br><span class="line">	<span class="type">spinlock_t</span>		siglock;<span class="comment">//旋转锁，保护hander</span></span><br><span class="line">	<span class="type">refcount_t</span>		count;  <span class="comment">//共享此结构体的线程数</span></span><br><span class="line">	<span class="type">wait_queue_head_t</span>	signalfd_wqh;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">k_sigaction</span>	<span class="title">action</span>[64];</span><span class="comment">//每个信号对应的处理函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>进程<code>task_struct</code>包含成员<code>sighand_struct</code>,成员sighangd_struct包含一个64位的数组</p>
+<p>其中k_sigaction是仅内核可见的部分</p>
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230924133956541.png" alt="image-20230924133956541"></p>
+<p>未决信号集</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*sigset_t:64位的位图*/</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span> sig[<span class="number">2</span>];</span><br><span class="line">&#125; <span class="type">sigset_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//未决信号位图</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span></span><br><span class="line">	<span class="type">sigset_t</span> signal;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigqueue</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span></span><br><span class="line">	<span class="type">int</span> flags;</span><br><span class="line">	<span class="type">kernel_siginfo_t</span> info;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">ucounts</span> *<span class="title">ucounts</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>信号屏蔽字blocked和未决信号集pending都是sig_set(64位的位图)，使用unsigned int[2]表示</p>
+<p>可靠信号多次发送后，会存储在未决信号链sigqueue中，双向链表节点存放着64位的信号位图</p>
+<p>共享未决信号集和私有未决信号集</p>
+<p>信号结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">signal_struct</span> &#123;</span></span><br><span class="line"></span><br><span class="line">	<span class="type">refcount_t</span>		sigcnt;</span><br><span class="line">	<span class="type">atomic_t</span>		live;</span><br><span class="line">	<span class="type">int</span>			nr_threads;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span>	<span class="title">thread_head</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="type">wait_queue_head_t</span>	wait_chldexit;	<span class="comment">/* for wait4() */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* current thread group signal load-balancing target: */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span>	*<span class="title">curr_target</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* shared signal handling: */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span>	<span class="title">shared_pending</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* For collecting multiprocess signals during fork */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hlist_head</span>	<span class="title">multiprocess</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>signal_struct被同一线程组所共享</p>
+<h1 id="信号相关调用"><a href="#信号相关调用" class="headerlink" title="信号相关调用"></a>信号相关调用</h1><p>用户级别的系统调用</p>
+<h2 id="Kill"><a href="#Kill" class="headerlink" title="Kill"></a>Kill</h2><p><code>kill</code>:向进程发送信号</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">kill</span><span class="params">(<span class="type">pid_t</span> pid, <span class="type">int</span> sig)</span>;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>pid</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pid&gt;0</td>
+<td>sent to the process with the ID specified by pid.</td>
+<td>给指定pid的线程发送信号</td>
+</tr>
+<tr>
+<td>pid&#x3D;0</td>
+<td>sent to every process in the process group of the calling process</td>
+<td>给当前进程所在进程组的其他进程发送信号</td>
+</tr>
+<tr>
+<td>pid&#x3D;-1</td>
+<td>sent to every process for which the calling process has permission to send signals, except for process 1</td>
+<td>给允许接受当前进程发送的信号的进程发送信号，init进程除外</td>
+</tr>
+<tr>
+<td>pid&lt;-1</td>
+<td>sent to every process in the process group whose ID is -pid.</td>
+<td>给进程号为-pid的进程发送信号</td>
+</tr>
+</tbody></table>
+<p>返回值：成功返回0，失败返回-1</p>
+<p>error</p>
+<table>
+<thead>
+<tr>
+<th>error</th>
+<th>explain</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EINVAL</td>
+<td>无效信号值(invalid)</td>
+</tr>
+<tr>
+<td>EPERM</td>
+<td>无权限发送(permission)</td>
+</tr>
+<tr>
+<td>ESRCH</td>
+<td>目标进程不存在（search)</td>
+</tr>
+</tbody></table>
+<h2 id="signal"><a href="#signal" class="headerlink" title="signal"></a>signal</h2><p><code>signal</code>：设置信号的处理程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">void</span> <span class="params">(*<span class="type">sighandler_t</span>)</span><span class="params">(<span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">sighandler_t</span> <span class="title function_">signal</span><span class="params">(<span class="type">int</span> signum, <span class="type">sighandler_t</span> handler)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> ( *signal(<span class="type">int</span> signum, <span class="type">void</span> (*handler)(<span class="type">int</span>)) ) (<span class="type">int</span>);</span><br></pre></td></tr></table></figure>
+
+<p>signal在不同unix版本中实现并不相同，signal更适合将信号的处理程序设置为忽略或则默认行为，建议使用<code>sigaction</code>替代<code>signal</code></p>
+<p>返回值：返回之前信号执行程序的返回值或者SIG_ERR</p>
+<h2 id="sigaction"><a href="#sigaction" class="headerlink" title="sigaction"></a>sigaction</h2><p><code>sigaction</code>:检测或修改信号处理程序</p>
+<p>sigaction可携带siginfo，拥有更多的信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">sigaction</span><span class="params">(<span class="type">int</span> signum, <span class="type">const</span> <span class="keyword">struct</span> sigaction *act,<span class="keyword">struct</span> sigaction *oldact)</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> &#123;</span></span><br><span class="line">              <span class="type">void</span>     (*sa_handler)(<span class="type">int</span>);</span><br><span class="line">              <span class="type">void</span>     (*sa_sigaction)(<span class="type">int</span>, <span class="type">siginfo_t</span> *, <span class="type">void</span> *);</span><br><span class="line">              <span class="type">sigset_t</span>   sa_mask; <span class="comment">/*屏蔽信号作用*/</span></span><br><span class="line">              <span class="type">int</span>        sa_flags; </span><br><span class="line">              <span class="type">void</span>     (*sa_restorer)(<span class="type">void</span>);</span><br><span class="line">          &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在一些体系中，sa_handler和sa_sigaction可能是共用体</p>
+<p>通常，信号程序函数不使用第三个参数。</p>
+<p>sa_flag的取值</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SA_NOCLDSTOP</td>
+<td>If signum is SIGCHLD,do not receive notification when child processes stop</td>
+<td>子进程结束后父进程不收到信号</td>
+</tr>
+<tr>
+<td>SA_NOCLDWAIT</td>
+<td>If signum is SIGCHLD, do not transform children into zombies when they terminate.</td>
+<td>父进程结束，子进程不变成僵尸态</td>
+</tr>
+<tr>
+<td>SA_NODEFER</td>
+<td>Do not add the signal to the thread’s signal mask while the handler is executing, unless the signal is specified in act.sa_mask.</td>
+<td></td>
+</tr>
+<tr>
+<td>SA_ONSTACK</td>
+<td>Call  the  signal  handler on an alternate signal stack provided by sigaltstack(2).</td>
+<td>为函数指定栈空间</td>
+</tr>
+<tr>
+<td>SA_RESETHAND</td>
+<td>Restore the signal action to the default upon entry to the signal handler.</td>
+<td>恢复默认信号处理函数</td>
+</tr>
+<tr>
+<td>SA_SIGINFO</td>
+<td>The signal handler takes three arguments</td>
+<td>让hander强制接受三个参数，即使用sa_action</td>
+</tr>
+</tbody></table>
+<p>siginfo_t</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">siginfo_t</span> &#123;</span><br><span class="line">              <span class="type">int</span>      si_signo;     <span class="comment">/* Signal number */</span></span><br><span class="line">              <span class="type">int</span>      si_errno;     <span class="comment">/* An errno value */</span></span><br><span class="line">              <span class="type">int</span>      si_code;      <span class="comment">/* Signal code */</span></span><br><span class="line">              <span class="type">int</span>      si_trapno;    <span class="comment">/* Trap number that caused</span></span><br><span class="line"><span class="comment">                                        hardware-generated signal</span></span><br><span class="line"><span class="comment">                                        (unused on most architectures) */</span></span><br><span class="line">              <span class="type">pid_t</span>    si_pid;       <span class="comment">/* Sending process ID 目标进程的ID*/</span></span><br><span class="line">              <span class="type">uid_t</span>    si_uid;       <span class="comment">/* Real user ID of sending process */</span></span><br><span class="line">              <span class="type">int</span>      si_status;    <span class="comment">/* Exit value or signal */</span></span><br><span class="line">              <span class="type">clock_t</span>  si_utime;     <span class="comment">/* User time consumed */</span></span><br><span class="line">              <span class="type">clock_t</span>  si_stime;     <span class="comment">/* System time consumed */</span></span><br><span class="line">              <span class="class"><span class="keyword">union</span> <span class="title">sigval</span> <span class="title">si_value</span>;</span> <span class="comment">/* Signal value */</span></span><br><span class="line">              <span class="type">int</span>      si_int;       <span class="comment">/* POSIX.1b signal */</span></span><br><span class="line">              <span class="type">void</span>    *si_ptr;       <span class="comment">/* POSIX.1b signal */</span></span><br><span class="line">              <span class="type">int</span>      si_overrun;   <span class="comment">/* Timer overrun count;</span></span><br><span class="line"><span class="comment">                                        POSIX.1b timers */</span></span><br><span class="line">              <span class="type">int</span>      si_timerid;   <span class="comment">/* Timer ID; POSIX.1b timers */</span></span><br><span class="line">              <span class="type">void</span>    *si_addr;      <span class="comment">/* Memory location which caused fault 默认执行程序的地址*/</span></span><br><span class="line">              <span class="type">long</span>     si_band;      <span class="comment">/* Band event (was int in</span></span><br><span class="line"><span class="comment">                                        glibc 2.3.2 and earlier) */</span></span><br><span class="line">              <span class="type">int</span>      si_fd;        <span class="comment">/* File descriptor */</span></span><br><span class="line">              <span class="type">short</span>    si_addr_lsb;  <span class="comment">/* Least significant bit of address</span></span><br><span class="line"><span class="comment">                                        (since Linux 2.6.32) */</span></span><br><span class="line">              <span class="type">void</span>    *si_lower;     <span class="comment">/* Lower bound when address violation</span></span><br><span class="line"><span class="comment">                                        occurred (since Linux 3.19) */</span></span><br><span class="line">              <span class="type">void</span>    *si_upper;     <span class="comment">/* Upper bound when address violation</span></span><br><span class="line"><span class="comment">                                        occurred (since Linux 3.19) */</span></span><br><span class="line">              <span class="type">int</span>      si_pkey;      <span class="comment">/* Protection key on PTE that caused</span></span><br><span class="line"><span class="comment">                                        fault (since Linux 4.6) */</span></span><br><span class="line">              <span class="type">void</span>    *si_call_addr; <span class="comment">/* Address of system call instruction</span></span><br><span class="line"><span class="comment">                                        (since Linux 3.5) */</span></span><br><span class="line">              <span class="type">int</span>      si_syscall;   <span class="comment">/* Number of attempted system call</span></span><br><span class="line"><span class="comment">                                        (since Linux 3.5) */</span></span><br><span class="line">              <span class="type">unsigned</span> <span class="type">int</span> si_arch;  <span class="comment">/* Architecture of attempted system call</span></span><br><span class="line"><span class="comment">                                        (since Linux 3.5) */</span></span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>返回值：成功返回0，失败返回-1</p>
+<p><code>pause</code></p>
+<p>等待一个信号的到来</p>
+<p><code>abort</code></p>
+<p><code>alarm</code></p>
+<p>定时发送，被打断剩余时间会存起来</p>
+<p><code>sleep</code></p>
+<p><code>nanosleep</code></p>
+<p><code>sigprocmask</code></p>
+<p><code>sigsupen</code></p>
+<h1 id="信号集处理函数"><a href="#信号集处理函数" class="headerlink" title="信号集处理函数"></a>信号集处理函数</h1><p><code>sigaddset</code></p>
+<p><code>sigfillset</code></p>
+<p><code>sigaddsetmask</code></p>
+<p><code>sigdelsetmask</code></p>
+<p><code>sigemptyset</code></p>
+<p><code>sigismember</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/09/23/linux/signal/" data-id="clsbs5ygv000x44usb0ep150a" data-title="signal" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-linux/文件系统" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/09/21/linux/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-date">
@@ -829,7 +1066,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" rel="tag">rtmp握手协议</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" rel="tag">rtmp握手协议</a></li></ul>
     </div>
   </div>
 
@@ -839,7 +1076,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/algorithm/" style="font-size: 16.67px;">algorithm</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
+      <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/algorithm/" style="font-size: 17.5px;">algorithm</a> <a href="/tags/c/" style="font-size: 12.5px;">c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
@@ -848,7 +1085,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -859,6 +1096,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/02/14/c++/thread/">thread</a>
+          </li>
         
           <li>
             <a href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
@@ -873,11 +1114,7 @@
           </li>
         
           <li>
-            <a href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/13/algorithm/kmp/">kmp</a>
+            <a href="/2024/01/12/c++/c++/">c++</a>
           </li>
         
       </ul>
