@@ -4,23 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>kmp | Hexo</title>
+  <title>操作符重载 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这个时候p[i]!&#x3D;p[j+1],数组不匹配时，执行j&#x3D;next[j]语句，因为不匹配，这时候会让j进行后退，直到j后退到0。 kmp的代码如下 123456789101112131415161718&#x2F;&#x2F;子串和长串下标从1开始bool kmp(char *s,int l1,char *p,int l2)&amp;#123;    &#x2F;*求next数组*&#x2F;    for(int i&#x3D;2">
+  <meta name="description" content="操作符重载操作流重载cout是一种ostream类型 1234operator &lt;&lt;(ostream &amp;os,const complex&amp; x)&amp;#123;    return os&lt;&lt;&amp;#x27;C&amp;#x27;&lt;&lt;real(x)&lt;&lt;&amp;#x27;,&amp;#x27;&lt;&lt;imag(x)&lt;&lt;&amp;#x27;)&amp;#x27;;&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kmp">
-<meta property="og:url" content="https://qianxiaolin.github.io/2023/12/13/algorithm/kmp/index.html">
+<meta property="og:title" content="操作符重载">
+<meta property="og:url" content="https://qianxiaolin.github.io/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这个时候p[i]!&#x3D;p[j+1],数组不匹配时，执行j&#x3D;next[j]语句，因为不匹配，这时候会让j进行后退，直到j后退到0。 kmp的代码如下 123456789101112131415161718&#x2F;&#x2F;子串和长串下标从1开始bool kmp(char *s,int l1,char *p,int l2)&amp;#123;    &#x2F;*求next数组*&#x2F;    for(int i&#x3D;2">
+<meta property="og:description" content="操作符重载操作流重载cout是一种ostream类型 1234operator &lt;&lt;(ostream &amp;os,const complex&amp; x)&amp;#123;    return os&lt;&lt;&amp;#x27;C&amp;#x27;&lt;&lt;real(x)&lt;&lt;&amp;#x27;,&amp;#x27;&lt;&lt;imag(x)&lt;&lt;&amp;#x27;)&amp;#x27;;&amp;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161102449.png">
-<meta property="og:image" content="c:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20231213233014666.png">
-<meta property="article:published_time" content="2023-12-13T15:00:39.000Z">
-<meta property="article:modified_time" content="2024-01-16T03:02:42.220Z">
+<meta property="article:published_time" content="2024-02-20T03:21:37.000Z">
+<meta property="article:modified_time" content="2024-02-20T03:22:23.193Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161102449.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -79,10 +76,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-algorithm/kmp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-c++/操作符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/12/13/algorithm/kmp/" class="article-date">
-  <time class="dt-published" datetime="2023-12-13T15:00:39.000Z" itemprop="datePublished">2023-12-13</time>
+    <a href="/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2024-02-20T03:21:37.000Z" itemprop="datePublished">2024-02-20</time>
 </a>
     
   </div>
@@ -93,7 +90,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      kmp
+      操作符重载
     </h1>
   
 
@@ -101,21 +98,20 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161102449.png" alt="image-20231213230121396"></p>
-<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20231213233014666.png" alt="image-20231213233014666"></p>
-<p>这个时候p[i]!&#x3D;p[j+1],数组不匹配时，执行j&#x3D;next[j]语句，因为不匹配，这时候会让j进行后退，直到j后退到0。</p>
-<p>kmp的代码如下</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//子串和长串下标从1开始</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">kmp</span><span class="params">(<span class="type">char</span> *s,<span class="type">int</span> l1,<span class="type">char</span> *p,<span class="type">int</span> l2)</span>&#123;</span><br><span class="line">    <span class="comment">/*求next数组*/</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>,j=<span class="number">0</span>;i&lt;=l1;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j&amp;&amp;p[i]!=p[j+<span class="number">1</span>]) j=next[j];</span><br><span class="line">        <span class="keyword">if</span>(p[i]==p[j+<span class="number">1</span>]) j++;</span><br><span class="line">        next[i]=j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*进行字符串配对*/</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;l1;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;l2&amp;&amp;s[i]==p[j+<span class="number">1</span>]) j++;</span><br><span class="line">        <span class="keyword">if</span>(j==l2)&#123;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;匹配成功&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        j=next[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="操作符重载"><a href="#操作符重载" class="headerlink" title="操作符重载"></a>操作符重载</h1><h2 id="操作流重载"><a href="#操作流重载" class="headerlink" title="操作流重载"></a>操作流重载</h2><p>cout是一种ostream类型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">operator &lt;&lt;(ostream &amp;os,<span class="type">const</span> <span class="type">complex</span>&amp; x)&#123;</span><br><span class="line">    <span class="keyword">return</span> os&lt;&lt;<span class="string">&#x27;C&#x27;</span>&lt;&lt;real(x)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;imag(x)&lt;&lt;<span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;conj(c1)<span class="comment">//调用函数operator &lt;&lt;(cout,c1)</span></span><br></pre></td></tr></table></figure>
+
+
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/12/13/algorithm/kmp/" data-id="clstspwes0005oouseduja8nq" data-title="kmp" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" data-id="clstsv46j0000xkusa8swanr8" data-title="操作符重载" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li></ul>
 
     </footer>
   </div>
@@ -123,19 +119,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          二叉树
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/02/14/c++/thread/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">linux常用命令</div>
+      <div class="article-nav-title">thread</div>
     </a>
   
 </nav>

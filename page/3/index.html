@@ -73,6 +73,284 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/Mysql/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T06:58:09.628Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/08/Mysql/">Mysql</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
+<li>作用：存放数据</li>
+<li>版本：5.7和8.0</li>
+</ul>
+<h1 id="Mysql的三层结构"><a href="#Mysql的三层结构" class="headerlink" title="Mysql的三层结构"></a>Mysql的三层结构</h1><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230201210815498.png" alt="image-20230201210815498"></p>
+<p>SQL语句分类</p>
+<ol>
+<li>DDL：数据定义（创建create）</li>
+<li>DML：数据操作（增insert，删改）</li>
+<li>DQL：数据查询（select）</li>
+<li>DCL：数据控制（管理数据库：用户权限，grand，revoke）</li>
+</ol>
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><p><strong>打开Mysql</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p><strong>显示数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure>
+
+<p><strong>创建数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE 数据库名字;</span><br></pre></td></tr></table></figure>
+
+<p>‘’可以规避关键字，若要以关键字命名数据库，可以使用’’</p>
+<p><strong>备份数据库</strong></p>
+<p>在shell中运行</p>
+<p>备份文件是用户输入的一系列sql语句</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//备份数据库</span><br><span class="line">mysqldump -u 用户名 -p -B 数据库1 数据库2 数据库n &gt; 文件.sql</span><br><span class="line">//备份表</span><br><span class="line">mysqldump -u 用户名 -p  数据库1 表1 表2 &gt; 文件.sql</span><br></pre></td></tr></table></figure>
+
+<p><strong>恢复数据库</strong></p>
+<p>语句不用分号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source 备份文件夹路径</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><table>
+<thead>
+<tr>
+<th>类型</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>char</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名（</span><br><span class="line">  字段 类型，</span><br><span class="line">  字段 类型</span><br><span class="line">）character set 字符集 collate 校对规则 engine 引擎</span><br></pre></td></tr></table></figure>
+
+<p>character set和collate：如不指定，将以所在数据库的字符集为准</p>
+<h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>查看数据库中的所有表格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES;</span><br></pre></td></tr></table></figure>
+
+<p>查看表格结构（列）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DESC 表名</span><br></pre></td></tr></table></figure>
+
+<p>查看表中的所有数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改alter"><a href="#修改alter" class="headerlink" title="修改alter"></a>修改alter</h2><p>修改表名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename table 表名 to 新表名</span><br></pre></td></tr></table></figure>
+
+<p>修改表名字符集</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 character set 字符集</span><br></pre></td></tr></table></figure>
+
+<p>添加列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 add（字段 类型，字段 类型）</span><br></pre></td></tr></table></figure>
+
+<p>修改列类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 modify （字段 类型，字段 类型）</span><br></pre></td></tr></table></figure>
+
+<p>修改列名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 change 列名 新列名 类型</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="筛选select"><a href="#筛选select" class="headerlink" title="筛选select"></a>筛选select</h2><p>查看某列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名 FROM 表名;</span><br></pre></td></tr></table></figure>
+
+<p>查看某列中满足条件的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名 FROM 表名 WHERE 列 运算符 值;</span><br></pre></td></tr></table></figure>
+
+<p>数据去重</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct 列名 FROM 表名;</span><br></pre></td></tr></table></figure>
+
+<p>给列取别名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列名 as 别名 from 表名</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>and or</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>in</td>
+<td>在集合中</td>
+<td>in（100,200）在集合{1,2}中</td>
+</tr>
+<tr>
+<td>between    and</td>
+<td>介于范围</td>
+<td>between 80 and 90  介于80-90包含两头</td>
+</tr>
+<tr>
+<td>like</td>
+<td>模糊查询</td>
+<td>“韩%” 查询姓韩的同学  %表示任意字符  _表示任意一个字符</td>
+</tr>
+</tbody></table>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>表格按照某列的值排序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//升序（从上到下，依次递增），默认为升序</span><br><span class="line">SELECT * FROM 表名 OREDRS OREDR BY 列名</span><br><span class="line">//降序</span><br><span class="line">SELECT * FROM 表名 OREDRS OREDR BY 列名 desc</span><br></pre></td></tr></table></figure>
+
+<h2 id="添加insert"><a href="#添加insert" class="headerlink" title="添加insert"></a>添加insert</h2><p>插入一行数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values(数据1,数据2,数据n)</span><br></pre></td></tr></table></figure>
+
+<p>对某些列插入数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 （列1，列2）values（列1数据，列2数据）</span><br></pre></td></tr></table></figure>
+
+<p>给列添加多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 （列名） values (数据),(数据),(数据)</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><p>修改整列的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 列名=value</span><br></pre></td></tr></table></figure>
+
+<p>修改某些列满足条件的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段1=value,字段2=value where 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>删除所有数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名</span><br></pre></td></tr></table></figure>
+
+<p>删除行数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 where 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<p>删除列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 drop 列名</span><br></pre></td></tr></table></figure>
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>统计函数count–返回行的总数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//1。count(*) 返回满足条件的记录的行数</span><br><span class="line">select count （*） from 表名</span><br><span class="line">//2.count（列名）统计满足条件的某列的元素的个数，但会排除NULL的情况</span><br><span class="line">select count（列名） from 表名</span><br></pre></td></tr></table></figure>
+
+<p>合计函数sum–返回where条件的行的和，只对数值列起作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sum(数值列) from 表名 where 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<p>平均值avg–求列的平均值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select avg（列名） from 表名</span><br></pre></td></tr></table></figure>
+
+<p>最值max&#x2F;min–列最大值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select max（列名） from 表名</span><br></pre></td></tr></table></figure>
+
+<p>表复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230228225616321.png" alt="image-20230228225616321"></p>
+<p>删除重复记录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#利用distinct筛选数据到临时表</span><br><span class="line">#清空要删除重复记录的表</span><br><span class="line">#将临时表的数据放入操作表</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230228230144118.png" alt="image-20230228230144118"></p>
+<h2 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h2><p>分组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列1，列2... from table group by 列</span><br></pre></td></tr></table></figure>
+
+<p>分组后过滤having(有)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列1，列2... from table group by 列 having 列 运算符 值</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230208221814706.png" alt="image-20230208221814706"></p>
+<h2 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230209214539688.png" alt="image-20230209214539688"></p>
+<h2 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212202147547.png" alt="image-20230212202147547"></p>
+<p>获取当前时间戳（年月日时分秒）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">now()</span><br></pre></td></tr></table></figure>
+
+<p>获取当前日期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">current_date()</span><br></pre></td></tr></table></figure>
+
+<p>日期加减</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//加</span><br><span class="line">date_add(date,interval value year|month|day|hour|minute|second)</span><br><span class="line">//减</span><br><span class="line">date_sub(date,interval value year|month|day|hour|minute|second)</span><br></pre></td></tr></table></figure>
+
+<p>计算天数差</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dateiff(date1,date2)--date为日期</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212204724229.png" alt="image-20230212204724229"></p>
+<p>unix时间戳–1970-1-1至今</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unix_timestamp()</span><br></pre></td></tr></table></figure>
+
+<p>将unix时间戳转化为指定格式的时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">form_unixtime(unix_timestamp(),&#x27;%Y-%m-%d %H：%i：%s&#x27;)//年-月-日 时：分：秒</span><br></pre></td></tr></table></figure>
+
+<h2 id="加密和系统"><a href="#加密和系统" class="headerlink" title="加密和系统"></a>加密和系统</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212210233759.png" alt="image-20230212210233759"></p>
+<p>查询使用sql的用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user()--返回用户名和IP地址</span><br></pre></td></tr></table></figure>
+
+<p>查询当前使用的数据库名字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datebase()</span><br></pre></td></tr></table></figure>
+
+<p>为字符串进行MD5加密，经过MD5加密的字符串是32位的字符串，所以密码的类型常用char(32)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MD5(str)</span><br></pre></td></tr></table></figure>
+
+<p>加密函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password(str)</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程控制函数"><a href="#流程控制函数" class="headerlink" title="流程控制函数"></a>流程控制函数</h2><p><img src="C:\Users\HP02\AppData\Roaming\Typora\typora-user-images\image-20230212212010541.png" alt="image-20230212212010541"></p>
+<p>如果姓名为Jack则将jack替换为杰克显示</p>
+<p>判断是否为NULL不用&#x3D;&#x3D;而用is</p>
+<h1 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h1><h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#从start+1行开始，取出rows行</span><br><span class="line">select ... limit start,rows_value</span><br></pre></td></tr></table></figure>
+
+<h2 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from emp,det;#emp的每一行和det的每一行进行拼接，得到结果行数=emp行数*det行数</span><br></pre></td></tr></table></figure>
+
+<h2 id="自连接"><a href="#自连接" class="headerlink" title="自连接"></a>自连接</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#把同一张表当做两张表使用，但要给两张表取别名</span><br><span class="line">select worker.name ,boss.ename from emp as worker,emp as boss</span><br></pre></td></tr></table></figure>
+
+<h2 id="多列子查询"><a href="#多列子查询" class="headerlink" title="多列子查询"></a>多列子查询</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">（value1,value2）=（select ...)</span><br></pre></td></tr></table></figure>
+
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h1 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/10/08/Mysql/" data-id="clstspwek0000ooushlizcukh" data-title="Mysql" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-linux/signal" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/09/23/linux/signal/" class="article-date">
@@ -1076,7 +1354,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C/" style="font-size: 15px;">C</a> <a href="/tags/algorithm/" style="font-size: 17.5px;">algorithm</a> <a href="/tags/c/" style="font-size: 12.5px;">c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
+      <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/algorithm/" style="font-size: 16.67px;">algorithm</a> <a href="/tags/c/" style="font-size: 13.33px;">c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
@@ -1098,6 +1376,10 @@
       <ul>
         
           <li>
+            <a href="/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">操作符重载</a>
+          </li>
+        
+          <li>
             <a href="/2024/02/14/c++/thread/">thread</a>
           </li>
         
@@ -1111,10 +1393,6 @@
         
           <li>
             <a href="/2024/01/14/ffmpeg/">ffmpeg</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/12/c++/c++/">c++面向对象</a>
           </li>
         
       </ul>
