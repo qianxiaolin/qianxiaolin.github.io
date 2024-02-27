@@ -6,15 +6,15 @@
   
   <title>thread | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="c11提供了线程的标准库 lamda表达式左值引用完美转发forward队列queueemplace可变参数模板函数万能引用右值引用函数适配器bind时间库chrono 线程库的使用12345#include&lt;thread&gt;int main()&amp;#123;        return 0;&amp;#125;      互斥锁条件变量">
+  <meta name="description" content="c11提供了线程的标准库 lamda表达式左值引用完美转发forward队列queueemplace可变参数模板函数万能引用右值引用函数适配器bind时间库chrono 线程库的使用12345#include&lt;thread&gt;int main()&amp;#123;        return 0;&amp;#125;    lock_guardlock_guard是C++11提供的锁管理机制，能够对共">
 <meta property="og:type" content="article">
 <meta property="og:title" content="thread">
 <meta property="og:url" content="https://qianxiaolin.github.io/2024/02/14/c++/thread/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="c11提供了线程的标准库 lamda表达式左值引用完美转发forward队列queueemplace可变参数模板函数万能引用右值引用函数适配器bind时间库chrono 线程库的使用12345#include&lt;thread&gt;int main()&amp;#123;        return 0;&amp;#125;      互斥锁条件变量">
+<meta property="og:description" content="c11提供了线程的标准库 lamda表达式左值引用完美转发forward队列queueemplace可变参数模板函数万能引用右值引用函数适配器bind时间库chrono 线程库的使用12345#include&lt;thread&gt;int main()&amp;#123;        return 0;&amp;#125;    lock_guardlock_guard是C++11提供的锁管理机制，能够对共">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-02-14T08:48:58.000Z">
-<meta property="article:modified_time" content="2024-02-20T03:28:37.022Z">
+<meta property="article:modified_time" content="2024-02-20T08:01:04.458Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="c&#x2F;c++">
 <meta name="twitter:card" content="summary">
@@ -104,9 +104,61 @@
 
 
 
+<h1 id="lock-guard"><a href="#lock-guard" class="headerlink" title="lock_guard"></a>lock_guard</h1><p>lock_guard是C++11提供的锁管理机制，能够对共享变量进行自动加锁和解锁。</p>
+<p>初始化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">guard</span><span class="params">(mux)</span></span>;</span><br></pre></td></tr></table></figure>
 
 
-<h1 id="互斥锁"><a href="#互斥锁" class="headerlink" title="互斥锁"></a>互斥锁</h1><h1 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h1>
+
+<p>源码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Mutex&gt;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">lock_guard</span></span><br><span class="line">    &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">      <span class="keyword">typedef</span> _Mutex mutex_type;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">explicit</span> <span class="title">lock_guard</span><span class="params">(mutex_type&amp; __m)</span> : _M_device(__m)</span></span><br><span class="line"><span class="function">      &#123;</span> _M_device.<span class="built_in">lock</span>(); &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">lock_guard</span>(mutex_type&amp; __m, <span class="type">adopt_lock_t</span>) <span class="keyword">noexcept</span> : _M_device(__m)</span><br><span class="line">      &#123; &#125; <span class="comment">// calling thread owns mutex</span></span><br><span class="line"></span><br><span class="line">      ~<span class="built_in">lock_guard</span>()</span><br><span class="line">      &#123; _M_device.<span class="built_in">unlock</span>(); &#125;</span><br><span class="line"></span><br><span class="line">      <span class="built_in">lock_guard</span>(<span class="type">const</span> lock_guard&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">      lock_guard&amp; <span class="keyword">operator</span>=(<span class="type">const</span> lock_guard&amp;) = <span class="keyword">delete</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">      mutex_type&amp;  _M_device;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>构造函数调用时加锁，离开作用域，调用析构函数时，进行解锁。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">lock_guard</span>(mutex_type&amp; __m, <span class="type">adopt_lock_t</span>) <span class="keyword">noexcept</span> : _M_device(__m)</span><br><span class="line">   &#123; &#125; <span class="comment">// calling thread owns mutex</span></span><br></pre></td></tr></table></figure>
+
+<p>意味着已经加锁，只需要利用虚构函数</p>
+<h1 id="unique-lock"><a href="#unique-lock" class="headerlink" title="unique_lock"></a>unique_lock</h1><p>lock_guard拥有的特性，unique_lock也同样拥有</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::unique_lock&lt;std::mutex&gt; <span class="title">ul</span><span class="params">(mux)</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>自行加锁</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::unique_lock&lt;std::mutex&gt; <span class="title">ul</span><span class="params">(mux,std::defer_lock)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>延时加锁需要和时间锁配合使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::timed_mutex mux;</span><br><span class="line"><span class="function">std::unique_lock&lt;std::timed_mutex&gt; <span class="title">ul</span><span class="params">(mux,std::defer_lock)</span></span>;</span><br><span class="line">           ul.<span class="built_in">try_lock_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="call-once"><a href="#call-once" class="headerlink" title="call_once"></a>call_once</h1><p>单例对象</p>
+<p>懒汉模式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span> &#123;</span><br><span class="line">    <span class="built_in">Log</span>()&#123;&#125;;</span><br><span class="line">    <span class="built_in">Log</span>(<span class="type">const</span> Log&amp; log)=<span class="keyword">delete</span>;</span><br><span class="line">    Log&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Log&amp; log)=<span class="keyword">delete</span>;</span><br><span class="line">    <span class="function"><span class="type">static</span> Log&amp; <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="type">static</span> Log log;</span><br><span class="line">        <span class="keyword">return</span> log;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>饿汉模式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Log</span> &#123;</span><br><span class="line">    <span class="built_in">Log</span>()&#123;&#125;;</span><br><span class="line">    <span class="built_in">Log</span>(<span class="type">const</span> Log&amp; log)=<span class="keyword">delete</span>;</span><br><span class="line">    Log&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Log&amp; log)=<span class="keyword">delete</span>;</span><br><span class="line">    <span class="function"><span class="type">static</span> Log&amp; <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="type">static</span> Log* log= <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">if</span>(!log)&#123;log=<span class="keyword">new</span> <span class="built_in">Log</span>();&#125;</span><br><span class="line">        <span class="keyword">return</span> *log;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::once_flag once;</span><br><span class="line">std::<span class="built_in">call_once</span>(once,function);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;condition_variable&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">condition_variable</span></span><br><span class="line">&#123;</span><br><span class="line"> <span class="comment">//....</span></span><br><span class="line">    <span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Predicate&gt;</span></span><br><span class="line"><span class="function">      <span class="type">void</span></span></span><br><span class="line"><span class="function">      <span class="title">wait</span><span class="params">(unique_lock&lt;mutex&gt;&amp; __lock, _Predicate __p)</span></span></span><br><span class="line"><span class="function">      </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (!__p())</span><br><span class="line">        <span class="built_in">wait</span>(__lock);</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>生产者和消费者模型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;condition_variable&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line">std::queue&lt;<span class="type">int</span>&gt; queue;</span><br><span class="line">std::condition_variable conditionVariable;</span><br><span class="line">std::mutex mux;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">productor</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">        <span class="function">std::unique_lock&lt;std::mutex&gt; <span class="title">u_lock</span><span class="params">(mux)</span></span>;</span><br><span class="line">        <span class="type">int</span> num=queue.<span class="built_in">front</span>();</span><br><span class="line">        queue.<span class="built_in">push</span>(i);</span><br><span class="line">        <span class="comment">//通知消费者来取任务</span></span><br><span class="line">        conditionVariable.<span class="built_in">notify_one</span>();</span><br><span class="line">        std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">microseconds</span>(<span class="number">100</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">resumer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function">std::unique_lock&lt;std::mutex&gt; <span class="title">u_lock</span><span class="params">(mux)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(queue.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="comment">//等待通知</span></span><br><span class="line">            conditionVariable.<span class="built_in">wait</span>(u_lock,[]()&#123;</span><br><span class="line">                <span class="keyword">return</span> !queue.<span class="built_in">empty</span>();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        queue.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
       
     </div>
     <footer class="article-footer">
@@ -202,7 +254,7 @@
           </li>
         
           <li>
-            <a href="/2024/01/14/ffmpeg/">ffmpeg</a>
+            <a href="/2024/01/14/ffmpeg/ffmpeg/">ffmpeg</a>
           </li>
         
       </ul>
