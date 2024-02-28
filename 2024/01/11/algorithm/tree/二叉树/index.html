@@ -9,7 +9,7 @@
   <meta name="description" content="二叉树的概念每个节点至多有两个孩子的树叫做二叉树 二叉树的存储结构12345typedef struct bTree&amp;#123;	char ele;	struct bTree* lchild;	struct bTree* rchild;&amp;#125;bTree;  二叉树节点使用结构体存储，包含数据域和指针域。指针域为分别指向左右孩子的指针 二叉树的创建二叉树的创建方式有很多种，在这里我们根据树的先">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二叉树">
-<meta property="og:url" content="https://qianxiaolin.github.io/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:url" content="https://qianxiaolin.github.io/2024/01/11/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="二叉树的概念每个节点至多有两个孩子的树叫做二叉树 二叉树的存储结构12345typedef struct bTree&amp;#123;	char ele;	struct bTree* lchild;	struct bTree* rchild;&amp;#125;bTree;  二叉树节点使用结构体存储，包含数据域和指针域。指针域为分别指向左右孩子的指针 二叉树的创建二叉树的创建方式有很多种，在这里我们根据树的先">
 <meta property="og:locale" content="en_US">
@@ -19,8 +19,11 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161538337.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161539122.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161547391.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161522202.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402282117584.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402282120065.png">
 <meta property="article:published_time" content="2024-01-11T05:56:48.000Z">
-<meta property="article:modified_time" content="2024-01-16T07:48:59.560Z">
+<meta property="article:modified_time" content="2024-02-28T13:28:37.420Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
@@ -83,9 +86,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-algorithm/二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-algorithm/tree/二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+    <a href="/2024/01/11/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
   <time class="dt-published" datetime="2024-01-11T05:56:48.000Z" itemprop="datePublished">2024-01-11</time>
 </a>
     
@@ -123,7 +126,7 @@
 
 
 <h1 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h1><p>二叉树的遍历主要包括：前序遍历，中序遍历，后序遍历和层次遍历。</p>
-<h2 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h2><p>前序遍历的顺序为:<code>root-&gt;lchild-&gt;rchild	</code>。对于每一个节点，先访问它的根节点，再访问它的左部分，在访问它的右部分数据</p>
+<h2 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h2><p>前序遍历的顺序为:<code>root-&gt;lchild-&gt;rchild	</code>。先序是对于根节点而言的。对于每一个节点，先访问根节点root，再先序遍历以root的左孩子为根节点的子树，最后先序访问root的右孩子为根节点的子树。</p>
 <p>下面是树的先序遍历过程：</p>
 <p>对于根节点A，我们的访问顺序为：先访问A，后访问A的左部分，最后访问A的右部分。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161528733.png" alt="image-20240116152854286"></p>
@@ -148,12 +151,23 @@
 
 
 
-<h2 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h2><p>使用环型队列进行</p>
-<h1 id="二叉树的查找"><a href="#二叉树的查找" class="headerlink" title="二叉树的查找"></a>二叉树的查找</h1>
+<h2 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h2><p>二叉树的层次遍历为从根子树所在层开始，按层从左往右遍历。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161522202.png" alt="image-20240116152254240"></p>
+<p>上面这颗树的层次遍历顺序为:A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;F-&gt;G。层次遍历可以通过队列实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402282117584.png" alt="image-20240228211735228"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402282120065.png" alt="image-20240228212012585"></p>
+<p>代码实现:</p>
+<p>队列结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span>&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">treenode</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">pre</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QueueNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> QueueNode* <span class="title function_">init_queue</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">head</span>=</span>(<span class="keyword">struct</span> QueueNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> QueueNode));</span><br><span class="line">	head-&gt;treenode=<span class="literal">NULL</span>;</span><br><span class="line">	head-&gt;next=head;</span><br><span class="line">	head-&gt;pre=head;</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">en_queue</span><span class="params">(<span class="keyword">struct</span> bTree* treenode,<span class="keyword">struct</span> QueueNode *head)</span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">node</span>=</span>(<span class="keyword">struct</span> QueueNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> QueueNode));</span><br><span class="line">	node-&gt;treenode=treenode;</span><br><span class="line">	</span><br><span class="line">	node-&gt;next=head;</span><br><span class="line">	node-&gt;pre=head-&gt;pre;</span><br><span class="line"></span><br><span class="line">	head-&gt;pre-&gt;next=node;</span><br><span class="line">	head-&gt;pre=node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> QueueNode* <span class="title function_">de_queue</span><span class="params">(<span class="keyword">struct</span> QueueNode* head)</span>&#123;</span><br><span class="line">	<span class="comment">/*队列为空*/</span></span><br><span class="line">	<span class="keyword">if</span>(head-&gt;next==head)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">struct</span> QueueNode* tmp=head-&gt;next;</span><br><span class="line">		head-&gt;next=head-&gt;next-&gt;next;</span><br><span class="line">		head-&gt;next-&gt;pre=head;</span><br><span class="line">		<span class="keyword">return</span> tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>层次遍历</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">layer_travesal</span><span class="params">(<span class="keyword">struct</span> QueueNode* head)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*队列为空*/</span></span><br><span class="line">	<span class="keyword">if</span>(head-&gt;next==head)&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span>* <span class="title">node</span>=</span>de_queue(head);</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">treenode</span>=</span>node-&gt;treenode;	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;&quot;</span>,treenode-&gt;ele);</span><br><span class="line">	<span class="keyword">if</span>(treenode-&gt;lchild!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		en_queue(treenode-&gt;lchild,head);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">if</span>(treenode-&gt;rchild!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		en_queue(treenode-&gt;rchild,head);</span><br><span class="line">	&#125;</span><br><span class="line">	layer_travesal(head);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="clt3v0c0t0006ysusfzf4ett7" data-title="二叉树" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2024/01/11/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="clt5u23p6000088usdfts44rv" data-title="二叉树" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -207,7 +221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 16.67px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 10px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
+      <a href="/tags/algorithm/" style="font-size: 15px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 17.5px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 12.5px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
@@ -229,6 +243,14 @@
       <ul>
         
           <li>
+            <a href="/2024/02/27/linux/linux0.11/main%E5%87%BD%E6%95%B0/">main函数</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/">树和森林</a>
+          </li>
+        
+          <li>
             <a href="/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">操作符重载</a>
           </li>
         
@@ -237,15 +259,7 @@
           </li>
         
           <li>
-            <a href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/15/rtmp/">rtmp</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/14/ffmpeg/ffmpeg/">ffmpeg</a>
+            <a href="/2024/01/16/algorithm/tree/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
           </li>
         
       </ul>

@@ -73,6 +73,120 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux/linux常用命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2023-12-09T05:19:14.000Z" itemprop="datePublished">2023-12-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="clt3v0c10000rysus7iund4lo" data-title="linux常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-c++/gdb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/01/c++/gdb/" class="article-date">
+  <time class="dt-published" datetime="2023-12-01T14:31:31.000Z" itemprop="datePublished">2023-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/12/01/c++/gdb/">gdb</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="gdb调试程序"><a href="#gdb调试程序" class="headerlink" title="gdb调试程序"></a>gdb调试程序</h1><h2 id="调试二进制"><a href="#调试二进制" class="headerlink" title="调试二进制"></a>调试二进制</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g test.c</span><br></pre></td></tr></table></figure>
+
+<h2 id="调试core"><a href="#调试core" class="headerlink" title="调试core"></a>调试core</h2><p>设置生成core文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -c unlimited</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc a.out corename</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="调试正在执行的程序"><a href="#调试正在执行的程序" class="headerlink" title="调试正在执行的程序"></a>调试正在执行的程序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb -g processid</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="常用调试命令"><a href="#常用调试命令" class="headerlink" title="常用调试命令"></a>常用调试命令</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">next</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stept</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span> 行号/函数名</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch 变量名</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print &amp;a</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info breakpoints</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info watchpoints</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> logging on</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2023/12/01/c++/gdb/" data-id="clt3v0c0z000nysus1gq0745x" data-title="gdb" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/" rel="tag">c&#x2F;c++</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-linux/linux0.11/通电加载到程序启动" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/11/23/linux/linux0.11/%E9%80%9A%E7%94%B5%E5%8A%A0%E8%BD%BD%E5%88%B0%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8/" class="article-date">
@@ -473,141 +587,11 @@
 
 
   
-    <article id="post-linux/多线程并发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/21/linux/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" class="article-date">
-  <time class="dt-published" datetime="2023-10-21T08:20:41.000Z" itemprop="datePublished">2023-10-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/21/linux/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">多线程并发</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/10/21/linux/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" data-id="clt3v0c11000vysusao034tr3" data-title="多线程并发" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-linux/作业调度算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2023-10-16T10:54:37.000Z" itemprop="datePublished">2023-10-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">作业调度算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="PCB进程控制块"><a href="#PCB进程控制块" class="headerlink" title="PCB进程控制块"></a>PCB进程控制块</h1><p>PCB(process control block)称为进程控制块。</p>
-<p>一个程序并不是从头到尾一次执行的。进程控制块可以保存进程的上下文。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//进程控制块</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span> &#123;</span></span><br><span class="line"><span class="comment">/* these are hardcoded - don&#x27;t touch */</span></span><br><span class="line">	<span class="type">long</span> state;	<span class="comment">/* -1 unrunnable, 0 runnable, &gt;0 stopped */</span></span><br><span class="line">	<span class="type">long</span> counter;</span><br><span class="line">	<span class="type">long</span> priority;<span class="comment">/*优先级*/</span></span><br><span class="line">	<span class="type">long</span> signal;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigaction</span> <span class="title">sigaction</span>[32];</span></span><br><span class="line">	<span class="type">long</span> blocked;	<span class="comment">/* bitmap of masked signals */</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/* various fields */</span></span><br><span class="line">	<span class="type">int</span> exit_code;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span> start_code,end_code,end_data,brk,start_stack;</span><br><span class="line">	<span class="type">long</span> pid,father,pgrp,session,leader;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">short</span> uid,euid,suid;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">short</span> gid,egid,sgid;</span><br><span class="line">	<span class="type">long</span> alarm;</span><br><span class="line">	<span class="type">long</span> utime,stime,cutime,cstime,start_time;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">short</span> used_math;</span><br><span class="line">    </span><br><span class="line"><span class="comment">/* file system info */</span></span><br><span class="line">	<span class="type">int</span> tty;		<span class="comment">/* -1 if no tty, so it must be signed */</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">short</span> umask;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">m_inode</span> * <span class="title">pwd</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">m_inode</span> * <span class="title">root</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">m_inode</span> * <span class="title">executable</span>;</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span> close_on_exec;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">file</span> * <span class="title">filp</span>[<span class="title">NR_OPEN</span>];</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">/* ldt for this task 0 - zero 1 - cs 2 - ds&amp;ss */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">desc_struct</span> <span class="title">ldt</span>[3];</span></span><br><span class="line"><span class="comment">/* tss for this task */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">tss_struct</span> <span class="title">tss</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>进程控制块的核心</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span>&#123;</span></span><br><span class="line">    <span class="type">long</span> pid;</span><br><span class="line">    <span class="type">long</span> state;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*信号相关*/</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">signal_struct</span>		*<span class="title">signal</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sighand_struct</span> __<span class="title">rcu</span>		*<span class="title">sighand</span>;</span> <span class="comment">/*信号处理函数*/</span></span><br><span class="line">	<span class="type">sigset_t</span>			blocked;	<span class="comment">/*64位屏蔽信号字*/</span></span><br><span class="line">	<span class="type">sigset_t</span>			real_blocked;</span><br><span class="line">	<span class="type">sigset_t</span>			saved_sigmask;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sigpending</span>		<span class="title">pending</span>;</span>	<span class="comment">/*未决信号集合*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">long</span>			sas_ss_sp;  <span class="comment">/*信号处理函数的栈地址*/</span></span><br><span class="line">	<span class="type">size_t</span>				sas_ss_size;    <span class="comment">/*信号处理函数的栈空间大小*/</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span>			sas_ss_flags;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>进行抽象</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">task_struct&#123;</span><br><span class="line">    <span class="type">pid_t</span> pid;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">mm_struct</span> *<span class="title">mm</span>;</span><span class="comment">/*内存管理*/</span></span><br><span class="line">    files_struct *file;<span class="comment">/*文件*/</span></span><br><span class="line">    fs_struct *fs;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mm_struct</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> *<span class="title">mmap</span>;</span></span><br><span class="line">    <span class="type">pgd_t</span> *pgd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>一个进程应该具有的属性应该包括</p>
-<ul>
-<li>唯一标识</li>
-<li>操作的文件集</li>
-<li>内存地址空间</li>
-<li>信号处理</li>
-</ul>
-<p>进程的唯一标识PID与PCB的关系。</p>
-<p>用什么数据结构来统一管理进程呢？</p>
-<p>进程与进程之间存在父子关系，pid使用树来存储。</p>
-<p>链表是一种线性结构，表示进程的先后顺序</p>
-<p>哈希表的检索速率高，可以快速查找。</p>
-<p>那能不能使用多个数据结构来存储同一块数据，用空间换时间的。</p>
-<h1 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h1><p>进程的状态为什么不能是开始，运行，结束呢?</p>
-<p>进程是一段程序。不断的在交替运行，那当进程被别的进程抢占，暂时停止运行的时候，进程处于睡眠态</p>
-<ul>
-<li><p>就绪</p>
-<ul>
-<li><p>使用fork后加入就绪态</p>
-</li>
-<li><p>运行后时间片完</p>
-</li>
-</ul>
-</li>
-<li><p>运行：</p>
-</li>
-<li><p>睡眠</p>
-<ul>
-<li>深睡眠</li>
-<li>浅睡眠：可以被signal唤醒</li>
-</ul>
-</li>
-<li><p>僵尸:task_struct还没有被释放</p>
-</li>
-<li><p>暂停</p>
-</li>
-</ul>
-<p>&#x3D;&#x3D;僵尸态存在的意义&#x3D;&#x3D;父进程通过查看task_struct的exit_code可以知道子进程死因</p>
-<h1 id="作业调度算法"><a href="#作业调度算法" class="headerlink" title="作业调度算法"></a>作业调度算法</h1><p>FIFO：先来先服务</p>
-<p>RR：轮转</p>
-<p>CFS：完全公平调度</p>
-<h1 id="调度相关的系统调用"><a href="#调度相关的系统调用" class="headerlink" title="调度相关的系统调用"></a>调度相关的系统调用</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/10/16/linux/%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" data-id="clt3v0c130011ysus8w9zdizh" data-title="作业调度算法" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -631,7 +615,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 16.67px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 10px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
+      <a href="/tags/algorithm/" style="font-size: 15px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 17.5px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 12.5px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
@@ -653,6 +637,14 @@
       <ul>
         
           <li>
+            <a href="/2024/02/27/linux/linux0.11/main%E5%87%BD%E6%95%B0/">main函数</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/">树和森林</a>
+          </li>
+        
+          <li>
             <a href="/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">操作符重载</a>
           </li>
         
@@ -661,15 +653,7 @@
           </li>
         
           <li>
-            <a href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/15/rtmp/">rtmp</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/14/ffmpeg/ffmpeg/">ffmpeg</a>
+            <a href="/2024/01/16/algorithm/tree/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
           </li>
         
       </ul>

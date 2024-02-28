@@ -73,6 +73,96 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux/linux0.11/main函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/27/linux/linux0.11/main%E5%87%BD%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2024-02-27T09:08:16.000Z" itemprop="datePublished">2024-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/27/linux/linux0.11/main%E5%87%BD%E6%95%B0/">main函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>main函数代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * This is set up by the setup-routine at boot-time</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> EXT_MEM_K (*(unsigned short *)0x90002) <span class="comment">/*扩展内存数，单位为KB*/</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DRIVE_INFO (*(struct drive_info *)0x90080)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ORIG_ROOT_DEV (*(unsigned short *)0x901FC)</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>		<span class="comment">/* This really IS void, no error here. */</span></span><br><span class="line">&#123;			<span class="comment">/* The startup routine assumes (well, ...) this */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Interrupts are still disabled. Do necessary setups, then</span></span><br><span class="line"><span class="comment"> * enable them</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> 	ROOT_DEV = ORIG_ROOT_DEV;</span><br><span class="line"> 	drive_info = DRIVE_INFO;</span><br><span class="line">	memory_end = (<span class="number">1</span>&lt;&lt;<span class="number">20</span>) + (EXT_MEM_K&lt;&lt;<span class="number">10</span>);</span><br><span class="line">	memory_end &amp;= <span class="number">0xfffff000</span>;</span><br><span class="line">	<span class="keyword">if</span> (memory_end &gt; <span class="number">16</span>*<span class="number">1024</span>*<span class="number">1024</span>)</span><br><span class="line">		memory_end = <span class="number">16</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">	<span class="keyword">if</span> (memory_end &gt; <span class="number">12</span>*<span class="number">1024</span>*<span class="number">1024</span>) </span><br><span class="line">		buffer_memory_end = <span class="number">4</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (memory_end &gt; <span class="number">6</span>*<span class="number">1024</span>*<span class="number">1024</span>)</span><br><span class="line">		buffer_memory_end = <span class="number">2</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		buffer_memory_end = <span class="number">1</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">	main_memory_start = buffer_memory_end;</span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> RAMDISK</span></span><br><span class="line">	main_memory_start += rd_init(main_memory_start, RAMDISK*<span class="number">1024</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">	mem_init(main_memory_start,memory_end);</span><br><span class="line">	trap_init();</span><br><span class="line">	blk_dev_init();</span><br><span class="line">	chr_dev_init();</span><br><span class="line">	tty_init();</span><br><span class="line">	time_init();</span><br><span class="line">	sched_init();</span><br><span class="line">	buffer_init(buffer_memory_end);</span><br><span class="line">	hd_init();</span><br><span class="line">	floppy_init();</span><br><span class="line">	sti();</span><br><span class="line">	move_to_user_mode();</span><br><span class="line">	<span class="keyword">if</span> (!fork()) &#123;		<span class="comment">/* we count on this going ok */</span></span><br><span class="line">		init();</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> *   NOTE!!   For any other task &#x27;pause()&#x27; would mean we have to get a</span></span><br><span class="line"><span class="comment"> * signal to awaken, but task0 is the sole exception (see &#x27;schedule()&#x27;)</span></span><br><span class="line"><span class="comment"> * as task 0 gets activated at every idle moment (when no other tasks</span></span><br><span class="line"><span class="comment"> * can run). For task0 &#x27;pause()&#x27; just means we go check if some other</span></span><br><span class="line"><span class="comment"> * task can run, and if not we return here.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">	<span class="keyword">for</span>(;;) pause();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>main函数首先指定了ROOT_DEV(根文件系统设备号)的位置，在第几个硬盘的第几分区。之后驱动信息,文件的宏定义ORIG_ROOT_DEV</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> DRIVE_INFO (*(struct drive_info *)0x90080)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ORIG_ROOT_DEV (*(unsigned short *)0x901FC)</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    ROOT_DEV = ORIG_ROOT_DEV;</span><br><span class="line">	drive_info = DRIVE_INFO;</span><br><span class="line">    <span class="comment">/* .......*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>硬盘的逻辑设备号，也称为逻辑块地址（Logical Block Address，LBA），是硬盘上每个扇区的唯一标识符。它是一个从0开始的数字，表示扇区在硬盘上的位置。逻辑设备号由操作系统分配</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402271836142.png" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2024/02/27/linux/linux0.11/main%E5%87%BD%E6%95%B0/" data-id="clt5u23pk000488usbdmvcuep" data-title="main函数" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux0-11%E6%BA%90%E7%A0%81/" rel="tag">linux0.11源码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-algorithm/tree/树和森林" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/" class="article-date">
+  <time class="dt-published" datetime="2024-02-27T05:01:26.000Z" itemprop="datePublished">2024-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/">树和森林</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://qianxiaolin.github.io/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/" data-id="clt5u23ph000288ush2wmgicl" data-title="树和森林" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-c++/操作符重载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/" class="article-date">
@@ -218,9 +308,9 @@
 
 
   
-    <article id="post-algorithm/线索二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-algorithm/tree/线索二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+    <a href="/2024/01/16/algorithm/tree/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
   <time class="dt-published" datetime="2024-01-16T03:53:29.000Z" itemprop="datePublished">2024-01-16</time>
 </a>
     
@@ -232,7 +322,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
+      <a class="p-name article-title" href="/2024/01/16/algorithm/tree/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
     </h1>
   
 
@@ -244,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="clt3v0c0t0007ysus2vv9amp0" data-title="线索二叉树" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2024/01/16/algorithm/tree/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="clt5u23pj000388us0cezc3tr" data-title="线索二叉树" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -752,9 +842,9 @@
 
 
   
-    <article id="post-algorithm/二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-algorithm/tree/二叉树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
+    <a href="/2024/01/11/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="article-date">
   <time class="dt-published" datetime="2024-01-11T05:56:48.000Z" itemprop="datePublished">2024-01-11</time>
 </a>
     
@@ -766,7 +856,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+      <a class="p-name article-title" href="/2024/01/11/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
     </h1>
   
 
@@ -792,7 +882,7 @@
 
 
 <h1 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h1><p>二叉树的遍历主要包括：前序遍历，中序遍历，后序遍历和层次遍历。</p>
-<h2 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h2><p>前序遍历的顺序为:<code>root-&gt;lchild-&gt;rchild	</code>。对于每一个节点，先访问它的根节点，再访问它的左部分，在访问它的右部分数据</p>
+<h2 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h2><p>前序遍历的顺序为:<code>root-&gt;lchild-&gt;rchild	</code>。先序是对于根节点而言的。对于每一个节点，先访问根节点root，再先序遍历以root的左孩子为根节点的子树，最后先序访问root的右孩子为根节点的子树。</p>
 <p>下面是树的先序遍历过程：</p>
 <p>对于根节点A，我们的访问顺序为：先访问A，后访问A的左部分，最后访问A的右部分。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161528733.png" alt="image-20240116152854286"></p>
@@ -817,12 +907,23 @@
 
 
 
-<h2 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h2><p>使用环型队列进行</p>
-<h1 id="二叉树的查找"><a href="#二叉树的查找" class="headerlink" title="二叉树的查找"></a>二叉树的查找</h1>
+<h2 id="层次遍历"><a href="#层次遍历" class="headerlink" title="层次遍历"></a>层次遍历</h2><p>二叉树的层次遍历为从根子树所在层开始，按层从左往右遍历。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202401161522202.png" alt="image-20240116152254240"></p>
+<p>上面这颗树的层次遍历顺序为:A-&gt;B-&gt;C-&gt;D-&gt;E-&gt;F-&gt;G。层次遍历可以通过队列实现。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402282117584.png" alt="image-20240228211735228"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202402282120065.png" alt="image-20240228212012585"></p>
+<p>代码实现:</p>
+<p>队列结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span>&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">treenode</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">pre</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QueueNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> QueueNode* <span class="title function_">init_queue</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">head</span>=</span>(<span class="keyword">struct</span> QueueNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> QueueNode));</span><br><span class="line">	head-&gt;treenode=<span class="literal">NULL</span>;</span><br><span class="line">	head-&gt;next=head;</span><br><span class="line">	head-&gt;pre=head;</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">en_queue</span><span class="params">(<span class="keyword">struct</span> bTree* treenode,<span class="keyword">struct</span> QueueNode *head)</span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span> *<span class="title">node</span>=</span>(<span class="keyword">struct</span> QueueNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> QueueNode));</span><br><span class="line">	node-&gt;treenode=treenode;</span><br><span class="line">	</span><br><span class="line">	node-&gt;next=head;</span><br><span class="line">	node-&gt;pre=head-&gt;pre;</span><br><span class="line"></span><br><span class="line">	head-&gt;pre-&gt;next=node;</span><br><span class="line">	head-&gt;pre=node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> QueueNode* <span class="title function_">de_queue</span><span class="params">(<span class="keyword">struct</span> QueueNode* head)</span>&#123;</span><br><span class="line">	<span class="comment">/*队列为空*/</span></span><br><span class="line">	<span class="keyword">if</span>(head-&gt;next==head)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">struct</span> QueueNode* tmp=head-&gt;next;</span><br><span class="line">		head-&gt;next=head-&gt;next-&gt;next;</span><br><span class="line">		head-&gt;next-&gt;pre=head;</span><br><span class="line">		<span class="keyword">return</span> tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>层次遍历</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">layer_travesal</span><span class="params">(<span class="keyword">struct</span> QueueNode* head)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*队列为空*/</span></span><br><span class="line">	<span class="keyword">if</span>(head-&gt;next==head)&#123;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QueueNode</span>* <span class="title">node</span>=</span>de_queue(head);</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bTree</span>* <span class="title">treenode</span>=</span>node-&gt;treenode;	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c-&gt;&quot;</span>,treenode-&gt;ele);</span><br><span class="line">	<span class="keyword">if</span>(treenode-&gt;lchild!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		en_queue(treenode-&gt;lchild,head);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">if</span>(treenode-&gt;rchild!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		en_queue(treenode-&gt;rchild,head);</span><br><span class="line">	&#125;</span><br><span class="line">	layer_travesal(head);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2024/01/11/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="clt3v0c0t0006ysusfzf4ett7" data-title="二叉树" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://qianxiaolin.github.io/2024/01/11/algorithm/tree/%E4%BA%8C%E5%8F%89%E6%A0%91/" data-id="clt5u23p6000088usdfts44rv" data-title="二叉树" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -882,125 +983,11 @@
 
 
   
-    <article id="post-linux/linux常用命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2023-12-09T05:19:14.000Z" itemprop="datePublished">2023-12-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/12/09/linux/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="clt3v0c10000rysus7iund4lo" data-title="linux常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-c++/gdb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/12/01/c++/gdb/" class="article-date">
-  <time class="dt-published" datetime="2023-12-01T14:31:31.000Z" itemprop="datePublished">2023-12-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/12/01/c++/gdb/">gdb</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="gdb调试程序"><a href="#gdb调试程序" class="headerlink" title="gdb调试程序"></a>gdb调试程序</h1><h2 id="调试二进制"><a href="#调试二进制" class="headerlink" title="调试二进制"></a>调试二进制</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g test.c</span><br></pre></td></tr></table></figure>
-
-<h2 id="调试core"><a href="#调试core" class="headerlink" title="调试core"></a>调试core</h2><p>设置生成core文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -c unlimited</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc a.out corename</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="调试正在执行的程序"><a href="#调试正在执行的程序" class="headerlink" title="调试正在执行的程序"></a>调试正在执行的程序</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gdb -g processid</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="常用调试命令"><a href="#常用调试命令" class="headerlink" title="常用调试命令"></a>常用调试命令</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">next</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stept</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span> 行号/函数名</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch 变量名</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print &amp;a</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info breakpoints</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info watchpoints</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> logging on</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://qianxiaolin.github.io/2023/12/01/c++/gdb/" data-id="clt3v0c0z000nysus1gq0745x" data-title="gdb" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/" rel="tag">c&#x2F;c++</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1024,7 +1011,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 16.67px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 10px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
+      <a href="/tags/algorithm/" style="font-size: 15px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 17.5px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 12.5px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
@@ -1046,6 +1033,14 @@
       <ul>
         
           <li>
+            <a href="/2024/02/27/linux/linux0.11/main%E5%87%BD%E6%95%B0/">main函数</a>
+          </li>
+        
+          <li>
+            <a href="/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/">树和森林</a>
+          </li>
+        
+          <li>
             <a href="/2024/02/20/c++/%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD/">操作符重载</a>
           </li>
         
@@ -1054,15 +1049,7 @@
           </li>
         
           <li>
-            <a href="/2024/01/16/algorithm/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/15/rtmp/">rtmp</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/14/ffmpeg/ffmpeg/">ffmpeg</a>
+            <a href="/2024/01/16/algorithm/tree/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">线索二叉树</a>
           </li>
         
       </ul>
