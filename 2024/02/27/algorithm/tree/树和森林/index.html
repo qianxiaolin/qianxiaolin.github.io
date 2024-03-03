@@ -6,15 +6,24 @@
   
   <title>树和森林 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="article">
+  <meta name="description" content="树的存储方式双亲表示法 存储方式双亲表示法使用数组实现  parent存放父亲在数组的索引 插入操作插入操作在数组末尾加入数据  孩子表示法使用顺序存储和链式存储实现 孩子兄弟表示法将下面的树使用孩子兄弟表示法，可以转化为  树 二叉树 森林的转化">
+<meta property="og:type" content="article">
 <meta property="og:title" content="树和森林">
 <meta property="og:url" content="https://qianxiaolin.github.io/2024/02/27/algorithm/tree/%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="树的存储方式双亲表示法 存储方式双亲表示法使用数组实现  parent存放父亲在数组的索引 插入操作插入操作在数组末尾加入数据  孩子表示法使用顺序存储和链式存储实现 孩子兄弟表示法将下面的树使用孩子兄弟表示法，可以转化为  树 二叉树 森林的转化">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032138736.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032136432.png">
+<meta property="og:image" content="c:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20240303214104504.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032130220.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032202008.png">
 <meta property="article:published_time" content="2024-02-27T05:01:26.000Z">
-<meta property="article:modified_time" content="2024-02-27T05:01:26.243Z">
+<meta property="article:modified_time" content="2024-03-03T14:02:48.289Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032138736.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -95,7 +104,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="树的存储方式"><a href="#树的存储方式" class="headerlink" title="树的存储方式"></a>树的存储方式</h1><h2 id="双亲表示法"><a href="#双亲表示法" class="headerlink" title="双亲表示法"></a>双亲表示法</h2><p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032138736.png" alt="image-20240303213820114"></p>
+<h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><p>双亲表示法使用数组实现</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032136432.png" alt="image-20240303213654106"></p>
+<p>parent存放父亲在数组的索引</p>
+<h3 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h3><p>插入操作在数组末尾加入数据</p>
+<p><img src="C:\Users\HP\AppData\Roaming\Typora\typora-user-images\image-20240303214104504.png" alt="image-20240303214104504"></p>
+<h2 id="孩子表示法"><a href="#孩子表示法" class="headerlink" title="孩子表示法"></a>孩子表示法</h2><p>使用顺序存储和链式存储实现</p>
+<h2 id="孩子兄弟表示法"><a href="#孩子兄弟表示法" class="headerlink" title="孩子兄弟表示法"></a>孩子兄弟表示法</h2><p>将下面的树使用孩子兄弟表示法，可以转化为</p>
+<p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032130220.png" alt="image-20240303213035378"></p>
+<h1 id="树-二叉树-森林的转化"><a href="#树-二叉树-森林的转化" class="headerlink" title="树 二叉树 森林的转化"></a>树 二叉树 森林的转化</h1><p><img src="https://cdn.jsdelivr.net/gh/qianxiaolin/picgo/202403032202008.png" alt="image-20240303220227515"></p>
+
       
     </div>
     <footer class="article-footer">
@@ -103,6 +122,8 @@
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+
     </footer>
   </div>
   
@@ -151,7 +172,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 15px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 17.5px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 12.5px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
+      <a href="/tags/algorithm/" style="font-size: 16.67px;">algorithm</a> <a href="/tags/c-c/" style="font-size: 16.67px;">c/c++</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux0-11%E6%BA%90%E7%A0%81/" style="font-size: 13.33px;">linux0.11源码</a> <a href="/tags/rtmp%E6%8F%A1%E6%89%8B%E5%8D%8F%E8%AE%AE/" style="font-size: 10px;">rtmp握手协议</a>
     </div>
   </div>
 
